@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ejZ-VZ-l87">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="igu-zv-hAU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Book List View Controller-->
         <scene sceneID="uOr-Xv-2UK">
             <objects>
-                <viewController id="ejZ-VZ-l87" customClass="BookListViewController" customModule="leARn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookListVC" id="ejZ-VZ-l87" customClass="BookListViewController" customModule="leARn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JH2-tw-Lsj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,6 +110,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xkf-iM-4wJ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Nhc-gN-D7h"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nif-G7-vmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,7 +119,7 @@
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="leARn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARVC" id="BV1-FR-VrT" customClass="ARViewController" customModule="leARn" customModuleProvider="target" sceneMemberID="viewController">
                     <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -162,9 +163,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sE-qG-lYJ">
-                                <rect key="frame" x="178" y="422" width="46" height="30"/>
+                                <rect key="frame" x="170" y="422" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Continue"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,7 +193,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Kxo-Ei-Opw" kind="relationship" relationship="rootViewController" id="XZZ-HM-6qe"/>
+                        <segue destination="Kxo-Ei-Opw" kind="relationship" relationship="rootViewController" id="Znc-ZO-BFC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5u-Ft-gus" userLabel="First Responder" sceneMemberID="firstResponder"/>

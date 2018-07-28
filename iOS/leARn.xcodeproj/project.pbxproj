@@ -17,7 +17,7 @@
 		BB0DAB17210D2069007CE84B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB0DAB16210D2069007CE84B /* GoogleService-Info.plist */; };
 		BB2C6A54210D02620026DE3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A53210D02620026DE3C /* AppDelegate.swift */; };
 		BB2C6A56210D02620026DE3C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A55210D02620026DE3C /* art.scnassets */; };
-		BB2C6A58210D02620026DE3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A57210D02620026DE3C /* ViewController.swift */; };
+		BB2C6A58210D02620026DE3C /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A57210D02620026DE3C /* ARViewController.swift */; };
 		BB2C6A5B210D02620026DE3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A59210D02620026DE3C /* Main.storyboard */; };
 		BB2C6A5D210D02640026DE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A5C210D02640026DE3C /* Assets.xcassets */; };
 		BB2C6A60210D02640026DE3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A5E210D02640026DE3C /* LaunchScreen.storyboard */; };
@@ -41,7 +41,7 @@
 		BB2C6A50210D02620026DE3C /* leARn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leARn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2C6A53210D02620026DE3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB2C6A55210D02620026DE3C /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		BB2C6A57210D02620026DE3C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BB2C6A57210D02620026DE3C /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		BB2C6A5A210D02620026DE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB2C6A5C210D02640026DE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB2C6A5F210D02640026DE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,10 +82,49 @@
 		BB03BEC4210D2B7B00971E79 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */,
 				BB03BEBC210D291700971E79 /* Book.swift */,
 				BB03BEC5210D2B8E00971E79 /* Image.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BB03BEC9210D319C00971E79 /* Setup Flow */ = {
+			isa = PBXGroup;
+			children = (
+				BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */,
+				BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */,
+				BB0DAB14210D1FB1007CE84B /* BookTableViewCell.swift */,
+			);
+			path = "Setup Flow";
+			sourceTree = "<group>";
+		};
+		BB03BECA210D31EF00971E79 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				BB2C6A55210D02620026DE3C /* art.scnassets */,
+				BB2C6A69210D02B10026DE3C /* ARResources.storyboard */,
+				BB2C6A57210D02620026DE3C /* ARViewController.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		BB03BECB210D321300971E79 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB0DAB16210D2069007CE84B /* GoogleService-Info.plist */,
+				BB2C6A5E210D02640026DE3C /* LaunchScreen.storyboard */,
+				BB2C6A61210D02640026DE3C /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB03BECC210D323400971E79 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				BB03BEC2210D2B0800971E79 /* MainNavigationViewController.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		BB2C6A47210D02620026DE3C = {
@@ -111,20 +150,13 @@
 			children = (
 				BB2C6A53210D02620026DE3C /* AppDelegate.swift */,
 				BB03BEC7210D2BBB00971E79 /* Constants.swift */,
-				BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */,
 				BB03BEC4210D2B7B00971E79 /* Model */,
-				BB2C6A55210D02620026DE3C /* art.scnassets */,
-				BB2C6A57210D02620026DE3C /* ViewController.swift */,
+				BB03BECA210D31EF00971E79 /* AR */,
 				BB2C6A59210D02620026DE3C /* Main.storyboard */,
-				BB03BEC2210D2B0800971E79 /* MainNavigationViewController.swift */,
-				BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */,
-				BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */,
-				BB0DAB14210D1FB1007CE84B /* BookTableViewCell.swift */,
-				BB2C6A69210D02B10026DE3C /* ARResources.storyboard */,
+				BB03BECC210D323400971E79 /* Navigation */,
+				BB03BEC9210D319C00971E79 /* Setup Flow */,
+				BB03BECB210D321300971E79 /* Supporting Files */,
 				BB2C6A5C210D02640026DE3C /* Assets.xcassets */,
-				BB0DAB16210D2069007CE84B /* GoogleService-Info.plist */,
-				BB2C6A5E210D02640026DE3C /* LaunchScreen.storyboard */,
-				BB2C6A61210D02640026DE3C /* Info.plist */,
 			);
 			path = leARn;
 			sourceTree = "<group>";
@@ -278,7 +310,7 @@
 			files = (
 				BB0DAB15210D1FB1007CE84B /* BookTableViewCell.swift in Sources */,
 				BB03BEC6210D2B8E00971E79 /* Image.swift in Sources */,
-				BB2C6A58210D02620026DE3C /* ViewController.swift in Sources */,
+				BB2C6A58210D02620026DE3C /* ARViewController.swift in Sources */,
 				BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */,
 				BB03BEBD210D291700971E79 /* Book.swift in Sources */,
 				BB03BEC8210D2BBB00971E79 /* Constants.swift in Sources */,
