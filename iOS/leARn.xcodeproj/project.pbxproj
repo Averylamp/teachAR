@@ -12,6 +12,7 @@
 		BB06DD7E210CFA2700B171E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB06DD7C210CFA2700B171E1 /* Main.storyboard */; };
 		BB06DD80210CFA2800B171E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB06DD7F210CFA2800B171E1 /* Assets.xcassets */; };
 		BB06DD83210CFA2800B171E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB06DD81210CFA2800B171E1 /* LaunchScreen.storyboard */; };
+		BB21482E210D01970028710C /* ARViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB21482C210D01970028710C /* ARViews.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		BB06DD7F210CFA2800B171E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB06DD82210CFA2800B171E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB06DD84210CFA2800B171E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB21482D210D01970028710C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ARViews.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				BB06DD78210CFA2700B171E1 /* AppDelegate.swift */,
 				BB06DD7A210CFA2700B171E1 /* ViewController.swift */,
 				BB06DD7C210CFA2700B171E1 /* Main.storyboard */,
+				BB21482C210D01970028710C /* ARViews.storyboard */,
 				BB06DD7F210CFA2800B171E1 /* Assets.xcassets */,
 				BB06DD81210CFA2800B171E1 /* LaunchScreen.storyboard */,
 				BB06DD84210CFA2800B171E1 /* Info.plist */,
@@ -124,6 +127,7 @@
 			files = (
 				BB06DD83210CFA2800B171E1 /* LaunchScreen.storyboard in Resources */,
 				BB06DD80210CFA2800B171E1 /* Assets.xcassets in Resources */,
+				BB21482E210D01970028710C /* ARViews.storyboard in Resources */,
 				BB06DD7E210CFA2700B171E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,6 +161,14 @@
 				BB06DD82210CFA2800B171E1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BB21482C210D01970028710C /* ARViews.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB21482D210D01970028710C /* Base */,
+			);
+			name = ARViews.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
