@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92362AA8210D26E300A298A0 /* AgoraSigKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92362AA7210D26E300A298A0 /* AgoraSigKit.framework */; };
+		92362AAA210D270900A298A0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 92362AA9210D270900A298A0 /* libc++.tbd */; };
+		92362AAC210D281600A298A0 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92362AAB210D281600A298A0 /* Chat.storyboard */; };
+		92362AAE210D33B900A298A0 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = 92362AAD210D33B900A298A0 /* Supporting Files */; };
 		BB03BEBD210D291700971E79 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBC210D291700971E79 /* Book.swift */; };
 		BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */; };
 		BB03BEC1210D2A3B00971E79 /* SplashPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */; };
@@ -14,13 +18,11 @@
 		BB03BEC6210D2B8E00971E79 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC5210D2B8E00971E79 /* Image.swift */; };
 		BB03BEC8210D2BBB00971E79 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC7210D2BBB00971E79 /* Constants.swift */; };
 		BB0DAB15210D1FB1007CE84B /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0DAB14210D1FB1007CE84B /* BookTableViewCell.swift */; };
-		BB0DAB17210D2069007CE84B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB0DAB16210D2069007CE84B /* GoogleService-Info.plist */; };
 		BB2C6A54210D02620026DE3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A53210D02620026DE3C /* AppDelegate.swift */; };
 		BB2C6A56210D02620026DE3C /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A55210D02620026DE3C /* art.scnassets */; };
 		BB2C6A58210D02620026DE3C /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A57210D02620026DE3C /* ARViewController.swift */; };
 		BB2C6A5B210D02620026DE3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A59210D02620026DE3C /* Main.storyboard */; };
 		BB2C6A5D210D02640026DE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A5C210D02640026DE3C /* Assets.xcassets */; };
-		BB2C6A60210D02640026DE3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A5E210D02640026DE3C /* LaunchScreen.storyboard */; };
 		BB2C6A6B210D02B10026DE3C /* ARResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A69210D02B10026DE3C /* ARResources.storyboard */; };
 		BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */; };
 		EABD2398A0405E5EBADC9CDF /* Pods_leARn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4964BD45A98131863CBA17 /* Pods_leARn.framework */; };
@@ -30,6 +32,10 @@
 		1A4964BD45A98131863CBA17 /* Pods_leARn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_leARn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E122CB8133789B95FEA0E3 /* Pods-leARn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leARn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-leARn/Pods-leARn.debug.xcconfig"; sourceTree = "<group>"; };
 		46178259C8313258442E6306 /* Pods-leARn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leARn.release.xcconfig"; path = "Pods/Target Support Files/Pods-leARn/Pods-leARn.release.xcconfig"; sourceTree = "<group>"; };
+		92362AA7210D26E300A298A0 /* AgoraSigKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraSigKit.framework; sourceTree = "<group>"; };
+		92362AA9210D270900A298A0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		92362AAB210D281600A298A0 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		92362AAD210D33B900A298A0 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Supporting Files"; path = "leARn/Supporting Files"; sourceTree = SOURCE_ROOT; };
 		BB03BEBC210D291700971E79 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPageViewController.swift; sourceTree = "<group>"; };
@@ -37,15 +43,12 @@
 		BB03BEC5210D2B8E00971E79 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		BB03BEC7210D2BBB00971E79 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BB0DAB14210D1FB1007CE84B /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
-		BB0DAB16210D2069007CE84B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB2C6A50210D02620026DE3C /* leARn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leARn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2C6A53210D02620026DE3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB2C6A55210D02620026DE3C /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		BB2C6A57210D02620026DE3C /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		BB2C6A5A210D02620026DE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB2C6A5C210D02640026DE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BB2C6A5F210D02640026DE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BB2C6A61210D02640026DE3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB2C6A6A210D02B10026DE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ARResources.storyboard; sourceTree = "<group>"; };
 		BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92362AAA210D270900A298A0 /* libc++.tbd in Frameworks */,
+				92362AA8210D26E300A298A0 /* AgoraSigKit.framework in Frameworks */,
 				EABD2398A0405E5EBADC9CDF /* Pods_leARn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +79,8 @@
 		B74EF6CB7D6C4E1C182BA237 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92362AA9210D270900A298A0 /* libc++.tbd */,
+				92362AA7210D26E300A298A0 /* AgoraSigKit.framework */,
 				1A4964BD45A98131863CBA17 /* Pods_leARn.framework */,
 			);
 			name = Frameworks;
@@ -107,16 +114,6 @@
 				BB2C6A57210D02620026DE3C /* ARViewController.swift */,
 			);
 			path = AR;
-			sourceTree = "<group>";
-		};
-		BB03BECB210D321300971E79 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				BB0DAB16210D2069007CE84B /* GoogleService-Info.plist */,
-				BB2C6A5E210D02640026DE3C /* LaunchScreen.storyboard */,
-				BB2C6A61210D02640026DE3C /* Info.plist */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		BB03BECC210D323400971E79 /* Navigation */ = {
@@ -154,9 +151,10 @@
 				BB03BECA210D31EF00971E79 /* AR */,
 				BB2C6A59210D02620026DE3C /* Main.storyboard */,
 				BB03BECC210D323400971E79 /* Navigation */,
+				92362AAD210D33B900A298A0 /* Supporting Files */,
 				BB03BEC9210D319C00971E79 /* Setup Flow */,
-				BB03BECB210D321300971E79 /* Supporting Files */,
 				BB2C6A5C210D02640026DE3C /* Assets.xcassets */,
+				92362AAB210D281600A298A0 /* Chat.storyboard */,
 			);
 			path = leARn;
 			sourceTree = "<group>";
@@ -173,7 +171,6 @@
 				BB2C6A4D210D02620026DE3C /* Frameworks */,
 				BB2C6A4E210D02620026DE3C /* Resources */,
 				7201AC1C5D0648F0BED4C5BB /* [CP] Embed Pods Frameworks */,
-				50BDEBCA2AFDA85BF5655600 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -222,12 +219,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92362AAE210D33B900A298A0 /* Supporting Files in Resources */,
+				92362AAC210D281600A298A0 /* Chat.storyboard in Resources */,
 				BB2C6A56210D02620026DE3C /* art.scnassets in Resources */,
 				BB2C6A6B210D02B10026DE3C /* ARResources.storyboard in Resources */,
-				BB2C6A60210D02640026DE3C /* LaunchScreen.storyboard in Resources */,
 				BB2C6A5D210D02640026DE3C /* Assets.xcassets in Resources */,
 				BB2C6A5B210D02620026DE3C /* Main.storyboard in Resources */,
-				BB0DAB17210D2069007CE84B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,21 +247,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		50BDEBCA2AFDA85BF5655600 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-leARn/Pods-leARn-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7201AC1C5D0648F0BED4C5BB /* [CP] Embed Pods Frameworks */ = {
@@ -330,14 +312,6 @@
 				BB2C6A5A210D02620026DE3C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BB2C6A5E210D02640026DE3C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB2C6A5F210D02640026DE3C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		BB2C6A69210D02B10026DE3C /* ARResources.storyboard */ = {
@@ -471,8 +445,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R4DQ2L3FBV;
-				INFOPLIST_FILE = leARn/Info.plist;
+				DEVELOPMENT_TEAM = 4DX6FXCC84;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "leARn/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,8 +468,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R4DQ2L3FBV;
-				INFOPLIST_FILE = leARn/Info.plist;
+				DEVELOPMENT_TEAM = 4DX6FXCC84;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "leARn/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

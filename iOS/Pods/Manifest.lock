@@ -16,10 +16,10 @@ PODS:
   - FirebaseAnalytics (5.0.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseCore (5.0.5):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseFirestore (0.12.5):
     - FirebaseCore (~> 5.0)
     - FirebaseFirestore/abseil-cpp (= 0.12.5)
@@ -36,7 +36,7 @@ PODS:
   - FirebaseInstanceID (3.1.1):
     - FirebaseCore (~> 5.0)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - GoogleToolboxForMac/NSData+zlib (2.1.4):
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - gRPC (1.13.0):
     - gRPC-RxLibrary (= 1.13.0)
@@ -71,6 +71,23 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BoringSSL
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseFirestore
+    - FirebaseInstanceID
+    - GoogleToolboxForMac
+    - gRPC
+    - gRPC-Core
+    - gRPC-ProtoRPC
+    - gRPC-RxLibrary
+    - leveldb-library
+    - nanopb
+    - Protobuf
+
 SPEC CHECKSUMS:
   BoringSSL: cf3f1793eb6e3c445c4d150456341f149c268a35
   Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
@@ -89,4 +106,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 612133bbd2b0a0238ea051aaaf2a94c2a2d94be7
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

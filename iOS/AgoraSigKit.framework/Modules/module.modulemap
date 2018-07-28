@@ -1,0 +1,7 @@
+framework module AgoraSigKit{
+    umbrella header "AgoraSigKit.h"
+
+    export *
+    module * { export * }
+}
+
