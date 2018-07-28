@@ -32,11 +32,6 @@ struct Book {
     }
 }
 
-// A type that can be initialized from a Firestore document.
-protocol DocumentSerializable {
-    init?(dictionary: [String: Any])
-}
-
 extension Book: DocumentSerializable{
     init?(dictionary: [String: Any]){
         guard let id = dictionary["id"] as? String,

@@ -11,6 +11,8 @@
 		BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */; };
 		BB03BEC1210D2A3B00971E79 /* SplashPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */; };
 		BB03BEC3210D2B0800971E79 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC2210D2B0800971E79 /* MainNavigationViewController.swift */; };
+		BB03BEC6210D2B8E00971E79 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC5210D2B8E00971E79 /* Image.swift */; };
+		BB03BEC8210D2BBB00971E79 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC7210D2BBB00971E79 /* Constants.swift */; };
 		BB0DAB15210D1FB1007CE84B /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0DAB14210D1FB1007CE84B /* BookTableViewCell.swift */; };
 		BB0DAB17210D2069007CE84B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB0DAB16210D2069007CE84B /* GoogleService-Info.plist */; };
 		BB2C6A54210D02620026DE3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A53210D02620026DE3C /* AppDelegate.swift */; };
@@ -32,6 +34,8 @@
 		BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPageViewController.swift; sourceTree = "<group>"; };
 		BB03BEC2210D2B0800971E79 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
+		BB03BEC5210D2B8E00971E79 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		BB03BEC7210D2BBB00971E79 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BB0DAB14210D1FB1007CE84B /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		BB0DAB16210D2069007CE84B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB2C6A50210D02620026DE3C /* leARn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leARn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +79,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB03BEC4210D2B7B00971E79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BB03BEBC210D291700971E79 /* Book.swift */,
+				BB03BEC5210D2B8E00971E79 /* Image.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BB2C6A47210D02620026DE3C = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				BB2C6A53210D02620026DE3C /* AppDelegate.swift */,
+				BB03BEC7210D2BBB00971E79 /* Constants.swift */,
 				BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */,
-				BB03BEBC210D291700971E79 /* Book.swift */,
+				BB03BEC4210D2B7B00971E79 /* Model */,
 				BB2C6A55210D02620026DE3C /* art.scnassets */,
 				BB2C6A57210D02620026DE3C /* ViewController.swift */,
 				BB2C6A59210D02620026DE3C /* Main.storyboard */,
@@ -263,9 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0DAB15210D1FB1007CE84B /* BookTableViewCell.swift in Sources */,
+				BB03BEC6210D2B8E00971E79 /* Image.swift in Sources */,
 				BB2C6A58210D02620026DE3C /* ViewController.swift in Sources */,
 				BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */,
 				BB03BEBD210D291700971E79 /* Book.swift in Sources */,
+				BB03BEC8210D2BBB00971E79 /* Constants.swift in Sources */,
 				BB2C6A54210D02620026DE3C /* AppDelegate.swift in Sources */,
 				BB03BEC3210D2B0800971E79 /* MainNavigationViewController.swift in Sources */,
 				BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */,
