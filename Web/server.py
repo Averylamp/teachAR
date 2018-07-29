@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, request
+from flask import Flask, render_template, flash, request, redirect, url_for
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from google.cloud import firestore
 from objects import Book, Image
@@ -10,6 +10,7 @@ import glob
 
 # TODO(ethan): reove debug
 DEBUG=True
+
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
@@ -42,7 +43,6 @@ def homepage(bookid):
     all_images = [i.to_dict() for i in images]
     books = db.collection(u"books").get()
     all_books = [i.to_dict() for i in books]
-    print(all_images)
     return render_template("index.html", images=all_images, books=all_books)
 
 if __name__ == '__main__':

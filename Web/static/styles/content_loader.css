@@ -1,17 +1,21 @@
-html, body {
+/* html, body {
     height: 100%;
     width: 50%;
+} */
+
+body .container {
+  margin: auto;
 }
 
-html {
+/* html {
     display: table;
     margin: auto;
-}
+} */
 
-body {
+/* body {
     display: table-cell;
     vertical-align: middle;
-}
+} */
 
 .form-group .form-control {
   margin-bottom: 3px;
