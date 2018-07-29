@@ -69,7 +69,6 @@ def content_loader_page(db, all_books):
         description = request.form['description']
         # update with the wiki page
         description = WikiKit(description).getContent()
-
         image_links = get_list_from_ids("image_link", request.form)
         video_links = get_list_from_ids("video_link", request.form)
         info_links = get_list_from_ids("info_link", request.form)
