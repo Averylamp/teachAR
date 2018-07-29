@@ -19,7 +19,7 @@ Our application allows for students to take charge of their education in a fun a
 
 Students can use our platform to supplement their learning through interactive and engaging ways. Our application allows for photo and video annotations to provide an AR experience while learning. Students can use our apps to watch videos, find relevant links, and learn more information around given images throughout the textbook.
 
-![Alt Text](https://media.giphy.com/media/21SpqV0OkSEYMeuMQB/giphy.gif)
+![alt text](https://media.giphy.com/media/21SpqV0OkSEYMeuMQB/giphy.gif)
 
 ## Crowdsourced Content
 
