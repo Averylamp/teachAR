@@ -10,6 +10,13 @@
 		92362AA8210D26E300A298A0 /* AgoraSigKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92362AA7210D26E300A298A0 /* AgoraSigKit.framework */; };
 		92362AAA210D270900A298A0 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 92362AA9210D270900A298A0 /* libc++.tbd */; };
 		92362AAC210D281600A298A0 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92362AAB210D281600A298A0 /* Chat.storyboard */; };
+		92362AAE210D33B900A298A0 /* Supporting Files in Resources */ = {isa = PBXBuildFile; fileRef = 92362AAD210D33B900A298A0 /* Supporting Files */; };
+		92362AB2210D390E00A298A0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362AB1210D390E00A298A0 /* ChatViewController.swift */; };
+		92362AB4210D3BC300A298A0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362AB3210D3BC300A298A0 /* Message.swift */; };
+		92362AB9210D3E0C00A298A0 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362AB8210D3E0C00A298A0 /* Key.swift */; };
+		92362ABB210D402000A298A0 /* AgoraSignalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ABA210D402000A298A0 /* AgoraSignalKit.swift */; };
+		92362ABD210D450800A298A0 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ABC210D450700A298A0 /* CommonExtensions.swift */; };
+		92362ABF210D47A200A298A0 /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ABE210D47A200A298A0 /* LogWriter.swift */; };
 		BB03BEBD210D291700971E79 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBC210D291700971E79 /* Book.swift */; };
 		BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */; };
 		BB03BEC1210D2A3B00971E79 /* SplashPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */; };
@@ -38,6 +45,13 @@
 		92362AA7210D26E300A298A0 /* AgoraSigKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraSigKit.framework; sourceTree = "<group>"; };
 		92362AA9210D270900A298A0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		92362AAB210D281600A298A0 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		92362AAD210D33B900A298A0 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Supporting Files"; path = "leARn/Supporting Files"; sourceTree = SOURCE_ROOT; };
+		92362AB1210D390E00A298A0 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		92362AB3210D3BC300A298A0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		92362AB8210D3E0C00A298A0 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		92362ABA210D402000A298A0 /* AgoraSignalKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraSignalKit.swift; sourceTree = "<group>"; };
+		92362ABC210D450700A298A0 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
+		92362ABE210D47A200A298A0 /* LogWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWriter.swift; sourceTree = "<group>"; };
 		BB03BEBC210D291700971E79 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPageViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +95,20 @@
 				46178259C8313258442E6306 /* Pods-leARn.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		92362AB5210D3D4D00A298A0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				92362AAB210D281600A298A0 /* Chat.storyboard */,
+				92362AB1210D390E00A298A0 /* ChatViewController.swift */,
+				92362ABE210D47A200A298A0 /* LogWriter.swift */,
+				92362ABC210D450700A298A0 /* CommonExtensions.swift */,
+				92362AB3210D3BC300A298A0 /* Message.swift */,
+				92362AB8210D3E0C00A298A0 /* Key.swift */,
+				92362ABA210D402000A298A0 /* AgoraSignalKit.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		B74EF6CB7D6C4E1C182BA237 /* Frameworks */ = {
@@ -154,6 +182,7 @@
 		BB2C6A52210D02620026DE3C /* leARn */ = {
 			isa = PBXGroup;
 			children = (
+				92362AB5210D3D4D00A298A0 /* Chat */,
 				BB2C6A53210D02620026DE3C /* AppDelegate.swift */,
 				BB03BEC7210D2BBB00971E79 /* Constants.swift */,
 				BB03BEC4210D2B7B00971E79 /* Model */,
@@ -163,7 +192,6 @@
 				BBC445A7210D362600629E20 /* SupportingFiles */,
 				BB03BEC9210D319C00971E79 /* Setup Flow */,
 				BB2C6A5C210D02640026DE3C /* Assets.xcassets */,
-				92362AAB210D281600A298A0 /* Chat.storyboard */,
 			);
 			path = leARn;
 			sourceTree = "<group>";
@@ -331,12 +359,18 @@
 				BB0DAB15210D1FB1007CE84B /* BookTableViewCell.swift in Sources */,
 				BB03BEC6210D2B8E00971E79 /* Image.swift in Sources */,
 				BBC445B0210D595B00629E20 /* ARViewController+ARSessionDelegate.swift in Sources */,
+				92362ABB210D402000A298A0 /* AgoraSignalKit.swift in Sources */,
+				92362AB2210D390E00A298A0 /* ChatViewController.swift in Sources */,
+				92362AB9210D3E0C00A298A0 /* Key.swift in Sources */,
 				BB2C6A58210D02620026DE3C /* ARViewController.swift in Sources */,
 				BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */,
 				BB03BEBD210D291700971E79 /* Book.swift in Sources */,
 				BB03BEC8210D2BBB00971E79 /* Constants.swift in Sources */,
+				92362ABF210D47A200A298A0 /* LogWriter.swift in Sources */,
 				BB2C6A54210D02620026DE3C /* AppDelegate.swift in Sources */,
+				92362ABD210D450800A298A0 /* CommonExtensions.swift in Sources */,
 				BB03BEC3210D2B0800971E79 /* MainNavigationViewController.swift in Sources */,
+				92362AB4210D3BC300A298A0 /* Message.swift in Sources */,
 				BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */,
 				BBC445AE210D593600629E20 /* StatusViewController.swift in Sources */,
 				BB03BEC1210D2A3B00971E79 /* SplashPageViewController.swift in Sources */,
