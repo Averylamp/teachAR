@@ -20,6 +20,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
+    var username: String = ""
+    var chatroom: String = ""
+    
     var allImages:Array<Image> = Array<Image>()
     var allImageReferences: Set<ARReferenceImage> = Set<ARReferenceImage>()
     

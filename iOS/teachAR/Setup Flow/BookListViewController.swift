@@ -163,6 +163,8 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
                                 arVC.instantiateImageReferences()
                                 self.delay(1.0, closure: {
                                     SwiftSpinner.hide()
+                                    arVC.username  = self.username
+                                    arVC.chatroom = book.bookID
                                     self.navigationController?.pushViewController(arVC, animated: true)
                                 })
                             }
