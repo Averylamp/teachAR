@@ -38,7 +38,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYH-09-V24">
-                                                    <rect key="frame" x="15" y="35" width="345" height="20.666666666666671"/>
+                                                    <rect key="frame" x="15" y="35" width="132" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="sqF-dX-4gO"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -48,7 +51,8 @@
                                                 <constraint firstItem="VKp-qj-g1a" firstAttribute="leading" secondItem="4cR-ab-B6Q" secondAttribute="leadingMargin" id="8Tl-af-6na"/>
                                                 <constraint firstItem="gYH-09-V24" firstAttribute="top" secondItem="VKp-qj-g1a" secondAttribute="bottom" constant="4" id="ILs-ms-oCr"/>
                                                 <constraint firstItem="VKp-qj-g1a" firstAttribute="top" secondItem="4cR-ab-B6Q" secondAttribute="topMargin" id="fpC-73-UGi"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="gYH-09-V24" secondAttribute="trailing" id="r3d-Td-IRk"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gYH-09-V24" secondAttribute="bottom" constant="10" id="r2K-8q-vGG"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="gYH-09-V24" secondAttribute="trailing" constant="60" id="r3d-Td-IRk"/>
                                                 <constraint firstItem="gYH-09-V24" firstAttribute="leading" secondItem="4cR-ab-B6Q" secondAttribute="leadingMargin" id="tH4-cA-Zh6"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -61,7 +65,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatMessageTableCellRight" rowHeight="100" id="gIQ-fL-EmT" customClass="ChatMessageTableViewCell" customModule="teachAR" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gIQ-fL-EmT" id="hCF-lj-1dT">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gIQ-fL-EmT" id="hCF-lj-1dT">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -74,20 +78,23 @@
                                                     <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPf-39-vLX">
-                                                    <rect key="frame" x="23" y="35" width="337" height="20.666666666666671"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message Text Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPf-39-vLX">
+                                                    <rect key="frame" x="228" y="35" width="132" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="s2a-PZ-YWf"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="wPf-39-vLX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hCF-lj-1dT" secondAttribute="leadingMargin" constant="60" id="09Q-Ba-mFz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wPf-39-vLX" secondAttribute="bottom" constant="8" id="6kw-OQ-rxJ"/>
                                                 <constraint firstItem="vbX-Yn-f9s" firstAttribute="top" secondItem="hCF-lj-1dT" secondAttribute="topMargin" id="7i4-rF-rtn"/>
                                                 <constraint firstItem="vbX-Yn-f9s" firstAttribute="trailing" secondItem="hCF-lj-1dT" secondAttribute="trailingMargin" id="8iV-f9-5If"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="vbX-Yn-f9s" secondAttribute="bottom" constant="4" id="GGU-HB-GX5"/>
                                                 <constraint firstItem="wPf-39-vLX" firstAttribute="top" secondItem="vbX-Yn-f9s" secondAttribute="bottom" constant="4" id="NZv-BK-Tx6"/>
                                                 <constraint firstItem="wPf-39-vLX" firstAttribute="trailing" secondItem="hCF-lj-1dT" secondAttribute="trailingMargin" id="Ydg-yA-19c"/>
-                                                <constraint firstItem="wPf-39-vLX" firstAttribute="leading" secondItem="hCF-lj-1dT" secondAttribute="leadingMargin" constant="8" id="vkt-Bc-jFe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
