@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 from google.cloud import firestore
 from objects import Book, Image
 import objects
@@ -42,6 +43,10 @@ def process_books_form(db, bookID, coverURL, chatID, expertID, name, author):
     books_ref = db.collection(u"books").document(bookID)
     book = Book(bookID, coverURL, chatID, expertID, name, author)
     return books_ref.set(book.to_dict())
+
+@app.route("/")
+def homepage():
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run()

@@ -6,7 +6,7 @@ target 'leARn' do
   use_frameworks!
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-  pod 'SwiftMessages'
+  pod 'SDWebImage', '~> 4.0'
 
   # Pods for leARn
 

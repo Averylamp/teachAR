@@ -36,7 +36,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Left Cell" rowHeight="100" id="f38-0B-ocm">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatMessageTableCellLeft" rowHeight="100" id="f38-0B-ocm" customClass="ChatMessageTableViewCell" customModule="leARn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f38-0B-ocm" id="4cR-ab-B6Q">
@@ -67,8 +67,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" label="Left"/>
+                                        <connections>
+                                            <outlet property="messageTextLabel" destination="gYH-09-V24" id="dZq-FK-Uvl"/>
+                                            <outlet property="nameLabel" destination="DdL-Yf-cKq" id="O9e-Rd-u86"/>
+                                            <outlet property="nameText" destination="VKp-qj-g1a" id="sab-QN-pht"/>
+                                            <outlet property="nameView" destination="DdL-Yf-cKq" id="OBx-fT-g3A"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Right Cell" rowHeight="100" id="gIQ-fL-EmT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatMessageTableCellRight" rowHeight="100" id="gIQ-fL-EmT" customClass="ChatMessageTableViewCell" customModule="leARn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gIQ-fL-EmT" id="hCF-lj-1dT">
@@ -98,6 +104,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageTextLabel" destination="wPf-39-vLX" id="DOM-5C-nPI"/>
+                                            <outlet property="nameLabel" destination="ycg-QP-1ao" id="J2Z-Uq-Ap9"/>
+                                            <outlet property="nameText" destination="vbX-Yn-f9s" id="4D9-Z0-nTl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
