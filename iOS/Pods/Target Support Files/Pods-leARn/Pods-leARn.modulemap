@@ -1,6 +1,0 @@
-framework module Pods_leARn {
-  umbrella header "Pods-leARn-umbrella.h"
-
-  export *
-  module * { export * }
-}

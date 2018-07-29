@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_leARnVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_leARnVersionString[];
+FOUNDATION_EXPORT double Pods_teachARVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_teachARVersionString[];
 

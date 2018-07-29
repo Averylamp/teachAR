@@ -1,17 +1,26 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, flash, request
+from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from google.cloud import firestore
 from objects import Book, Image
+from content_loader import content_loader_page
 import objects
 import csv
 import os
 import glob
 
+# TODO(ethan): reove debuger later
+DEBUG=True
 app = Flask(__name__)
+app.config.from_object(__name__)
+app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 @app.route('/get_book/<book_id>')
 def get_book_info(book_id):
     return db.search(where('bookID')==book_id)
+
+@app.route("/content_loader", methods=['GET', 'POST'])
+def content_loader():
+    return content_loader_page()
 
 def get_books():
     """
@@ -42,8 +51,8 @@ def process_image_form(db, bookID, imageID, description, height, width, textbook
 def process_books_form(db, bookID, coverURL, chatID, expertID, name, author):
     books_ref = db.collection(u"books").document(bookID)
     book = Book(bookID, coverURL, chatID, expertID, name, author)
-    return books_ref.set(book.to_dict()) 
-    
+    return books_ref.set(book.to_dict())
+
 @app.route("/<bookid>/view_images")
 def homepage(bookid):
     db = firestore.Client()
