@@ -1,7 +1,7 @@
 from tinydb import TinyDB, Query
 from flask import Flask
 from google.cloud import firestore
-from objects import Books, Images
+from objects import Book, Image
 import objects
 import csv
 
@@ -26,9 +26,9 @@ def process_image_form(db, bookID, imageID, description, height, width, textbook
     image = Image(imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs) 
     return books_ref.set(image.to_dict()) 
 
-def process_books_form(db, bookID, chatID, name, author): 
+def process_books_form(db, bookID, coverURL, chatID, expertID, name, author): 
     books_ref = db.collection(u"books").document(bookID)
-    book = Book(bookID, chatID, expertID, name, author:
+    book = Book(bookID, coverURL, chatID, expertID, name, author)
     return books_ref.set(book.to_dict()) 
     
 if __name__ == '__main__':
