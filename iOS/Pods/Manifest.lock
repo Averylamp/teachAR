@@ -16,10 +16,10 @@ PODS:
   - FirebaseAnalytics (5.0.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
   - FirebaseCore (5.0.5):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseFirestore (0.12.5):
     - FirebaseCore (~> 5.0)
     - FirebaseFirestore/abseil-cpp (= 0.12.5)
@@ -36,7 +36,7 @@ PODS:
   - FirebaseInstanceID (3.1.1):
     - FirebaseCore (~> 5.0)
   - GoogleToolboxForMac/Defines (2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+  - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - gRPC (1.13.0):
     - gRPC-RxLibrary (= 1.13.0)
@@ -66,27 +66,14 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.0)
+  - SwiftMessages (4.1.4):
+    - SwiftMessages/App (= 4.1.4)
+  - SwiftMessages/App (4.1.4)
 
 DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - BoringSSL
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseFirestore
-    - FirebaseInstanceID
-    - GoogleToolboxForMac
-    - gRPC
-    - gRPC-Core
-    - gRPC-ProtoRPC
-    - gRPC-RxLibrary
-    - leveldb-library
-    - nanopb
-    - Protobuf
+  - SwiftMessages
 
 SPEC CHECKSUMS:
   BoringSSL: cf3f1793eb6e3c445c4d150456341f149c268a35
@@ -103,7 +90,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
+  SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
 
-PODFILE CHECKSUM: 612133bbd2b0a0238ea051aaaf2a94c2a2d94be7
+PODFILE CHECKSUM: e64aa4178801241a1ddfd0d9c5c5b4d5558f5f0d
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0

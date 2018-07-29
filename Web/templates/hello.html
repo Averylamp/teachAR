@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>leARn</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/content_loader.css') }}">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <h1>Content Loader</h1>
+
+      <!-- optionally add a new book -->
+      <form  action="" method="post" role="form">
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Book
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </div>
+
+        <br>
+        <button type="button" class="btn btn-primary" id="add_book">Add Book</button>
+
+        <h4>Image URL</h4>
+        <div class="form-group">
+          <input type="text" class="form-control" id="image_url" name="image_url" placeholder="https://website.com/image.png">
+        </div>
+
+        <h4>Image Name</h4>
+        <div class="form-group">
+          <input type="text" class="form-control" id="image_name" name="image_name" placeholder="Happy Tiger">
+        </div>
+
+        <h4>Description</h4>
+        <div class="form-group">
+          <input type="text" class="form-control" id="description" name="description" placeholder="The tiger (Panthera tigris) is the largest cat species, most recognizable for its pattern of dark vertical stripes on reddish-orange fur with a lighter underside.">
+        </div>
+
+        <h4>Image Links</h4>
+        <div class="form-group" id="image_link">
+          <input type="text" class="form-control" id="image_link_0" name="image_link_0" placeholder="https://image_link_0.com/">
+        </div>
+        <button type="button" class="btn btn-primary" id="image_link_add">Add Field</button>
+        <br>
+
+        <h4>Video Links</h4>
+        <div class="form-group" id="video_link">
+          <input type="text" class="form-control" id="video_link_0" name="video_link_0" placeholder="https://video_link_0.com/">
+        </div>
+        <button type="button" class="btn btn-primary" id="video_link_add">Add Field</button>
+        <br>
+
+        <h4>Info Links</h4>
+        <div class="form-group" id="info_link">
+          <input type="text" class="form-control" id="info_link_0" name="info_link_0" placeholder="https://info_link_0.com/">
+        </div>
+        <button type="button" class="btn btn-primary" id="info_link_add">Add Field</button>
+        <br>
+
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      <br>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+
+      {% for message in messages %}
+          {% if "Error" not in message[1]: %}
+              <div class="alert alert-info">
+              <strong>Success! </strong> {{ message[1] }}
+              </div>
+          {% endif %}
+
+          {% if "Error" in message[1]: %}
+              <div class="alert alert-warning">
+              {{ message[1] }}
+              </div>
+          {% endif %}
+      {% endfor %}
+          {% endif %}
+      {% endwith %}
+
+    </div>
+
+    <br>
+
+
+    <script>
+
+    var image_link_count = 0;
+    $("#image_link_add").click(function(){
+      image_link_count += 1;
+      var i = image_link_count.toString();
+      var string = "\
+      <input type=\"text\" class=\"form-control\" id=\"image_link_"+i+"\" \
+      name=\"image_link_"+i+"\" placeholder=\"https://image_link_"+i+".com/\">"
+      $("#image_link").append(string);
+    });
+
+    var video_link_count = 0;
+    $("#video_link_add").click(function(){
+      video_link_count += 1;
+      var i = video_link_count.toString();
+      var string = "\
+      <input type=\"text\" class=\"form-control\" id=\"video_link_"+i+"\" \
+      name=\"video_link_"+i+"\" placeholder=\"https://video_link_"+i+".com/\">"
+      $("#video_link").append(string);
+    });
+
+    var info_link_count = 0;
+    $("#info_link_add").click(function(){
+      info_link_count += 1;
+      var i = info_link_count.toString();
+      var string = "\
+      <input type=\"text\" class=\"form-control\" id=\"info_link_"+i+"\" \
+      name=\"info_link_"+i+"\" placeholder=\"https://info_link_"+i+".com/\">"
+      $("#info_link").append(string);
+    });
+
+    </script>
+
+  </body>
+</html>
