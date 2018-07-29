@@ -29,13 +29,19 @@ def homepage(bookid):
     all_books = [i.to_dict() for i in books]
     return render_template("index.html", images=all_images, books=all_books)
 
+@app.route('/static/videos/')
+def dir_listing_videos():
+    BASE_DIR = '/home/moinnadeem/leARn/Web/static/videos/'
+
+    files = os.listdir(BASE_DIR)
+    return render_template('files.html', files=files)
+
 @app.route('/static/images/')
-def dir_listing():
+def dir_listing_images():
     BASE_DIR = '/home/moinnadeem/leARn/Web/static/images/'
 
     files = os.listdir(BASE_DIR)
     return render_template('files.html', files=files)
 
-
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=5000)

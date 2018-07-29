@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from werkzeug.utils import secure_filename
 from objects import Book, Image
+from pytube import YouTube
 import os
 
 def process_image_form(db, bookID, imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL):
@@ -62,12 +63,14 @@ def content_loader_page(db, all_books):
         file = request.files['file']
         # image_url = request.form['image_url']
         image_name = request.form['image_name']
+        image_width = request.form['image_width']
+        image_height = request.form['image_height']
         description = request.form['description']
         image_links = get_list_from_ids("image_link", request.form)
         video_links = get_list_from_ids("video_link", request.form)
         info_links = get_list_from_ids("info_link", request.form)
 
-        # for item in [file.filename, image_name, description, image_links, video_links, info_links]:
+        # for item in [file.filename, image_name, image_width, image_height, description, image_links, video_links, info_links]:
         #     if item == "":
         #         complete_form = False
 
@@ -90,13 +93,13 @@ def content_loader_page(db, all_books):
                 print(type(image_name))
                 print(type(video_links[0]))
 
-                # TODO(ethan): write to the database
                 # image_id has to be a string of an int
                 image_id = get_new_image_id(db, book_id)
                 if video_links[0]!="":
                     YouTube(video_links[0]).streams.first().download("static/videos/", filename=image_id)
-                    video_links[0] = "{}/static/videos/image_id.mp4"
-                process_image_form(db,book_id,image_id,description,100.0,100.0,image_url,image_links[0],info_links[0],image_name,video_links[0])
+                    video_links[0] = os.path.join(URL_PREFIX, "static/videos/image_id.mp4")
+
+                process_image_form(db,book_id,image_id,description,float(image_height),float(image_width),image_url,image_links[0],info_links[0],image_name,video_links[0])
 
                 # display a notification on the site
                 flash(image_name + ' uploaded.')

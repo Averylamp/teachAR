@@ -1,2 +1,3 @@
 *.json
 static/videos/*
+static/images/*
