@@ -1,9 +1,10 @@
-from tinydb import TinyDB, Query
 from flask import Flask
 from google.cloud import firestore
 from objects import Book, Image
 import objects
 import csv
+import os
+import glob
 
 app = Flask(__name__)
 
@@ -15,11 +16,21 @@ def get_books():
     """
         Precondition: `export GOOGLE_APPLICATION_CREDENTIALS='<PATH TO JSON'`
     """
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    json_key = glob.glob(os.path.join(dir_path, "*.json"))[0]
+    export_command = "export GOOGLE_APPLICATION_CREDENTIALS='{}'".format(json_key)
+    print(export_command)
+    os.system(export_command)
+
     db = firestore.Client()
     books_ref = db.collection(u"books")
     docs = books_ref.get()
+    # for d in docs:
+    #     print(d.to_dict())
+    # print(docs)
     for d in docs:
-        print(d.to_dict())
+        print(d.id)
+        print(d.to_dict)
 
 def process_image_form(db, bookID, imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs):
     books_ref = db.collection(u"books").document(bookID).collection("images").document(imageID) 
