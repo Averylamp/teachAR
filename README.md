@@ -19,7 +19,7 @@ Our application allows for students to take charge of their education in a fun a
 
 Students can use our platform to supplement their learning through interactive and engaging ways. Our application allows for photo and video annotations to provide an AR experience while learning. Students can use our apps to watch videos, find relevant links, and learn more information around given images throughout the textbook.
 
-![alt text](https://media.giphy.com/media/21SpqV0OkSEYMeuMQB/giphy.gif)
+![](https://media.giphy.com/media/21SpqV0OkSEYMeuMQB/giphy.gif)
 
 ## Crowdsourced Content
 
@@ -34,6 +34,8 @@ Here is [the link to our website](http://35.236.74.206/). Please don't submit an
 ## RTC
 
 We provide real-time communication when students have questions related to the topics they see in the textbook, powered by the Agora platform.
+
+![](https://i.giphy.com/7XoGN1oMJ7mpXHurpF.gif)
 
 ## How we built it
 
