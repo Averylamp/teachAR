@@ -36,6 +36,5 @@ def dir_listing():
     files = os.listdir(BASE_DIR)
     return render_template('files.html', files=files)
 
-
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=5000)
