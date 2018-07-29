@@ -20,15 +20,15 @@ def get_book_info(book_id):
     return db.search(where('bookID')==book_id)
 
 @app.route("/content_loader", methods=['GET', 'POST'])
-def content_loader():
+def content_loader_3():
     db = firestore.Client()
     books = db.collection(u"books").get()
     all_books = [i.to_dict() for i in books]
     return content_loader_page(db, all_books)
 
-def process_image_form(db, bookID, imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs):
+def process_image_form(db, bookID, imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURLs):
     books_ref = db.collection(u"books").document(bookID).collection("images").document(imageID)
-    image = Image(imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs)
+    image = Image(imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURLs)
     return books_ref.set(image.to_dict())
 
 def process_books_form(db, bookID, coverURL, chatID, expertID, name, author):
@@ -46,4 +46,4 @@ def homepage(bookid):
     return render_template("index.html", images=all_images, books=all_books)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")

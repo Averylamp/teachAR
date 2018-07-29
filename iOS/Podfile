@@ -7,7 +7,6 @@ target 'teachAR' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'SDWebImage', '~> 4.0'
-
   # Pods for leARn
 
 end

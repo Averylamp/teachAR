@@ -58,14 +58,18 @@ class BookListViewController: UIViewController {
                 return
             }
             
-            let models = snapshot.documents.map { (document) -> Book in
+            let models = snapshot.documents.filter({ (document) -> Bool in
+                if  Book(dictionary: document.data()) != nil {
+                    return true
+                }
+                print("Stripped book = \(document)")
+                return false
+            }).map({ (document) -> Book in
                 if let model = Book(dictionary: document.data()) {
                     return model
-                } else {
-                    // Don't use fatalError here in a real app.
-                    fatalError("Unable to initialize type \(Book.self) with dictionary \(document.data())")
                 }
-            }
+                fatalError("This shouldn't happen oops")
+            })
             
             self.allBooks = models
             self.bookListTableView.reloadData()
@@ -76,7 +80,7 @@ class BookListViewController: UIViewController {
     }
     
     fileprivate func baseQuery() -> Query {
-        return Firestore.firestore().collection("books").limit(to: 100)
+        return Firestore.firestore().collection("books").order(by: "bookID", descending: false)
     }
 
     
@@ -103,10 +107,34 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let book = self.allBooks[indexPath.row]
-        print("Book selected \(book.name)")
         
         if let arVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ARVC") as? ARViewController{
-            self.navigationController?.pushViewController(arVC, animated: true)
+            print("Book selected =\(book.bookID)=")
+            let db = Firestore.firestore()
+            db.collection("books/\(book.bookID)/images").limit(to: 200).getDocuments { (snapshot, error) in
+                guard let snapshot = snapshot else {
+                    print("Error fetching snapshot results: \(error!)")
+                    return
+                }
+                
+                let models = snapshot.documents.filter({ (document) -> Bool in
+                    if Image(dictionary: document.data()) != nil{
+                        return true
+                    }
+                        print("Stripped doc \(document)")
+                    return false
+                }).map({ (document) -> Image in
+                    if let model = Image(dictionary: document.data()) {
+                        return model
+                    }
+                    fatalError("Unable to initialize type \(Image.self) with dictionary \(document.data())")
+                })
+                
+                for model in models{
+                    print(model.targetImageURL)
+                }
+            }
+//            self.navigationController?.pushViewController(arVC, animated: true)
         }
         
     }

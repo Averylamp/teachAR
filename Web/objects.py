@@ -12,16 +12,16 @@ class Book(object):
 
 
 class Image(object):
-    def __init__(self, imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs):
+    def __init__(self, imageID, description, height, width, textbookImageURL, ARImageURL, links, title, videoURLs):
         self.imageID = imageID
         self.description = description
         self.height = height
         self.width = width
-        self.textbookImageURL = textbookImageURL
-        self.ARImageURls = ARImageURLs
-        self.links = links
+        self.targetImageURL = textbookImageURL if textbookImageURL is not "" else "http://sloths.mit.edu/image/0.jpg"
+        self.ARImageURL = ARImageURL if ARImageURL is not "" else "http://sloths.mit.edu/image/0.jpg"
+        self.links = links if links is not "" else "http://sloths.mit.edu/image/0.jpg"
         self.title = title
-        self.videoURLs = videoURLs
+        self.videoURL = videoURL if links is not "" else "http://sloths.mit.edu/video/0.mp4"
 
     def to_dict(self):
         return vars(self)
