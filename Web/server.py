@@ -45,5 +45,13 @@ def homepage(bookid):
     all_books = [i.to_dict() for i in books]
     return render_template("index.html", images=all_images, books=all_books)
 
+@app.route('/static/images/')
+def dir_listing():
+    BASE_DIR = '/home/moinnadeem/leARn/Web/static/images/'
+
+    files = os.listdir(BASE_DIR)
+    return render_template('files.html', files=files)
+
+
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=80)
