@@ -67,18 +67,9 @@
                     </div>
                 </div>
             </nav>
-			{% for image in images %}
-				<h2>{{image.title}}</h2>
-					<div>
-						<img src="{{image.targetImageURL}}" style="float: left; height: 200px; padding-right: 10px;"/>
-						<span class="image-text"><b>Description:</b> {{image.description}}<br />
-						<b>Extra Video URL:</b> <a href="{{image.videoURL}}">{{image.videoURL}}</a><br />
-						<b>Extra Image URL:</b> <a href="{{image.ARImageURL}}">{{image.ARImageURL}}</a><br />
-						<b>Information Link:</b> <a href="{{image.links}}">{{image.links}}</a><br />
-						<b>Height:</b> {{image.height}}, Width: {{image.width}} </span>
-					</div>
-				<div class="line"></div>
-			{% endfor %}
+			<center><h1 style="font-size:5.5rem;">TeachAR</h1></center>
+			<br />
+			<center><h3>Please select a textbook on the left hand side to begin...</h3></center>
         </div>
     </div>
 
