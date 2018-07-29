@@ -35,7 +35,7 @@ Here is [the link to our website](http://35.236.74.206/). Please don't submit an
 
 We provide real-time communication when students have questions related to the topics they see in the textbook, powered by the Agora platform.
 
-![](https://i.giphy.com/7XoGN1oMJ7mpXHurpF.gif)
+![](http://gifimgs.com/res/0718/5b5e19e335174428792522.gif)
 
 ## How we built it
 
