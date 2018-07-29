@@ -148,7 +148,6 @@ class ChatViewController: UIViewController {
                 let message = Message(name: account, message: msg)
                 self?.messageList.list.append(message)
                 self?.updateTableView((self?.chatRoomTableView)!, with: message)
-                self?.inputField.text = ""
                 if let delegate = self?.delegate {
                         delegate.newMessage(message: message)
                 }
@@ -192,7 +191,7 @@ extension ChatViewController: UITextFieldDelegate {
     func sendMessage(){
         guard let message = inputField.text, message.count > 0 else { return  }
         AgoraSignalKit.Kit.messageChannelSend(chatId, msg: message, msgID: String(messageList.list.count))
-        
+        self.inputField.text = ""        
     }
 }
 

@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol AllImagesDelegate {
+    func dismissAllImagesVC()
+}
 class AllImagesViewController: UIViewController {
+
+    var delegate: AllImagesDelegate?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,29 +27,21 @@ class AllImagesViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.populateTableView()
+        self.tableView.reloadData()
     }
     
     
-    func populateTableView() {
-        for image in allImages {
-            self.updateTableView(self.tableView, with: image)
+    @IBAction func backButtonClicked(_ sender: Any) {
+        if let delegate = self.delegate{
+            delegate.dismissAllImagesVC()
         }
     }
     
-    func updateTableView(_ tableView: UITableView, with image: Image) {
-        let indexPath = IndexPath(row: tableView.numberOfRows(inSection: 0), section: 0)
-        tableView.beginUpdates()
-        tableView.insertRows(at: [indexPath], with: .none)
-        tableView.endUpdates()
-        tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
-    }
-
 }
 
 extension AllImagesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTCV") as! ImageTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "ImageTCV", for: indexPath) as! ImageTableViewCell
         cell.setupCellWithImage(image: allImages[indexPath.row])
         return cell
     }
@@ -53,6 +50,13 @@ extension AllImagesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.allImages.count
     }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    
     
 }
 

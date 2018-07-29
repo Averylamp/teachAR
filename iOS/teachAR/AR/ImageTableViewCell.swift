@@ -19,9 +19,11 @@ class ImageTableViewCell: UITableViewCell {
             self.targetImageview.image = image
             self.targetImageview.contentMode = .scaleAspectFit
         }
-        
+        self.backgroundColor = nil
+        self.backgroundView = nil
+        self.labelView.backgroundColor = nil
         self.labelView.text = image.title
-        self.urlView.text = image.videoURL
+        self.urlView.text = image.description
         
     }
     

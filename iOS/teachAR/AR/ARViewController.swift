@@ -70,15 +70,23 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         self.view.layoutIfNeeded()
         
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        let chatBlurEffectView = UIVisualEffectView(effect: blurEffect)
         
-        blurEffectView.layer.cornerRadius = 10
-        blurEffectView.clipsToBounds = true
-        blurEffectView.frame = self.chatButtonViewContainer.bounds
+        chatBlurEffectView.layer.cornerRadius = 10
+        chatBlurEffectView.clipsToBounds = true
+        chatBlurEffectView.frame = self.chatButtonViewContainer.bounds
         
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        chatButtonViewContainer.insertSubview(blurEffectView, at: 0)
-        allImagesViewContainer.insertSubview(blurEffectView, at: 0)
+        chatBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        chatButtonViewContainer.insertSubview(chatBlurEffectView, at: 0)
+        let imagesBlurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let allImagesBlurEffectView = UIVisualEffectView(effect: imagesBlurEffect)
+        
+        allImagesBlurEffectView.layer.cornerRadius = 10
+        allImagesBlurEffectView.clipsToBounds = true
+        allImagesBlurEffectView.frame = self.allImagesViewContainer.bounds
+        
+        allImagesBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        allImagesViewContainer.insertSubview(allImagesBlurEffectView, at: 0)
     }
     
     var chatViewController:ChatViewController?
@@ -156,8 +164,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     var avPlayer:AVPlayer? = nil
     
-    
-    
     func removeVideoNode(){
         if let avPlayer = self.avPlayer,  ((avPlayer.rate != 0) && (avPlayer.error == nil)){
             self.avPlayer?.pause()
@@ -171,10 +177,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             session.remove(anchor: imageAnchor)
             self.imageAnchor = nil
         }
-        
-
     }
-    
     
     var videoNode: SCNNode?
     var imageAnchor: ARImageAnchor?
@@ -268,10 +271,37 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
+    var allImagesVC: AllImagesViewController?
+    
     @IBAction func allImagesClicked(_ sender: Any) {
         if let allImagesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AllImagesVC") as? AllImagesViewController{
+            self.allImagesVC = allImagesVC
             allImagesVC.allImages = self.allImages
-            self.present(allImagesVC, animated: true, completion:   nil)
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            
+            blurEffectView.layer.cornerRadius = 10
+            blurEffectView.clipsToBounds = true
+            blurEffectView.frame = allImagesVC.view.bounds
+            
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            allImagesVC.view.insertSubview(blurEffectView, at: 0)
+            allImagesVC.view.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(allImagesVC.view)
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint(item: allImagesVC.view,  attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: allImagesVC.view,  attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: allImagesVC.view,  attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: -40),
+                NSLayoutConstraint(item: allImagesVC.view,  attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: -100)
+                ])
+            self.addChild(allImagesVC)
+            allImagesVC.didMove(toParent: self)
+            allImagesVC.view.alpha = 0.0
+            UIView.animate(withDuration: 0.6) {
+                allImagesVC.view.alpha = 1.0
+            }
+            
+            allImagesVC.delegate = self
             
         }
     }
@@ -317,5 +347,23 @@ extension ARViewController: ChatDelegate {
     func onlineNumberChanged(numOnline: Int) {
         self.chatButton.setTitle("Chat - \(numOnline) online", for: .normal)
     }
+    
+}
+
+extension ARViewController: AllImagesDelegate{
+    
+    func dismissAllImagesVC() {
+        UIView.animate(withDuration: 0.7, animations: {
+            self.allImagesVC?.view.alpha = 0.0
+        }) { (finished) in
+            if let allImagesVC = self.allImagesVC {
+                allImagesVC.view.removeFromSuperview()
+                allImagesVC.removeFromParent()
+                self.allImagesVC  = nil
+            }
+        }
+    }
+    
+    
     
 }
