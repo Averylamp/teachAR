@@ -30,7 +30,7 @@ def get_list_from_ids(id_name, form):
 @app.route("/", methods=['GET', 'POST'])
 def hello():
     form = ReusableForm(request.form)
-    if form.errors == '{}':
+    if form.errors != {}:
         print(form.errors)
 
     # if you get a content submission
@@ -43,13 +43,15 @@ def hello():
         video_links = get_list_from_ids("video_link", request.form)
         info_links = get_list_from_ids("info_link", request.form)
 
+        print(image_url)
+        print(image_name)
+        print(description)
         print(image_links)
+        print(video_links)
+        print(info_links)
 
-        if form.validate():
-            # Save the comment here.
-            flash('Hello ' + name)
-        else:
-            flash('All the form fields are required.')
+        # display a notification on the site
+        flash(image_name + ' uploaded.')
 
     return render_template('content_loader.html', form=form)
 
