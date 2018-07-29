@@ -16,6 +16,8 @@
 		92362ABB210D402000A298A0 /* AgoraSignalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ABA210D402000A298A0 /* AgoraSignalKit.swift */; };
 		92362ABD210D450800A298A0 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ABC210D450700A298A0 /* CommonExtensions.swift */; };
 		92362ACE210D5AC600A298A0 /* ChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ACD210D5AC600A298A0 /* ChatMessageTableViewCell.swift */; };
+		9295239F210DB7640077E251 /* WikipediaKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295239E210DB7640077E251 /* WikipediaKit.swift */; };
+		929523A1210DB9EB0077E251 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929523A0210DB9EB0077E251 /* Article.swift */; };
 		BB03BEBD210D291700971E79 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBC210D291700971E79 /* Book.swift */; };
 		BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */; };
 		BB03BEC1210D2A3B00971E79 /* SplashPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */; };
@@ -49,6 +51,8 @@
 		92362ABA210D402000A298A0 /* AgoraSignalKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraSignalKit.swift; sourceTree = "<group>"; };
 		92362ABC210D450700A298A0 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		92362ACD210D5AC600A298A0 /* ChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageTableViewCell.swift; sourceTree = "<group>"; };
+		9295239E210DB7640077E251 /* WikipediaKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaKit.swift; sourceTree = "<group>"; };
+		929523A0210DB9EB0077E251 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		BB03BEBC210D291700971E79 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPageViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				BBC445A7210D362600629E20 /* SupportingFiles */,
 				BB03BEC9210D319C00971E79 /* Setup Flow */,
 				BB2C6A5C210D02640026DE3C /* Assets.xcassets */,
+				9295239E210DB7640077E251 /* WikipediaKit.swift */,
+				929523A0210DB9EB0077E251 /* Article.swift */,
 			);
 			path = teachAR;
 			sourceTree = "<group>";
@@ -329,10 +335,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-teachAR/Pods-teachAR-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -342,10 +350,12 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -369,6 +379,7 @@
 				BB03BEC6210D2B8E00971E79 /* Image.swift in Sources */,
 				BBC445B0210D595B00629E20 /* ARViewController+ARSessionDelegate.swift in Sources */,
 				92362ABB210D402000A298A0 /* AgoraSignalKit.swift in Sources */,
+				9295239F210DB7640077E251 /* WikipediaKit.swift in Sources */,
 				92362AB2210D390E00A298A0 /* ChatViewController.swift in Sources */,
 				BBD23733210D8B7000834271 /* SwiftSpinner.swift in Sources */,
 				92362AB9210D3E0C00A298A0 /* Key.swift in Sources */,
@@ -378,6 +389,7 @@
 				BB03BEC8210D2BBB00971E79 /* Constants.swift in Sources */,
 				BB2C6A54210D02620026DE3C /* AppDelegate.swift in Sources */,
 				92362ACE210D5AC600A298A0 /* ChatMessageTableViewCell.swift in Sources */,
+				929523A1210DB9EB0077E251 /* Article.swift in Sources */,
 				92362ABD210D450800A298A0 /* CommonExtensions.swift in Sources */,
 				BB03BEC3210D2B0800971E79 /* MainNavigationViewController.swift in Sources */,
 				92362AB4210D3BC300A298A0 /* Message.swift in Sources */,
@@ -537,7 +549,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R4DQ2L3FBV;
+				DEVELOPMENT_TEAM = 4DX6FXCC84;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -560,7 +572,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R4DQ2L3FBV;
+				DEVELOPMENT_TEAM = 4DX6FXCC84;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

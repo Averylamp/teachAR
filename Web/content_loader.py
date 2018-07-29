@@ -93,6 +93,9 @@ def content_loader_page(db, all_books):
                 # TODO(ethan): write to the database
                 # image_id has to be a string of an int
                 image_id = get_new_image_id(db, book_id)
+                if video_links[0]!="":
+                    YouTube(video_links[0]).streams.first().download("static/videos/", filename=image_id)
+                    video_links[0] = "{}/static/videos/image_id.mp4"
                 process_image_form(db,book_id,image_id,description,100.0,100.0,image_url,image_links[0],info_links[0],image_name,video_links[0])
 
                 # display a notification on the site

@@ -2,21 +2,16 @@ from flask import Flask, render_template, flash, request, redirect, url_for
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from google.cloud import firestore
 from content_loader import content_loader_page
-import objects
 import csv
 import os
 import glob
 
-# TODO(ethan): reove debug
+# TODO(ethan): remove debug
 DEBUG=True
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
-
-@app.route('/get_book/<book_id>')
-def get_book_info(book_id):
-    return db.search(where('bookID')==book_id)
 
 @app.route("/content_loader", methods=['GET', 'POST'])
 def content_loader_3():
@@ -33,6 +28,13 @@ def homepage(bookid):
     books = db.collection(u"books").get()
     all_books = [i.to_dict() for i in books]
     return render_template("index.html", images=all_images, books=all_books)
+
+@app.route('/static/videos/')
+def dir_listing():
+    BASE_DIR = '/home/moinnadeem/leARn/Web/static/videos/'
+
+    files = os.listdir(BASE_DIR)
+    return render_template('files.html', files=files)
 
 @app.route('/static/images/')
 def dir_listing():
