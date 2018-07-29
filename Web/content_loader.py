@@ -1,15 +1,6 @@
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
-# App config.
-DEBUG = True
-app = Flask(__name__)
-app.config.from_object(__name__)
-app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
-
-class ReusableForm(Form):
-    name = TextField('Name:', validators=[validators.required()])
-
 def get_list_from_ids(id_name, form):
     # return the list of links from the html ids using the _number format
     # adds the _number to id_name
@@ -27,18 +18,18 @@ def get_list_from_ids(id_name, form):
             exists = False
     return list
 
-@app.route("/", methods=['GET', 'POST'])
-def hello():
-    form = ReusableForm(request.form)
-    if form.errors != {}:
-        print(form.errors)
+def content_loader_page(db, all_books):
 
+    # get the current books names
+    # current_books =
+    print(all_books)
+
+    complete_form = True
     # if you get a content submission
     if request.method == 'POST':
         image_url = request.form['image_url']
         image_name = request.form['image_name']
         description = request.form['description']
-
         image_links = get_list_from_ids("image_link", request.form)
         video_links = get_list_from_ids("video_link", request.form)
         info_links = get_list_from_ids("info_link", request.form)
@@ -50,10 +41,16 @@ def hello():
         print(video_links)
         print(info_links)
 
-        # display a notification on the site
-        flash(image_name + ' uploaded.')
+        for item in [image_url, image_name, description, image_links, video_links, info_links]:
+            if item == "":
+                complete_form = False
 
-    return render_template('content_loader.html', form=form)
+        if complete_form:
+            # display a notification on the site
+            flash(image_name + ' uploaded.')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+            # put data in the database if correct
+        else:
+            flash("Invalid form. Try again.")
+
+    return render_template('content_loader.html')
