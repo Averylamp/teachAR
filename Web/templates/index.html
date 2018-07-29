@@ -30,15 +30,11 @@
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Books</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Book 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Book 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Book 3</a>
-                        </li>
+						{% for book in books %}
+							<li>
+								<a href="/{{book.bookID}}/view_images">{{book.name}}</a>
+							</li>
+						{% endfor %}
                     </ul>
                 </li>
                 <li>
@@ -76,16 +72,8 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link" href="#"></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
                             </li>
                         </ul>
                     </div>
@@ -96,24 +84,13 @@
 					<div>
 						<img src="http://sloths.mit.edu/image/0.jpg" style="float: left; height: 200px; padding-right: 10px;"/>
 						<span class="image-text">Description: {{image.description}}<br />
-						Video URLs: {{image.videoURLs}}<br />
-						Image URLs: {{image.imageURLs}}<br />
+						Video URLs: <a href="{{image.videoURLs}}">{{image.videoURLs}}</a><br />
+						Image URLs: <a href="{{image.ARImageURls}}">{{image.ARImageURls}}</a><br />
+						Information: <a href="{{image.ARImageURls}}">{{image.links}}</a><br />
 						Height: {{image.height}}, Width: {{image.width}} </span>
 					</div>
 				<div class="line"></div>
 			{% endfor %}
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="line"></div>
-
-            <h3>Lorem Ipsum Dolor</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
     </div>
 

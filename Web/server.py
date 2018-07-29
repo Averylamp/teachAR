@@ -58,7 +58,10 @@ def homepage(bookid):
     db = firestore.Client()
     images = db.collection(u"books").document(bookid).collection("images").get()
     all_images = [i.to_dict() for i in images]
-    return render_template("index.html", images=all_images)
+    books = db.collection(u"books").get()
+    all_books = [i.to_dict() for i in books]
+    print(all_images)
+    return render_template("index.html", images=all_images, books=all_books)
 
 if __name__ == '__main__':
     app.run()
