@@ -43,5 +43,12 @@ def dir_listing_images():
     files = os.listdir(BASE_DIR)
     return render_template('files.html', files=files)
 
+@app.route("/")
+def show_homepage():
+    db = firestore.Client()
+    books = db.collection(u"books").get()
+    all_books = [i.to_dict() for i in books]
+    return render_template("home.html", books=all_books)
+
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=5000)

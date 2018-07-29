@@ -22,7 +22,7 @@ class BookListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        bookListTableView.separatorStyle = .none
+        bookListTableView.separatorStyle = .none
         bookListTableView.dataSource = self
         bookListTableView.delegate = self
         
@@ -103,7 +103,7 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 135
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

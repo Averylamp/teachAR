@@ -9,11 +9,13 @@ import os
 def process_image_form(db, bookID, imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL):
     books_ref = db.collection(u"books").document(bookID).collection("images").document(imageID)
     image = Image(imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL)
+    print(image.to_dict())
     return books_ref.set(image.to_dict())
 
 def process_books_form(db, bookID, coverURL, chatID, expertID, name, author):
     books_ref = db.collection(u"books").document(bookID)
     book = Book(bookID, coverURL, chatID, expertID, name, author)
+    print(book.to_dict())
     return books_ref.set(book.to_dict())
 
 def get_new_image_id(db, bookID):
@@ -69,7 +71,6 @@ def content_loader_page(db, all_books):
         description = request.form['description']
         # update with the wiki page
         description = WikiKit(description).getContent()
-
         image_links = get_list_from_ids("image_link", request.form)
         video_links = get_list_from_ids("video_link", request.form)
         info_links = get_list_from_ids("info_link", request.form)
@@ -95,7 +96,7 @@ def content_loader_page(db, all_books):
                     YouTube(video_links[0]).streams.filter(progressive=True, file_extension='mp4').first().download("static/videos/", filename=ending)
                     video_links[0] = os.path.join(URL_PREFIX, "static/videos/{}.mp4".format(ending))
 
-                process_image_form(db,book_id,image_id,description,float(image_height),float(image_width),image_url,image_links[0],info_links[0],image_name,video_links[0])
+                process_image_form(db,book_id,str(image_id),str(description),float(image_height),float(image_width),str(image_url),str(image_links[0]),str(info_links[0]),image_name,str(video_links[0]))
 
                 # display a notification on the site
                 flash(image_name + ' uploaded.')

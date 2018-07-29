@@ -32,6 +32,8 @@ class WikiKit:
             self.content = ".".join(str(json_data[list(json_data.keys())[0]]['extract']).split("."))
         else:
             self.content = ".".join(str(json_data[list(json_data.keys())[0]]['extract']).split(".")[:3])
+        self.content = ''.join([i if ord(i) < 128 else ' ' for i in self.content])
+
     def getTitle(self):
         """ returns title
         """
@@ -42,7 +44,3 @@ class WikiKit:
         """
         self.setProperties()
         return self.content
-
-wiki = WikiKit("https://en.wikipedia.org/wiki/Pachyrhinosaurus")
-print(wiki.getTitle())
-print(wiki.getContent())

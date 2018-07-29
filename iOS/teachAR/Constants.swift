@@ -13,6 +13,25 @@ struct Constants{
     static let themeColor = UIColor(red: 0.94, green: 0.80, blue: 0.50, alpha: 1.0)
 }
 
+extension String {
+    //: ### Base64 encoding a string
+    func base64Encoded() -> String? {
+        if let data = self.data(using: .utf8) {
+            return data.base64EncodedString()
+        }
+        return nil
+    }
+    
+    //: ### Base64 decoding a string
+    func base64Decoded() -> String? {
+        if let data = Data(base64Encoded: self) {
+            return String(data: data, encoding: .utf8)
+        }
+        return nil
+    }
+}
+
+
 // A type that can be initialized from a Firestore document.
 protocol DocumentSerializable {
     init?(dictionary: [String: Any])

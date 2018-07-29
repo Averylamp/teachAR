@@ -82,7 +82,7 @@ class Image {
         guard let arImageURL = dictionary["ARImageURL"] as? String,
             let description = dictionary["description"] as? String,
             let height = dictionary["height"] as? Double,
-            let imageID = dictionary["imageID"] as? String,
+            let imageID =  dictionary["imageID"] as? String,
             let links = dictionary["links"] as? String,
             let targetImageURL = dictionary["targetImageURL"] as? String,
             let title = dictionary["title"] as? String,
