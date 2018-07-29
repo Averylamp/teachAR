@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>269180509380-lq1f9e8719ch30r7ujppug6gtqva6un6.apps.googleusercontent.com</string>
+	<string>269180509380-l1r3rh8e2kibq5osl6alfe6aa1fn74s9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.269180509380-lq1f9e8719ch30r7ujppug6gtqva6un6</string>
+	<string>com.googleusercontent.apps.269180509380-l1r3rh8e2kibq5osl6alfe6aa1fn74s9</string>
 	<key>API_KEY</key>
 	<string>AIzaSyA65OS1EtNhueuSeF-vl_HLQFtARt3px9k</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mape.leARn</string>
+	<string>com.mape.teachAR</string>
 	<key>PROJECT_ID</key>
 	<string>my-project-1489090681288</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:269180509380:ios:0bf6190ad85184ba</string>
+	<string>1:269180509380:ios:df2c39b07588c4a3</string>
 	<key>DATABASE_URL</key>
 	<string>https://my-project-1489090681288.firebaseio.com</string>
 </dict>

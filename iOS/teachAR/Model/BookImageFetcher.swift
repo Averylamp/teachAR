@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import FirebaseFirestore
 
 class BookImageFetcher{
     
@@ -15,10 +15,7 @@ class BookImageFetcher{
     private init() {} //This prevents others from using the default '()' initializer for this class.
     
     
-    func fetchListOfBooks(){
-        
-    }
-    
+
     
     func getImagesForBook() -> Array<URL>{
         return Array<URL> ()

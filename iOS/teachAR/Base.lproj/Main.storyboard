@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="igu-zv-hAU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,13 +12,13 @@
         <!--Book List View Controller-->
         <scene sceneID="uOr-Xv-2UK">
             <objects>
-                <viewController storyboardIdentifier="BookListVC" id="ejZ-VZ-l87" customClass="BookListViewController" customModule="leARn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookListVC" id="ejZ-VZ-l87" customClass="BookListViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JH2-tw-Lsj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="teachAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLF-iU-oIa">
-                                <rect key="frame" x="248" y="50" width="105" height="50"/>
+                                <rect key="frame" x="135" y="50" width="105" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AbD-9j-Lh1"/>
                                 </constraints>
@@ -24,27 +27,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick the reference book you are reading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8s-7i-6Ux">
-                                <rect key="frame" x="149" y="116" width="303" height="24"/>
+                                <rect key="frame" x="36" y="116" width="303" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xFk-HA-CYN">
-                                <rect key="frame" x="0.0" y="160" width="600" height="440"/>
+                                <rect key="frame" x="0.0" y="160" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookTableViewCell" rowHeight="127" id="6I0-ml-xmS" customClass="BookTableViewCell" customModule="leARn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="127"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookTableViewCell" rowHeight="127" id="6I0-ml-xmS" customClass="BookTableViewCell" customModule="teachAR" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="127"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6I0-ml-xmS" id="Sob-xN-ysF">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="126"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="126.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehF-9G-7OX">
-                                                    <rect key="frame" x="8" y="5" width="584" height="116"/>
+                                                    <rect key="frame" x="8" y="5" width="584" height="116.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZSd-Yv-ufS">
-                                                            <rect key="frame" x="4" y="0.0" width="100" height="116"/>
+                                                            <rect key="frame" x="4" y="0.0" width="100" height="116.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="O4j-3G-fKq"/>
                                                                 <constraint firstAttribute="width" secondItem="ZSd-Yv-ufS" secondAttribute="height" multiplier="1:1" priority="750" id="pHE-rJ-HWz"/>
@@ -63,7 +66,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 online now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PD6-Ov-27a">
-                                                            <rect key="frame" x="112" y="91" width="68" height="17"/>
+                                                            <rect key="frame" x="112" y="91.5" width="68" height="17"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -126,13 +129,13 @@
         <!--Splash Page View Controller-->
         <scene sceneID="1L4-Ax-c17">
             <objects>
-                <viewController storyboardIdentifier="SplashVC" id="Kxo-Ei-Opw" customClass="SplashPageViewController" customModule="leARn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashVC" id="Kxo-Ei-Opw" customClass="SplashPageViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="atX-e6-Sen">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="teachAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxl-3o-lsa">
-                                <rect key="frame" x="248" y="50" width="105" height="50"/>
+                                <rect key="frame" x="135" y="50" width="105" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PuN-Jm-hkI"/>
                                 </constraints>
@@ -141,7 +144,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Augment your learning experience with learnAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY7-jL-nSf">
-                                <rect key="frame" x="118" y="116" width="364" height="24"/>
+                                <rect key="frame" x="5.5" y="116" width="364" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -183,10 +186,9 @@
         <!--Main Navigation View Controller-->
         <scene sceneID="r1T-vD-b0n">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="igu-zv-hAU" customClass="MainNavigationViewController" customModule="leARn" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="igu-zv-hAU" customClass="MainNavigationViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OiE-eh-wYn">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -201,13 +203,13 @@
         <!--Status View Controller-->
         <scene sceneID="NWL-gs-Vdi">
             <objects>
-                <viewController id="VID-uB-mfA" customClass="StatusViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VID-uB-mfA" customClass="StatusViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gxw-gm-C4p">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="1Qd-n0-13L" userLabel="Message Panel">
-                                <rect key="frame" x="16" y="40" width="125" height="32"/>
+                                <rect key="frame" x="16" y="20" width="125" height="32"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7F9-d1-dGa">
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,7 +257,7 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hew-5b-fWz" userLabel="Restart Experience Button Icon">
-                                <rect key="frame" x="556" y="20" width="44" height="59"/>
+                                <rect key="frame" x="556" y="0.0" width="44" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="Uiu-RH-OUJ"/>
                                     <constraint firstAttribute="width" constant="44" id="gTj-H8-n45"/>
@@ -288,29 +290,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0S-1k-VE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="-112"/>
+            <point key="canvasLocation" x="1368" y="-253"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6GE-lC-DNR">
             <objects>
-                <viewController id="WnS-DQ-PNW" customClass="ViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARVC" id="WnS-DQ-PNW" customClass="ARViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sV6-1J-qq4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" wantsMultisampling="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pyo-Cq-ECn" customClass="ARSCNView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </sceneKitView>
                             <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUs-gf-KF0">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xJi-YK-hid">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kvq-fw-YRJ">
-                                <rect key="frame" x="0.0" y="20" width="600" height="85"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="Z3h-cI-tWa"/>
                                 </constraints>
@@ -342,7 +344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iE7-QA-4ep" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980" y="267"/>
+            <point key="canvasLocation" x="1372" y="126"/>
         </scene>
     </scenes>
     <resources>
