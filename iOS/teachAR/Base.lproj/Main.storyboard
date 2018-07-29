@@ -413,9 +413,35 @@ with teachAR</string>
                                     <constraint firstItem="YTh-aP-Ngd" firstAttribute="top" secondItem="h7Q-D1-Lxi" secondAttribute="top" constant="8" id="wFj-00-aiK"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fS-IQ-Etj">
+                                <rect key="frame" x="260" y="497" width="91" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sij-xk-10b">
+                                        <rect key="frame" x="8" y="8" width="75" height="40"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <state key="normal" title="All Images">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="allImagesClicked:" destination="WnS-DQ-PNW" eventType="touchUpInside" id="Yks-8c-LG8"/>
+                                            <action selector="chatButtonClicked:" destination="WnS-DQ-PNW" eventType="touchUpInside" id="NeR-Gx-B3Q"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Sij-xk-10b" firstAttribute="leading" secondItem="0fS-IQ-Etj" secondAttribute="leading" constant="8" id="3z4-27-bOL"/>
+                                    <constraint firstAttribute="bottom" secondItem="Sij-xk-10b" secondAttribute="bottom" constant="8" id="CLl-uF-p7C"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sij-xk-10b" secondAttribute="trailing" constant="8" id="R9p-1d-vW2"/>
+                                    <constraint firstItem="Sij-xk-10b" firstAttribute="top" secondItem="0fS-IQ-Etj" secondAttribute="top" constant="8" id="U9g-1w-BMP"/>
+                                    <constraint firstItem="Sij-xk-10b" firstAttribute="centerX" secondItem="0fS-IQ-Etj" secondAttribute="centerX" id="a2N-bF-s4G"/>
+                                    <constraint firstItem="Sij-xk-10b" firstAttribute="centerY" secondItem="0fS-IQ-Etj" secondAttribute="centerY" id="dVD-Sa-swf"/>
+                                    <constraint firstAttribute="height" constant="56" id="vt5-Sq-cEP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="h7Q-D1-Lxi" firstAttribute="top" secondItem="0fS-IQ-Etj" secondAttribute="bottom" constant="8" id="5SC-rb-ywa"/>
                             <constraint firstItem="Kvq-fw-YRJ" firstAttribute="top" secondItem="oje-xo-aXG" secondAttribute="top" id="5Z7-jX-YeP"/>
                             <constraint firstItem="oje-xo-aXG" firstAttribute="trailing" secondItem="Kvq-fw-YRJ" secondAttribute="trailing" id="Bbz-IE-vzX"/>
                             <constraint firstAttribute="bottom" secondItem="kUs-gf-KF0" secondAttribute="bottom" id="FTn-hd-xmm"/>
@@ -426,6 +452,7 @@ with teachAR</string>
                             <constraint firstItem="oje-xo-aXG" firstAttribute="trailing" secondItem="h7Q-D1-Lxi" secondAttribute="trailing" constant="24" id="hRK-YN-aX2"/>
                             <constraint firstItem="Pyo-Cq-ECn" firstAttribute="top" secondItem="sV6-1J-qq4" secondAttribute="top" id="ktV-mL-ewQ"/>
                             <constraint firstItem="oje-xo-aXG" firstAttribute="bottom" secondItem="h7Q-D1-Lxi" secondAttribute="bottom" constant="50" id="n1C-39-cou"/>
+                            <constraint firstItem="oje-xo-aXG" firstAttribute="trailing" secondItem="0fS-IQ-Etj" secondAttribute="trailing" constant="24" id="pXB-az-K2x"/>
                             <constraint firstAttribute="trailing" secondItem="kUs-gf-KF0" secondAttribute="trailing" id="rhZ-Zr-VNq"/>
                             <constraint firstAttribute="bottom" secondItem="Pyo-Cq-ECn" secondAttribute="bottom" id="rnE-Qh-A27"/>
                             <constraint firstItem="Kvq-fw-YRJ" firstAttribute="leading" secondItem="oje-xo-aXG" secondAttribute="leading" id="sSJ-pd-DHH"/>
@@ -433,6 +460,7 @@ with teachAR</string>
                         <viewLayoutGuide key="safeArea" id="oje-xo-aXG"/>
                     </view>
                     <connections>
+                        <outlet property="allImagesViewContainer" destination="0fS-IQ-Etj" id="mnZ-cb-J4q"/>
                         <outlet property="blurView" destination="kUs-gf-KF0" id="W35-uA-gaH"/>
                         <outlet property="chatButton" destination="YTh-aP-Ngd" id="bkE-c8-AMu"/>
                         <outlet property="chatButtonViewContainer" destination="h7Q-D1-Lxi" id="z3B-gG-uDW"/>
@@ -446,7 +474,7 @@ with teachAR</string>
         <!--All Images View Controller-->
         <scene sceneID="Eq1-6U-Ed0">
             <objects>
-                <viewController id="nWk-gU-gWN" customClass="AllImagesViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AllImagesVC" id="nWk-gU-gWN" customClass="AllImagesViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gAh-of-YWB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

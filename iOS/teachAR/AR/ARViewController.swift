@@ -18,6 +18,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var chatButton: UIButton!
     
+    @IBOutlet weak var allImagesViewContainer: UIView!
+    
     @IBOutlet weak var sceneView: ARSCNView!
     
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -70,6 +72,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         chatButtonViewContainer.insertSubview(blurEffectView, at: 0)
+        allImagesViewContainer.insertSubview(blurEffectView, at: 0)
     }
     
     var chatViewController:ChatViewController?
@@ -210,6 +213,15 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func chatButtonClicked(_ sender: Any) {
         self.presentChatVC()
+    }
+    
+    @IBAction func allImagesClicked(_ sender: Any) {
+        if let allImagesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AllImagesVC") as? AllImagesViewController{
+            allImagesVC.allImages = self.allImages
+            allImagesVC.tableView.reloadData()
+            self.present(allImagesVC, animated: true, completion:   nil)
+            
+        }
     }
     
     var imageHighlightAction: SCNAction {
