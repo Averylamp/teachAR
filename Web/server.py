@@ -29,6 +29,13 @@ def homepage(bookid):
     all_books = [i.to_dict() for i in books]
     return render_template("index.html", images=all_images, books=all_books)
 
+@app.route('/static/videos/')
+def dir_listing():
+    BASE_DIR = '/home/moinnadeem/leARn/Web/static/videos/'
+
+    files = os.listdir(BASE_DIR)
+    return render_template('files.html', files=files)
+
 @app.route('/static/images/')
 def dir_listing():
     BASE_DIR = '/home/moinnadeem/leARn/Web/static/images/'
