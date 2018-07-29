@@ -9,6 +9,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import AVFoundation
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
@@ -92,10 +93,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             self.instantiateImageReferences()
         }
         configuration.detectionImages = self.allImageReferences
+        statusViewController.scheduleMessage("Looking for \(self.allImageReferences.count) images", inSeconds: 2.5, messageType: .contentPlacement)
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
     }
+    
+    var avPlayer:AVPlayer?
     
     // MARK: - ARSCNViewDelegate (Image detection results)
     /// - Tag: ARImageAnchor-Visualizing
@@ -125,6 +129,33 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             
             // Add the plane visualization to the scene.
             node.addChildNode(planeNode)
+            
+            if let imageName = referenceImage.name{
+                var imageObj: Image? = nil
+                for image in self.allImages{
+                    if image.imageID == imageName{
+                        imageObj = image
+                        break
+                    }
+                }
+                if let imageObj = imageObj, let videoURL = URL(string: imageObj.videoURL) {
+                    
+                    let videoPlane = SCNPlane(width: referenceImage.physicalSize.width,
+                                              height: referenceImage.physicalSize.height)
+                    let videoPlaneNode = SCNNode(geometry: plane)
+                    videoPlaneNode.eulerAngles.x = -.pi / 2
+                    print("Adding VIDEO")
+                    let videoURL = URL(string: "http://sloths.mit.edu/video/0.mp4")
+                    self.avPlayer = AVPlayer(url: videoURL!)
+                    videoPlane.firstMaterial?.diffuse.contents = self.avPlayer
+                    let playerLayerAV = AVPlayerLayer(player: self.avPlayer)
+                    playerLayerAV.frame = self.view.bounds
+                    self.view.layer.addSublayer(playerLayerAV)
+
+                    self.avPlayer!.play()
+                    node.addChildNode(videoPlaneNode)
+                }
+            }
         }
         
         DispatchQueue.main.async {

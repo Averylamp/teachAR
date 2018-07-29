@@ -36,25 +36,25 @@
                                 <rect key="frame" x="0.0" y="160" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookTableViewCell" rowHeight="127" id="6I0-ml-xmS" customClass="BookTableViewCell" customModule="teachAR" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="127"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookTableViewCell" rowHeight="125" id="6I0-ml-xmS" customClass="BookTableViewCell" customModule="teachAR" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6I0-ml-xmS" id="Sob-xN-ysF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="126.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehF-9G-7OX">
-                                                    <rect key="frame" x="8" y="5" width="584" height="116.5"/>
+                                                    <rect key="frame" x="8" y="5" width="359" height="114.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZSd-Yv-ufS">
-                                                            <rect key="frame" x="4" y="0.0" width="100" height="116.5"/>
+                                                            <rect key="frame" x="4" y="0.0" width="100" height="114.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="O4j-3G-fKq"/>
                                                                 <constraint firstAttribute="width" secondItem="ZSd-Yv-ufS" secondAttribute="height" multiplier="1:1" priority="750" id="pHE-rJ-HWz"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Really interesting book title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK9-EB-zIB">
-                                                            <rect key="frame" x="112" y="16" width="464" height="22"/>
+                                                            <rect key="frame" x="112" y="16" width="239" height="22"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -66,7 +66,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 online now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PD6-Ov-27a">
-                                                            <rect key="frame" x="112" y="91.5" width="68" height="17"/>
+                                                            <rect key="frame" x="112" y="89.5" width="68" height="17"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -257,7 +257,7 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hew-5b-fWz" userLabel="Restart Experience Button Icon">
-                                <rect key="frame" x="556" y="0.0" width="44" height="59"/>
+                                <rect key="frame" x="331" y="0.0" width="44" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="Uiu-RH-OUJ"/>
                                     <constraint firstAttribute="width" constant="44" id="gTj-H8-n45"/>
