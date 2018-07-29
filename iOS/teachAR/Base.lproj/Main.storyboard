@@ -532,21 +532,21 @@ with teachAR</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Url" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7R-uC-G9k">
-                                                    <rect key="frame" x="141" y="41" width="211" height="40"/>
+                                                    <rect key="frame" x="141" y="33" width="211" height="52"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="i7R-uC-G9k" secondAttribute="bottom" constant="8" id="2Rx-Jt-cML"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="i7R-uC-G9k" secondAttribute="bottom" constant="4" id="2Rx-Jt-cML"/>
                                                 <constraint firstItem="GGc-sj-bUJ" firstAttribute="centerX" secondItem="VbI-ID-hdc" secondAttribute="centerX" id="9gI-EY-FBk"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="kGh-Sp-Z82" secondAttribute="bottom" id="DkY-r8-bRJ"/>
                                                 <constraint firstItem="GGc-sj-bUJ" firstAttribute="height" secondItem="VbI-ID-hdc" secondAttribute="height" id="Hk4-EL-mki"/>
                                                 <constraint firstItem="kGh-Sp-Z82" firstAttribute="top" secondItem="VbI-ID-hdc" secondAttribute="topMargin" id="JlD-yU-JcV"/>
                                                 <constraint firstItem="anL-g0-jpZ" firstAttribute="leading" secondItem="kGh-Sp-Z82" secondAttribute="trailing" constant="20" id="L8h-fy-dQz"/>
                                                 <constraint firstItem="anL-g0-jpZ" firstAttribute="top" secondItem="VbI-ID-hdc" secondAttribute="topMargin" id="MDi-60-rcm"/>
-                                                <constraint firstItem="i7R-uC-G9k" firstAttribute="top" secondItem="anL-g0-jpZ" secondAttribute="bottom" constant="8" id="Xf2-6U-4BZ"/>
+                                                <constraint firstItem="i7R-uC-G9k" firstAttribute="top" secondItem="anL-g0-jpZ" secondAttribute="bottom" id="Xf2-6U-4BZ"/>
                                                 <constraint firstItem="GGc-sj-bUJ" firstAttribute="width" secondItem="VbI-ID-hdc" secondAttribute="width" id="bPu-CI-jyu"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="anL-g0-jpZ" secondAttribute="trailing" constant="8" id="bcs-Ax-D4Z"/>
                                                 <constraint firstItem="GGc-sj-bUJ" firstAttribute="centerY" secondItem="VbI-ID-hdc" secondAttribute="centerY" id="lDW-4I-0nX"/>
