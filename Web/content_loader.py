@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from werkzeug.utils import secure_filename
 from objects import Book, Image
+from pytube import YouTube
 import os
 
 def process_image_form(db, bookID, imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL):
