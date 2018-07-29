@@ -1,0 +1,6 @@
+framework module Pods_teachAR {
+  umbrella header "Pods-teachAR-umbrella.h"
+
+  export *
+  module * { export * }
+}
