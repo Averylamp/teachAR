@@ -11,23 +11,17 @@ import UIKit
 class ImageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var targetImageview: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak var labelView: UILabel!
+    @IBOutlet weak var urlView: UILabel!
 
     func setupCellWithImage(image:Image){
         if let image = image.imageContent{
             self.targetImageview.image = image
             self.targetImageview.contentMode = .scaleAspectFit
-        }        
+        }
+        
+        self.labelView.text = image.title
+        self.urlView.text = image.videoURL
         
     }
     

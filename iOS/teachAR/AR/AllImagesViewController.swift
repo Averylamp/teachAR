@@ -17,26 +17,35 @@ class AllImagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
+        self.populateTableView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func populateTableView() {
+        for image in allImages {
+            self.updateTableView(self.tableView, with: image)
+        }
     }
-    */
+    
+    func updateTableView(_ tableView: UITableView, with image: Image) {
+        let indexPath = IndexPath(row: tableView.numberOfRows(inSection: 0), section: 0)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [indexPath], with: .none)
+        tableView.endUpdates()
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+    }
 
 }
 
 extension AllImagesViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ImageTCV") as! ImageTableViewCell
-        
+        cell.setupCellWithImage(image: allImages[indexPath.row])
         return cell
     }
     

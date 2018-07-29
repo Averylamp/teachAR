@@ -13,6 +13,8 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
+    
+    
     var image : Image!
     
     override func viewDidLoad() {
