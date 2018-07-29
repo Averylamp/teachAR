@@ -23,6 +23,8 @@ Students can use our platform to supplement their learning through interactive a
 
 All of our information is crowdsourced in a very scalable way. We have a website to provide content indexed by books and images within the book. By providing an interface to annotate these images, we believe our scalable platform for AR annotations is the first of it's kind.
 
+Here is [the link to our website](http://35.236.74.206/). Please don't submit anything in the "Add Content" page, but feel free to browse our augmented reality content under the "View Books" tab.
+
 ![alt text](Assets/annotation_view.png "Annotation View")
 
 ![alt text](Assets/content_loader.png "Content Loader")
