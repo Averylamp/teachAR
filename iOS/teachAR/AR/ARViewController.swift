@@ -17,10 +17,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
-    var allImageReferences:Array<Image> = []
+    var allImages:Array<Image> = Array<Image>()
+    var allImageReferences: Set<ARReferenceImage> = Set<ARReferenceImage>()
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
+        
         return children.lazy.compactMap({ $0 as? StatusViewController }).first!
     }()
     
@@ -68,13 +70,28 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     /// Prevents restarting the session while a restart is in progress.
     var isRestartAvailable = true
     
+    func instantiateImageReferences(){
+        self.allImageReferences = Set<ARReferenceImage>()
+        
+        for image in self.allImages{
+            if let imageContent = image.imageContent, let imageContentCG = imageContent.cgImage{
+                let imageReference = ARReferenceImage(imageContentCG, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(image.width / 39.0))
+                imageReference.name = image.imageID
+                self.allImageReferences.insert(imageReference)
+            }
+        }
+    }
+    
     /// Creates a new AR configuration to run on the `session`.
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
         
         
         let configuration = ARWorldTrackingConfiguration()
-//        configuration.detectionImages = []
+        if self.allImages.count != self.allImageReferences.count{
+            self.instantiateImageReferences()
+        }
+        configuration.detectionImages = self.allImageReferences
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)

@@ -144,13 +144,15 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
                         }else{
                             finalImages.append(model)
                             DispatchQueue.main.async {
-                                SwiftSpinner.show(progress: Double(currentCount) / totalCount, title: "Image: \(model.title) downloaded")
+                                SwiftSpinner.show(progress: Double(currentCount) / totalCount, title: "\(currentCount)/\(Int(totalCount)) Images: \(model.title) downloaded")
                             }
                             if Double(currentCount) == totalCount{
                                 DispatchQueue.main.async {
                                     SwiftSpinner.show(delay: 0.2, title: "All Images Downloaded!")
-                                    arVC.allImageReferences = finalImages
+                                    arVC.allImages = finalImages
+                                    arVC.instantiateImageReferences()
                                     self.delay(1.0, closure: {
+                                        SwiftSpinner.hide()
                                         self.navigationController?.pushViewController(arVC, animated: true)
                                     })
                                 }

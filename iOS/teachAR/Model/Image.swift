@@ -47,6 +47,7 @@ class Image {
                         let data = data, error == nil,
                         let image = UIImage(data: data) {
                         self.imageContent = image
+                        print("Image \(self.targetImageURL) downloaded")
                         completion(nil)
                     }else{
                         completion(NSError(domain:"Failed download response", code:444, userInfo:nil))
