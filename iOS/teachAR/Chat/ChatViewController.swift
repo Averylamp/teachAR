@@ -15,8 +15,11 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var inputField: UITextField!
     @IBOutlet weak var chatRoomName: UILabel!
     
+    @IBOutlet weak var bottomOffsetConstraint: NSLayoutConstraint!
+    
+    
     var chatId: String = "testroom"
-    var accountId : String = "pramoda"
+    var accountId : String = "avery"
     
     var messageList = MessageList()
     
@@ -30,6 +33,7 @@ class ChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.view.safeAreaInsets.bottom)
 
         // Do any additional setup after loading the view.
         
@@ -51,14 +55,34 @@ class ChatViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+
         logInToAgoraAPI()
         addAgoraSignalBlock()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
+        NotificationCenter.default.removeObserver(self)
+
         AgoraSignalKit.Kit.channelLeave(chatId)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        let userInfo:NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardFrame:NSValue = userInfo.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        print("Keyboard height \(keyboardHeight)")
+        print("\(UIApplication.shared.keyWindow?.safeAreaInsets.bottom)")
+        bottomOffsetConstraint.constant =  -keyboardHeight + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom)!
+        self.view.layoutIfNeeded()
+        
+    }
+    func keyboardWillHide(notification: Notification){
+        bottomOffsetConstraint.constant = 0
+        self.view.layoutIfNeeded()
     }
     
     func logInToAgoraAPI() {
@@ -106,6 +130,10 @@ class ChatViewController: UIViewController {
         }
     }
     
+    @IBAction func sendMessageButtonClicked(_ sender: Any) {
+        self.sendMessage()
+    }
+    
     func updateTableView(_ tableView: UITableView, with message: Message) {
         let indexPath = IndexPath(row: tableView.numberOfRows(inSection: 0), section: 0)
         tableView.beginUpdates()
@@ -114,15 +142,19 @@ class ChatViewController: UIViewController {
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
     }
     
+    
 }
 
 extension ChatViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let message = inputField.text else { return false }
-        
+        self.sendMessage()
+        return true
+    }
+    
+    func sendMessage(){
+        guard let message = inputField.text, message.count > 0 else { return  }
         AgoraSignalKit.Kit.messageChannelSend(chatId, msg: message, msgID: String(messageList.list.count))
         
-        return true
     }
 }
 
@@ -131,9 +163,9 @@ extension ChatViewController : UITableViewDataSource, UITableViewDelegate {
         return messageList.list.count
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myAccount = UserDefaults.standard.string(forKey: "myAccount")
