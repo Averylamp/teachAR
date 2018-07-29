@@ -1,5 +1,5 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, flash, request
+from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from google.cloud import firestore
 from objects import Book, Image
 import objects
@@ -8,6 +8,8 @@ import os
 import glob
 
 app = Flask(__name__)
+app.config.from_object(__name__)
+app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 @app.route('/get_book/<book_id>')
 def get_book_info(book_id):
