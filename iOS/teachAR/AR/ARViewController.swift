@@ -14,7 +14,8 @@ import Foundation
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
-
+    @IBOutlet weak var chatButtonViewContainer: UIView!
+    
     @IBOutlet weak var sceneView: ARSCNView!
     
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -41,6 +42,17 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.layer.cornerRadius = 50
+        blurEffectView.clipsToBounds = true
+        blurEffectView.frame = self.view.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        chatButtonViewContainer.insertSubview(blurEffectView, at: 0)
+
+        
         
         sceneView.delegate = self
         sceneView.session.delegate = self as? ARSessionDelegate
