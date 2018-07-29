@@ -19,6 +19,8 @@ Our application allows for students to take charge of their education in a fun a
 
 Students can use our platform to supplement their learning through interactive and engaging ways. Our application allows for photo and video annotations to provide an AR experience while learning. Students can use our apps to watch videos, find relevant links, and learn more information around given images throughout the textbook.
 
+![Alt Text](https://media.giphy.com/media/21SpqV0OkSEYMeuMQB/giphy.gif)
+
 ## Crowdsourced Content
 
 All of our information is crowdsourced in a very scalable way. We have a website to provide dynamic content indexed by books and images within the book. By providing an interface to annotate these images, we believe our scalable platform for AR annotations is the first of its kind.
