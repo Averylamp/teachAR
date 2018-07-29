@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct Constants{
-    static let cloudColor = UIColor(red: 237/255.0, green: 237/255.0, blue: 237/255.0, alpha: 1.0)
+    static let themeColor = UIColor(red: 0.94, green: 0.80, blue: 0.50, alpha: 1.0)
 }
 
 // A type that can be initialized from a Firestore document.

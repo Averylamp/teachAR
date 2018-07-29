@@ -15,17 +15,25 @@ class SplashPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        chatIDTextField.delegate = self
     }
     
 
     @IBAction func continueButtonClicked(_ sender: Any) {
         
-        if let chatText = chatIDTextField.text, let bookListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookListVC") as? BookListViewController{
+        if let chatText = chatIDTextField.text, chatText.count > 0, let bookListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookListVC") as? BookListViewController{
+            bookListVC.username = chatText
             self.navigationController?.pushViewController(bookListVC, animated: true)
         }
         
     }
     
+}
+
+extension SplashPageViewController : UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.continueButtonClicked(UIButton())
+        return true
+    }
 }
