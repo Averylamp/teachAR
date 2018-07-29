@@ -18,6 +18,7 @@
 		92362ACE210D5AC600A298A0 /* ChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ACD210D5AC600A298A0 /* ChatMessageTableViewCell.swift */; };
 		9295239F210DB7640077E251 /* WikipediaKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295239E210DB7640077E251 /* WikipediaKit.swift */; };
 		929523A1210DB9EB0077E251 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929523A0210DB9EB0077E251 /* Article.swift */; };
+		929523A4210DE1AC0077E251 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929523A3210DE1AC0077E251 /* ContentViewController.swift */; };
 		BB03BEBD210D291700971E79 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBC210D291700971E79 /* Book.swift */; };
 		BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */; };
 		BB03BEC1210D2A3B00971E79 /* SplashPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */; };
@@ -53,6 +54,7 @@
 		92362ACD210D5AC600A298A0 /* ChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageTableViewCell.swift; sourceTree = "<group>"; };
 		9295239E210DB7640077E251 /* WikipediaKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaKit.swift; sourceTree = "<group>"; };
 		929523A0210DB9EB0077E251 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		929523A3210DE1AC0077E251 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		BB03BEBC210D291700971E79 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		BB03BEC0210D2A3B00971E79 /* SplashPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPageViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				BB2C6A69210D02B10026DE3C /* ARResources.storyboard */,
 				BB2C6A57210D02620026DE3C /* ARViewController.swift */,
 				BBC445AF210D595B00629E20 /* ARViewController+ARSessionDelegate.swift */,
+				929523A3210DE1AC0077E251 /* ContentViewController.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				92362AB2210D390E00A298A0 /* ChatViewController.swift in Sources */,
 				BBD23733210D8B7000834271 /* SwiftSpinner.swift in Sources */,
 				92362AB9210D3E0C00A298A0 /* Key.swift in Sources */,
+				929523A4210DE1AC0077E251 /* ContentViewController.swift in Sources */,
 				BB2C6A58210D02620026DE3C /* ARViewController.swift in Sources */,
 				BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */,
 				BB03BEBD210D291700971E79 /* Book.swift in Sources */,
