@@ -13,7 +13,7 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
-    var imageUrl : String!
+    var image : Image!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +30,16 @@ class ContentViewController: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(blurEffectView)
         
+        loadData()
     }
     
     func loadData() {
-        
+        titleLabel.text = image.title
+        contentLabel.text = image.description
     }
     
     @IBAction func onButtonClicked(_ sender: Any) {
-        UIApplication.shared.open(URL(string: imageUrl)!, options: [:], completionHandler: {(status) in })
+        UIApplication.shared.open(URL(string: image.targetImageURL)!, options: [:], completionHandler: {(status) in })
     }
 
 }
