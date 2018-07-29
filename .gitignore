@@ -69,3 +69,6 @@ fastlane/test_output
 
 *.DS_Store
 *.pyc
+*.swp
+
+__pycache__

@@ -8,6 +8,8 @@ decorator==4.0.6
 dill==0.2.8.2
 enum34==1.1.6
 Flask==1.0.2
+Flask-AutoIndex==0.6.1
+Flask-Silk==0.2
 future==0.16.0
 futures==3.2.0
 gapic-google-cloud-datastore-v1==0.15.3

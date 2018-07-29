@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-	  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -82,7 +82,7 @@
 			{% for image in images %}
 				<h2>{{image.title}}</h2>
 					<div>
-						<img src="http://sloths.mit.edu/image/0.jpg" style="float: left; height: 200px; padding-right: 10px;"/>
+						<img src="{{image.targetImageURL}}" style="float: left; height: 200px; padding-right: 10px;"/>
 						<span class="image-text">Description: {{image.description}}<br />
 						Video URLs: <a href="{{image.videoURLs}}">{{image.videoURLs}}</a><br />
 						Image URLs: <a href="{{image.ARImageURls}}">{{image.ARImageURls}}</a><br />
