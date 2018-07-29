@@ -2,21 +2,16 @@ from flask import Flask, render_template, flash, request, redirect, url_for
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from google.cloud import firestore
 from content_loader import content_loader_page
-import objects
 import csv
 import os
 import glob
 
-# TODO(ethan): reove debug
+# TODO(ethan): remove debug
 DEBUG=True
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
-
-@app.route('/get_book/<book_id>')
-def get_book_info(book_id):
-    return db.search(where('bookID')==book_id)
 
 @app.route("/content_loader", methods=['GET', 'POST'])
 def content_loader_3():
