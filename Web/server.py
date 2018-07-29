@@ -1,5 +1,7 @@
 from flask import Flask
 from google.cloud import firestore
+from objects import Book, Image
+import objects
 import csv
 import os
 import glob
@@ -30,6 +32,15 @@ def get_books():
         print(d.id)
         print(d.to_dict)
 
+def process_image_form(db, bookID, imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs):
+    books_ref = db.collection(u"books").document(bookID).collection("images").document(imageID) 
+    image = Image(imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs) 
+    return books_ref.set(image.to_dict()) 
+
+def process_books_form(db, bookID, coverURL, chatID, expertID, name, author): 
+    books_ref = db.collection(u"books").document(bookID)
+    book = Book(bookID, coverURL, chatID, expertID, name, author)
+    return books_ref.set(book.to_dict()) 
+    
 if __name__ == '__main__':
-    get_books()
     app.run()
