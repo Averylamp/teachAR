@@ -17,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="53H-rB-mvh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="53H-rB-mvh">
                                 <rect key="frame" x="0.0" y="94" width="375" height="634"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatMessageTableCellLeft" rowHeight="100" id="f38-0B-ocm" customClass="ChatMessageTableViewCell" customModule="teachAR" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
@@ -132,27 +132,28 @@
                                 <rect key="frame" x="0.0" y="728" width="375" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your message here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Jf-Tz-0OA">
-                                        <rect key="frame" x="8" y="9" width="301" height="32"/>
+                                        <rect key="frame" x="28" y="9" width="261" height="32"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oko-Rm-OIK">
-                                        <rect key="frame" x="317" y="7" width="50" height="36"/>
+                                        <rect key="frame" x="297" y="7" width="50" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="6H2-8H-P7U"/>
                                             <constraint firstAttribute="height" constant="36" id="oK8-r2-BIP"/>
                                         </constraints>
-                                        <state key="normal" title="Send"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="sendMessageButtonClicked:" destination="Tl2-Q3-1Iy" eventType="touchUpInside" id="cnz-mC-IV5"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Oko-Rm-OIK" secondAttribute="trailing" constant="8" id="2lm-Ho-Va5"/>
-                                    <constraint firstItem="1Jf-Tz-0OA" firstAttribute="leading" secondItem="MSS-NB-xF9" secondAttribute="leading" constant="8" id="PXM-zc-boR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oko-Rm-OIK" secondAttribute="trailing" constant="28" id="2lm-Ho-Va5"/>
+                                    <constraint firstItem="1Jf-Tz-0OA" firstAttribute="leading" secondItem="MSS-NB-xF9" secondAttribute="leading" constant="28" id="PXM-zc-boR"/>
                                     <constraint firstAttribute="height" constant="50" id="XrG-fZ-EcK"/>
                                     <constraint firstItem="Oko-Rm-OIK" firstAttribute="leading" secondItem="1Jf-Tz-0OA" secondAttribute="trailing" constant="8" id="lOq-pN-fZw"/>
                                     <constraint firstItem="1Jf-Tz-0OA" firstAttribute="centerY" secondItem="MSS-NB-xF9" secondAttribute="centerY" id="mkN-ED-XF4"/>
@@ -160,8 +161,8 @@
                                     <constraint firstItem="Oko-Rm-OIK" firstAttribute="centerY" secondItem="MSS-NB-xF9" secondAttribute="centerY" id="tVo-pg-myt"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg8-9U-ybs">
-                                <rect key="frame" x="124.66666666666666" y="44" width="125.66666666666666" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cg8-9U-ybs">
+                                <rect key="frame" x="68" y="44" width="239" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YhC-a0-MR0"/>
                                 </constraints>
@@ -169,15 +170,29 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bL8-07-Qtl">
+                                <rect key="frame" x="20" y="56" width="40" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="f4q-T6-zh4"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="Tl2-Q3-1Iy" eventType="touchUpInside" id="9p2-he-YA3"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MSS-NB-xF9" firstAttribute="centerX" secondItem="Zx6-3l-ezZ" secondAttribute="centerX" id="3qO-Uk-p9k"/>
                             <constraint firstItem="cg8-9U-ybs" firstAttribute="centerX" secondItem="Zx6-3l-ezZ" secondAttribute="centerX" id="6WN-Yx-zyx"/>
                             <constraint firstItem="53H-rB-mvh" firstAttribute="centerX" secondItem="Zx6-3l-ezZ" secondAttribute="centerX" id="CWt-H4-AA4"/>
+                            <constraint firstItem="bL8-07-Qtl" firstAttribute="top" secondItem="Zx6-3l-ezZ" secondAttribute="top" constant="12" id="Gev-Ms-LRs"/>
                             <constraint firstItem="MSS-NB-xF9" firstAttribute="top" secondItem="53H-rB-mvh" secondAttribute="bottom" id="JgF-ih-Pid"/>
                             <constraint firstItem="53H-rB-mvh" firstAttribute="top" secondItem="cg8-9U-ybs" secondAttribute="bottom" id="OQY-qW-fwE"/>
+                            <constraint firstItem="bL8-07-Qtl" firstAttribute="leading" secondItem="Zx6-3l-ezZ" secondAttribute="leading" constant="20" id="Rdi-Oi-UeZ"/>
                             <constraint firstItem="MSS-NB-xF9" firstAttribute="width" secondItem="jeS-cM-b2n" secondAttribute="width" id="Yef-nC-fuS"/>
+                            <constraint firstItem="cg8-9U-ybs" firstAttribute="leading" secondItem="bL8-07-Qtl" secondAttribute="trailing" constant="8" id="aoR-47-VGk"/>
                             <constraint firstItem="cg8-9U-ybs" firstAttribute="top" secondItem="Zx6-3l-ezZ" secondAttribute="top" id="eHR-JY-1HJ"/>
                             <constraint firstItem="MSS-NB-xF9" firstAttribute="bottom" secondItem="Zx6-3l-ezZ" secondAttribute="bottom" id="imb-eW-ALh"/>
                             <constraint firstItem="53H-rB-mvh" firstAttribute="width" secondItem="jeS-cM-b2n" secondAttribute="width" id="jrQ-WS-UxD"/>

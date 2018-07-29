@@ -16,6 +16,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet weak var chatButtonViewContainer: UIView!
     
+    @IBOutlet weak var chatButton: UIButton!
+    
     @IBOutlet weak var sceneView: ARSCNView!
     
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -46,17 +48,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        
-        blurEffectView.layer.cornerRadius = 50
-        blurEffectView.clipsToBounds = true
-        blurEffectView.frame = self.view.bounds
-        
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        chatButtonViewContainer.insertSubview(blurEffectView, at: 0)
-
-        
         
         sceneView.delegate = self
         sceneView.session.delegate = self as? ARSessionDelegate
@@ -67,11 +58,24 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
         
         setupChatViewController()
+        
+        self.view.layoutIfNeeded()
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.layer.cornerRadius = 10
+        blurEffectView.clipsToBounds = true
+        blurEffectView.frame = self.chatButtonViewContainer.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        chatButtonViewContainer.insertSubview(blurEffectView, at: 0)
     }
     
     var chatViewController:ChatViewController?
     func setupChatViewController(){
         if let chatVC = UIStoryboard(name: "Chat", bundle: nil).instantiateViewController(withIdentifier: "chatVC") as? ChatViewController{
+            self.chatViewController = chatVC
             chatVC.chatId = self.chatroom
             chatVC.accountId = self.username
             chatVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -80,12 +84,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 NSLayoutConstraint(item: chatVC.view,  attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
                 NSLayoutConstraint(item: chatVC.view,  attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
                 NSLayoutConstraint(item: chatVC.view,  attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: -40),
-                NSLayoutConstraint(item: chatVC.view,  attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: -40)
+                NSLayoutConstraint(item: chatVC.view,  attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: -100)
                 ])
-//
-            
+            self.addChild(chatVC)
+            chatVC.view.alpha = 0.0
+            chatVC.didMove(toParent: self)
+            chatVC.delegate = self
         }
-        
         
     }
     
@@ -203,6 +208,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    @IBAction func chatButtonClicked(_ sender: Any) {
+        self.presentChatVC()
+    }
+    
     var imageHighlightAction: SCNAction {
         return .sequence([
             .wait(duration: 0.25),
@@ -213,4 +222,36 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             .removeFromParentNode()
             ])
     }
+}
+
+
+extension ARViewController: ChatDelegate {
+    func newMessage(message: Message) {
+        
+    }
+    
+    func dismissChatVC() {
+        UIView.animate(withDuration: 1.0) {
+            if let chatView = self.chatViewController?.view{
+                chatView.alpha = 0.0
+                chatView.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    
+    func presentChatVC(){
+        UIView.animate(withDuration: 1.0) {
+            if let chatView = self.chatViewController?.view{
+                chatView.alpha = 1.0
+                chatView.isUserInteractionEnabled = true
+            }
+        }
+
+    }
+    
+    func onlineNumberChanged(numOnline: Int) {
+        self.chatButton.setTitle("Chat - \(numOnline) online", for: .normal)
+    }
+    
 }

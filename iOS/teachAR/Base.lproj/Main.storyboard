@@ -161,7 +161,7 @@ with teachAR</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="jsmith" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1p-ct-Tm6">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="aa" placeholder="jsmith" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1p-ct-Tm6">
                                 <rect key="frame" x="107.5" y="258.5" width="160" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="ffC-av-lf9"/>
@@ -377,31 +377,6 @@ with teachAR</string>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xJi-YK-hid">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7Q-D1-Lxi">
-                                            <rect key="frame" x="295" y="593" width="64" height="50"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTh-aP-Ngd">
-                                                    <rect key="frame" x="8" y="8" width="48" height="34"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="YTh-aP-Ngd" firstAttribute="leading" secondItem="h7Q-D1-Lxi" secondAttribute="leading" constant="8" id="4co-lw-7s5"/>
-                                                <constraint firstAttribute="trailing" secondItem="YTh-aP-Ngd" secondAttribute="trailing" constant="8" id="84C-od-6fs"/>
-                                                <constraint firstItem="YTh-aP-Ngd" firstAttribute="centerY" secondItem="h7Q-D1-Lxi" secondAttribute="centerY" id="K7B-JZ-kTn"/>
-                                                <constraint firstItem="YTh-aP-Ngd" firstAttribute="centerX" secondItem="h7Q-D1-Lxi" secondAttribute="centerX" id="Vay-T4-kQV"/>
-                                                <constraint firstAttribute="height" constant="50" id="eSr-5E-jGr"/>
-                                                <constraint firstAttribute="bottom" secondItem="YTh-aP-Ngd" secondAttribute="bottom" constant="8" id="eXc-Mn-eBw"/>
-                                                <constraint firstItem="YTh-aP-Ngd" firstAttribute="top" secondItem="h7Q-D1-Lxi" secondAttribute="top" constant="8" id="wFj-00-aiK"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="h7Q-D1-Lxi" secondAttribute="bottom" constant="24" id="Wd6-A2-8XM"/>
-                                        <constraint firstAttribute="trailing" secondItem="h7Q-D1-Lxi" secondAttribute="trailing" constant="16" id="uYa-uX-NGV"/>
-                                    </constraints>
                                 </view>
                                 <blurEffect style="light"/>
                             </visualEffectView>
@@ -414,6 +389,30 @@ with teachAR</string>
                                     <segue destination="VID-uB-mfA" kind="embed" id="SRy-BV-92G"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7Q-D1-Lxi">
+                                <rect key="frame" x="273" y="561" width="78" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTh-aP-Ngd">
+                                        <rect key="frame" x="8" y="8" width="62" height="40"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                        <state key="normal" title="0 Online">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chatButtonClicked:" destination="WnS-DQ-PNW" eventType="touchUpInside" id="2iY-kw-vXT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YTh-aP-Ngd" firstAttribute="leading" secondItem="h7Q-D1-Lxi" secondAttribute="leading" constant="8" id="4co-lw-7s5"/>
+                                    <constraint firstAttribute="trailing" secondItem="YTh-aP-Ngd" secondAttribute="trailing" constant="8" id="84C-od-6fs"/>
+                                    <constraint firstItem="YTh-aP-Ngd" firstAttribute="centerY" secondItem="h7Q-D1-Lxi" secondAttribute="centerY" id="K7B-JZ-kTn"/>
+                                    <constraint firstAttribute="height" constant="56" id="Tzj-ff-aJM"/>
+                                    <constraint firstItem="YTh-aP-Ngd" firstAttribute="centerX" secondItem="h7Q-D1-Lxi" secondAttribute="centerX" id="Vay-T4-kQV"/>
+                                    <constraint firstAttribute="bottom" secondItem="YTh-aP-Ngd" secondAttribute="bottom" constant="8" id="eXc-Mn-eBw"/>
+                                    <constraint firstItem="YTh-aP-Ngd" firstAttribute="top" secondItem="h7Q-D1-Lxi" secondAttribute="top" constant="8" id="wFj-00-aiK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -424,7 +423,9 @@ with teachAR</string>
                             <constraint firstItem="kUs-gf-KF0" firstAttribute="top" secondItem="sV6-1J-qq4" secondAttribute="top" id="RbZ-6i-lOf"/>
                             <constraint firstItem="Pyo-Cq-ECn" firstAttribute="leading" secondItem="oje-xo-aXG" secondAttribute="leading" id="b2T-y1-Yvx"/>
                             <constraint firstItem="kUs-gf-KF0" firstAttribute="leading" secondItem="sV6-1J-qq4" secondAttribute="leading" id="gD3-In-LGb"/>
+                            <constraint firstItem="oje-xo-aXG" firstAttribute="trailing" secondItem="h7Q-D1-Lxi" secondAttribute="trailing" constant="24" id="hRK-YN-aX2"/>
                             <constraint firstItem="Pyo-Cq-ECn" firstAttribute="top" secondItem="sV6-1J-qq4" secondAttribute="top" id="ktV-mL-ewQ"/>
+                            <constraint firstItem="oje-xo-aXG" firstAttribute="bottom" secondItem="h7Q-D1-Lxi" secondAttribute="bottom" constant="50" id="n1C-39-cou"/>
                             <constraint firstAttribute="trailing" secondItem="kUs-gf-KF0" secondAttribute="trailing" id="rhZ-Zr-VNq"/>
                             <constraint firstAttribute="bottom" secondItem="Pyo-Cq-ECn" secondAttribute="bottom" id="rnE-Qh-A27"/>
                             <constraint firstItem="Kvq-fw-YRJ" firstAttribute="leading" secondItem="oje-xo-aXG" secondAttribute="leading" id="sSJ-pd-DHH"/>
@@ -433,6 +434,7 @@ with teachAR</string>
                     </view>
                     <connections>
                         <outlet property="blurView" destination="kUs-gf-KF0" id="W35-uA-gaH"/>
+                        <outlet property="chatButton" destination="YTh-aP-Ngd" id="bkE-c8-AMu"/>
                         <outlet property="chatButtonViewContainer" destination="h7Q-D1-Lxi" id="z3B-gG-uDW"/>
                         <outlet property="sceneView" destination="Pyo-Cq-ECn" id="ArN-92-YoL"/>
                     </connections>
