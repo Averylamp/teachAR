@@ -17,6 +17,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
+    var allImageReferences:Array<Image> = []
+    
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
         return children.lazy.compactMap({ $0 as? StatusViewController }).first!
@@ -70,12 +72,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
         
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-            fatalError("Missing expected asset catalog resources.")
-        }
         
         let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
+//        configuration.detectionImages = []
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)

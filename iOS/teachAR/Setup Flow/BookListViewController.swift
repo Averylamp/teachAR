@@ -130,11 +130,35 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
                     fatalError("Unable to initialize type \(Image.self) with dictionary \(document.data())")
                 })
                 
+                DispatchQueue.main.async {
+                    SwiftSpinner.show(progress: 0.0, title: "Downloading Book Images...")
+                }
+                let totalCount:Double = Double(models.count)
+                var currentCount = 0
+                var finalImages = Array<Image>()
                 for model in models{
-                    print(model.targetImageURL)
+                    model.downloadImage(completion: { (error) in
+                        currentCount += 1
+                        if error != nil{
+                            print("Failed to download Image: \(error)")
+                        }else{
+                            finalImages.append(model)
+                            DispatchQueue.main.async {
+                                SwiftSpinner.show(progress: Double(currentCount) / totalCount, title: "Image: \(model.title) downloaded")
+                            }
+                            if Double(currentCount) == totalCount{
+                                DispatchQueue.main.async {
+                                    SwiftSpinner.show(delay: 0.2, title: "All Images Downloaded!")
+                                    arVC.allImageReferences = finalImages
+                                    self.delay(1.0, closure: {
+                                        self.navigationController?.pushViewController(arVC, animated: true)
+                                    })
+                                }
+                            }
+                        }
+                    })
                 }
             }
-//            self.navigationController?.pushViewController(arVC, animated: true)
         }
         
     }
