@@ -107,20 +107,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSS-NB-xF9">
                                 <rect key="frame" x="0.0" y="718" width="375" height="60"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Jf-Tz-0OA">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your message here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Jf-Tz-0OA">
+                                        <rect key="frame" x="8" y="6" width="301" height="48"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oko-Rm-OIK">
+                                        <rect key="frame" x="317" y="12" width="50" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="6H2-8H-P7U"/>
+                                            <constraint firstAttribute="height" constant="36" id="oK8-r2-BIP"/>
+                                        </constraints>
+                                        <state key="normal" title="Send"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="1Jf-Tz-0OA" firstAttribute="width" secondItem="MSS-NB-xF9" secondAttribute="width" id="KpD-sV-EsW"/>
-                                    <constraint firstItem="1Jf-Tz-0OA" firstAttribute="centerX" secondItem="MSS-NB-xF9" secondAttribute="centerX" id="U6J-r8-fCR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oko-Rm-OIK" secondAttribute="trailing" constant="8" id="2lm-Ho-Va5"/>
+                                    <constraint firstItem="1Jf-Tz-0OA" firstAttribute="leading" secondItem="MSS-NB-xF9" secondAttribute="leading" constant="8" id="PXM-zc-boR"/>
                                     <constraint firstAttribute="height" constant="60" id="XrG-fZ-EcK"/>
+                                    <constraint firstItem="Oko-Rm-OIK" firstAttribute="leading" secondItem="1Jf-Tz-0OA" secondAttribute="trailing" constant="8" id="lOq-pN-fZw"/>
                                     <constraint firstItem="1Jf-Tz-0OA" firstAttribute="centerY" secondItem="MSS-NB-xF9" secondAttribute="centerY" id="mkN-ED-XF4"/>
-                                    <constraint firstItem="1Jf-Tz-0OA" firstAttribute="height" secondItem="MSS-NB-xF9" secondAttribute="height" id="qcG-GU-dCb"/>
+                                    <constraint firstItem="1Jf-Tz-0OA" firstAttribute="height" secondItem="MSS-NB-xF9" secondAttribute="height" constant="-12" id="qcG-GU-dCb"/>
+                                    <constraint firstItem="Oko-Rm-OIK" firstAttribute="centerY" secondItem="MSS-NB-xF9" secondAttribute="centerY" id="tVo-pg-myt"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg8-9U-ybs">

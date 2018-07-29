@@ -3,6 +3,7 @@ from wtforms import Form, TextField, TextAreaField, validators, StringField, Sub
 from werkzeug.utils import secure_filename
 from objects import Book, Image
 from pytube import YouTube
+from wikikit import WikiKit
 import os
 
 def process_image_form(db, bookID, imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL):
@@ -66,6 +67,9 @@ def content_loader_page(db, all_books):
         image_width = request.form['image_width']
         image_height = request.form['image_height']
         description = request.form['description']
+        # update with the wiki page
+        description = WikiKit(description).getContent()
+
         image_links = get_list_from_ids("image_link", request.form)
         video_links = get_list_from_ids("video_link", request.form)
         info_links = get_list_from_ids("info_link", request.form)
@@ -79,25 +83,17 @@ def content_loader_page(db, all_books):
             # save the file
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                file.save(os.path.join(DIR_PATH, UPLOAD_FOLDER, filename))
-
-                # set the image url properly
-                image_url = os.path.join(URL_PREFIX, UPLOAD_FOLDER, filename)
-
-                print(type(book_id))
-                print(type(image_name))
-                print(type(description))
-                print(type(image_url))
-                print(type(image_links[0]))
-                print(type(info_links[0]))
-                print(type(image_name))
-                print(type(video_links[0]))
 
                 # image_id has to be a string of an int
                 image_id = get_new_image_id(db, book_id)
+                location_to_save = "static/images/book_{}_image_{}.jpg".format(book_id, image_id)
+                file.save(location_to_save)
+                image_url = os.path.join(URL_PREFIX, location_to_save)
+
                 if video_links[0]!="":
-                    YouTube(video_links[0]).streams.first().download("static/videos/", filename=image_id)
-                    video_links[0] = os.path.join(URL_PREFIX, "static/videos/image_id.mp4")
+                    ending = "book_{}_image_{}".format(book_id, image_id)
+                    YouTube(video_links[0]).streams.filter(progressive=True, file_extension='mp4').first().download("static/videos/", filename=ending)
+                    video_links[0] = os.path.join(URL_PREFIX, "static/videos/{}.mp4".format(ending))
 
                 process_image_form(db,book_id,image_id,description,float(image_height),float(image_width),image_url,image_links[0],info_links[0],image_name,video_links[0])
 

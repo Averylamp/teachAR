@@ -44,4 +44,4 @@ def dir_listing_images():
     return render_template('files.html', files=files)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=80)

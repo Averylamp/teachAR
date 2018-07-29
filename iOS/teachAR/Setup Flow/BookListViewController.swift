@@ -20,7 +20,7 @@ class BookListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bookListTableView.separatorStyle = .none
+//        bookListTableView.separatorStyle = .none
         bookListTableView.dataSource = self
         bookListTableView.delegate = self
         
@@ -72,7 +72,10 @@ class BookListViewController: UIViewController {
             })
             
             self.allBooks = models
-            self.bookListTableView.reloadData()
+            print("\(self.allBooks.count) Books downloaded")
+            self.delay(0.4, closure: {
+                self.bookListTableView.reloadData()
+            })
         }
     }
     fileprivate func stopObserving() {
@@ -93,15 +96,19 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Number of cells \(self.allBooks.count)")
         return self.allBooks.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookTableViewCell", for: indexPath) as! BookTableViewCell
-        
+        print("generatic cell \(indexPath.row)")
         cell.setupWithBook(book: self.allBooks[indexPath.row])
-        
+        cell.layoutIfNeeded()
         return cell
     }
     
@@ -140,20 +147,22 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
                     model.downloadImage(completion: { (error) in
                         currentCount += 1
                         if error != nil{
-                            print("Failed to download Image: \(error)")
+                            print("Failed to download Image: \(error) - \(model.targetImageURL)")
                         }else{
                             finalImages.append(model)
                             DispatchQueue.main.async {
-                                SwiftSpinner.show(progress: Double(currentCount) / totalCount, title: "Image: \(model.title) downloaded")
+                                SwiftSpinner.show(progress: Double(currentCount) / totalCount, title: "\(currentCount)/\(Int(totalCount)) Images: \(model.title) downloaded")
                             }
-                            if Double(currentCount) == totalCount{
-                                DispatchQueue.main.async {
-                                    SwiftSpinner.show(delay: 0.2, title: "All Images Downloaded!")
-                                    arVC.allImageReferences = finalImages
-                                    self.delay(1.0, closure: {
-                                        self.navigationController?.pushViewController(arVC, animated: true)
-                                    })
-                                }
+                        }
+                        if Double(currentCount) == totalCount{
+                            DispatchQueue.main.async {
+                                SwiftSpinner.show(delay: 0.2, title: "All Images Downloaded!")
+                                arVC.allImages = finalImages
+                                arVC.instantiateImageReferences()
+                                self.delay(1.0, closure: {
+                                    SwiftSpinner.hide()
+                                    self.navigationController?.pushViewController(arVC, animated: true)
+                                })
                             }
                         }
                     })

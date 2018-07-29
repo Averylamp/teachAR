@@ -9,6 +9,8 @@
 import UIKit
 import SceneKit
 import ARKit
+import AVFoundation
+import Foundation
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
@@ -17,10 +19,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
-    var allImageReferences:Array<Image> = []
+    var allImages:Array<Image> = Array<Image>()
+    var allImageReferences: Set<ARReferenceImage> = Set<ARReferenceImage>()
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
+        
         return children.lazy.compactMap({ $0 as? StatusViewController }).first!
     }()
     
@@ -68,17 +72,35 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     /// Prevents restarting the session while a restart is in progress.
     var isRestartAvailable = true
     
+    func instantiateImageReferences(){
+        self.allImageReferences = Set<ARReferenceImage>()
+        
+        for image in self.allImages{
+            if let imageContent = image.imageContent, let imageContentCG = imageContent.cgImage{
+                let imageReference = ARReferenceImage(imageContentCG, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(image.width / 39.0))
+                imageReference.name = image.imageID
+                self.allImageReferences.insert(imageReference)
+            }
+        }
+    }
+    
     /// Creates a new AR configuration to run on the `session`.
     /// - Tag: ARReferenceImage-Loading
     func resetTracking() {
         
         
         let configuration = ARWorldTrackingConfiguration()
-//        configuration.detectionImages = []
+        if self.allImages.count != self.allImageReferences.count{
+            self.instantiateImageReferences()
+        }
+        configuration.detectionImages = self.allImageReferences
+        statusViewController.scheduleMessage("Looking for \(self.allImageReferences.count) images", inSeconds: 2.5, messageType: .contentPlacement)
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
     }
+    
+    var avPlayer:AVPlayer?
     
     // MARK: - ARSCNViewDelegate (Image detection results)
     /// - Tag: ARImageAnchor-Visualizing
@@ -87,27 +109,53 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let referenceImage = imageAnchor.referenceImage
         updateQueue.async {
             
-            // Create a plane to visualize the initial position of the detected image.
-            let plane = SCNPlane(width: referenceImage.physicalSize.width,
-                                 height: referenceImage.physicalSize.height)
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.opacity = 0.25
+//            // Create a plane to visualize the initial position of the detected image.
+//            let plane = SCNPlane(width: referenceImage.physicalSize.width,
+//                                 height: referenceImage.physicalSize.height)
+//            let planeNode = SCNNode(geometry: plane)
+//            planeNode.opacity = 0.25
+//
+//            /*
+//             `SCNPlane` is vertically oriented in its local coordinate space, but
+//             `ARImageAnchor` assumes the image is horizontal in its local space, so
+//             rotate the plane to match.
+//             */
+//            planeNode.eulerAngles.x = -.pi / 2
+//
+//            /*
+//             Image anchors are not tracked after initial detection, so create an
+//             animation that limits the duration for which the plane visualization appears.
+//             */
+//            planeNode.runAction(self.imageHighlightAction)
+//
+//            // Add the plane visualization to the scene.
+//            node.addChildNode(planeNode)
             
-            /*
-             `SCNPlane` is vertically oriented in its local coordinate space, but
-             `ARImageAnchor` assumes the image is horizontal in its local space, so
-             rotate the plane to match.
-             */
-            planeNode.eulerAngles.x = -.pi / 2
-            
-            /*
-             Image anchors are not tracked after initial detection, so create an
-             animation that limits the duration for which the plane visualization appears.
-             */
-            planeNode.runAction(self.imageHighlightAction)
-            
-            // Add the plane visualization to the scene.
-            node.addChildNode(planeNode)
+            if let imageName = referenceImage.name{
+                var imageObj: Image? = nil
+                for image in self.allImages{
+                    if image.imageID == imageName{
+                        imageObj = image
+                        break
+                    }
+                }
+                if let imageObj = imageObj, let videoURL = URL(string: imageObj.videoURL) {
+                    
+                    let videoPlane = SCNPlane(width: referenceImage.physicalSize.width,
+                                              height: referenceImage.physicalSize.height)
+                    let videoPlaneNode = SCNNode(geometry: videoPlane)
+                    videoPlaneNode.eulerAngles.x = -.pi / 2
+                    print("Adding VIDEO")
+                    self.avPlayer = AVPlayer(url: videoURL)
+                    videoPlane.firstMaterial?.diffuse.contents = self.avPlayer
+//                    let playerLayerAV = AVPlayerLayer(player: self.avPlayer)
+//                    playerLayerAV.frame = self.view.bounds
+//                    self.view.layer.addSublayer(playerLayerAV)
+
+                    self.avPlayer!.play()
+                    node.addChildNode(videoPlaneNode)
+                }
+            }
         }
         
         DispatchQueue.main.async {
