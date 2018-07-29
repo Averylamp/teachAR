@@ -166,6 +166,9 @@
                                 <rect key="frame" x="170" y="422" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueButtonClicked:" destination="Kxo-Ei-Opw" eventType="touchUpInside" id="lEG-ph-utk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -178,6 +181,9 @@
                         <viewLayoutGuide key="safeArea" id="nzZ-kV-oD1"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rf7-4u-opn"/>
+                    <connections>
+                        <outlet property="chatIDTextField" destination="h1p-ct-Tm6" id="8eT-Hy-40O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uj0-Vz-lyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -193,12 +199,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Kxo-Ei-Opw" kind="relationship" relationship="rootViewController" id="Znc-ZO-BFC"/>
+                        <segue destination="Kxo-Ei-Opw" kind="relationship" relationship="rootViewController" id="e2y-8i-k7k"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5u-Ft-gus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1185" y="34"/>
+            <point key="canvasLocation" x="-1193" y="34"/>
         </scene>
     </scenes>
 </document>
