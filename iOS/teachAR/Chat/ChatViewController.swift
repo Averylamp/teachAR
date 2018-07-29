@@ -33,9 +33,9 @@ class ChatViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let article = WikipediaKit.sharedInstance.returnArticleFromAPI(name: "Stack Overflow")
-        print(article.title)
-        print(article.content)
+//        let article = WikipediaKit.sharedInstance.returnArticleFromAPI(name: "Stack Overflow")
+//        print(article.title)
+//        print(article.content)
         
         self.inputField.delegate = self
         
