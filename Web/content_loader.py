@@ -29,8 +29,8 @@ UPLOAD_FOLDER = 'static/uploaded_images'
 print("UPLOAD_FOLDER: {}".format(UPLOAD_FOLDER))
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
-# URL_PREFIX = "https://35.236.74.206/"
-URL_PREFIX = "http://127.0.0.1:5000"
+URL_PREFIX = "http://35.236.74.206"
+# URL_PREFIX = "http://127.0.0.1:5000"
 
 def allowed_file(filename):
     return '.' in filename and \
