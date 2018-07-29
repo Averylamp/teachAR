@@ -27,7 +27,11 @@ class WikiKit:
         r = self.requestJson()
         json_data = r.json()['query']['pages']
         self.title = json_data[list(json_data.keys())[0]]['title']
-        self.content = ".".join(str(json_data[list(json_data.keys())[0]]['extract']).split(".")[:3])
+        contentList = str(json_data[list(json_data.keys())[0]]['extract']).split(".")
+        if len(contentList) < 4:
+            self.content = ".".join(str(json_data[list(json_data.keys())[0]]['extract']).split("."))
+        else:
+            self.content = ".".join(str(json_data[list(json_data.keys())[0]]['extract']).split(".")[:3])
     def getTitle(self):
         """ returns title
         """
