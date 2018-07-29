@@ -74,12 +74,16 @@ class ChatViewController: UIViewController {
     
     func addAgoraSignalBlock() {
         AgoraSignalKit.Kit.channelJoin(chatId)
-        chatRoomName.text = chatId + " \(self.userNum)"
+        chatRoomName.text = chatId
+        
+        if (self.userNum > 0) {
+            chatRoomName.text? += " (\(self.userNum))"
+        }
         
         AgoraSignalKit.Kit.onMessageChannelReceive = { [weak self] (channelID, account, uid, msg) -> () in
             DispatchQueue.main.async(execute: {
                 let message = Message(name: account, message: msg)
-                self?.messageList.messageList.append(message)
+                self?.messageList.list.append(message)
                 self?.updateTableView((self?.chatRoomTableView)!, with: message)
                 self?.inputField.text = ""
             })
@@ -112,7 +116,7 @@ extension ChatViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let message = inputField.text else { return false }
         
-        AgoraSignalKit.Kit.messageChannelSend(chatId, msg: message, msgID: String(messageList.messageList.count))
+        AgoraSignalKit.Kit.messageChannelSend(chatId, msg: message, msgID: String(messageList.list.count))
         
         return true
     }
@@ -120,23 +124,25 @@ extension ChatViewController: UITextFieldDelegate {
 
 extension ChatViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageList.messageList.count
+        return messageList.list.count
     }
     
-    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myAccount = UserDefaults.standard.string(forKey: "myAccount")
-        if (messageList.messageList[indexPath.row].name != myAccount) {
-            if (userColor[messageList.messageList[indexPath.row].name] == nil) {
-                userColor[messageList.messageList[indexPath.row].name] = UIColor.randomColor()
+        if (messageList.list[indexPath.row].name != myAccount) {
+            if (userColor[messageList.list[indexPath.row].name] == nil) {
+                userColor[messageList.list[indexPath.row].name] = UIColor.randomColor()
             }
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatMessageTableCellLeft", for: indexPath) as! ChatMessageTableViewCell
-            cell.setCellViewWith(message: messageList.messageList[indexPath.row])
+            cell.setCellViewWith(message: messageList.list[indexPath.row])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "chatMessageTableCellRight", for: indexPath) as! ChatMessageTableViewCell
-            cell.setCellViewWith(message: messageList.messageList[indexPath.row])
+            cell.setCellViewWith(message: messageList.list[indexPath.row])
             return cell
         }
     }
