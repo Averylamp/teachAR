@@ -438,6 +438,25 @@ with teachAR</string>
                                     <constraint firstAttribute="height" constant="56" id="vt5-Sq-cEP"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7r-aI-hkN">
+                                <rect key="frame" x="0.0" y="607" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="9oC-1P-lZF"/>
+                                    <constraint firstAttribute="width" constant="60" id="e2q-ga-Evk"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="removeVideoClicked:" destination="WnS-DQ-PNW" eventType="touchUpInside" id="6J9-AY-MiE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKP-0R-glb">
+                                <rect key="frame" x="20" y="125" width="34" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonClicked:" destination="WnS-DQ-PNW" eventType="touchUpInside" id="dGQ-lq-d1F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -446,7 +465,10 @@ with teachAR</string>
                             <constraint firstItem="oje-xo-aXG" firstAttribute="trailing" secondItem="Kvq-fw-YRJ" secondAttribute="trailing" id="Bbz-IE-vzX"/>
                             <constraint firstAttribute="bottom" secondItem="kUs-gf-KF0" secondAttribute="bottom" id="FTn-hd-xmm"/>
                             <constraint firstItem="oje-xo-aXG" firstAttribute="trailing" secondItem="Pyo-Cq-ECn" secondAttribute="trailing" id="JYB-ta-0Rs"/>
+                            <constraint firstItem="K7r-aI-hkN" firstAttribute="leading" secondItem="oje-xo-aXG" secondAttribute="leading" id="N8u-XZ-H3q"/>
                             <constraint firstItem="kUs-gf-KF0" firstAttribute="top" secondItem="sV6-1J-qq4" secondAttribute="top" id="RbZ-6i-lOf"/>
+                            <constraint firstItem="oje-xo-aXG" firstAttribute="bottom" secondItem="K7r-aI-hkN" secondAttribute="bottom" id="VMi-pT-9Qk"/>
+                            <constraint firstItem="pKP-0R-glb" firstAttribute="top" secondItem="Kvq-fw-YRJ" secondAttribute="bottom" constant="20" id="Xb6-sy-2vH"/>
                             <constraint firstItem="Pyo-Cq-ECn" firstAttribute="leading" secondItem="oje-xo-aXG" secondAttribute="leading" id="b2T-y1-Yvx"/>
                             <constraint firstItem="kUs-gf-KF0" firstAttribute="leading" secondItem="sV6-1J-qq4" secondAttribute="leading" id="gD3-In-LGb"/>
                             <constraint firstItem="oje-xo-aXG" firstAttribute="trailing" secondItem="h7Q-D1-Lxi" secondAttribute="trailing" constant="24" id="hRK-YN-aX2"/>
@@ -456,6 +478,7 @@ with teachAR</string>
                             <constraint firstAttribute="trailing" secondItem="kUs-gf-KF0" secondAttribute="trailing" id="rhZ-Zr-VNq"/>
                             <constraint firstAttribute="bottom" secondItem="Pyo-Cq-ECn" secondAttribute="bottom" id="rnE-Qh-A27"/>
                             <constraint firstItem="Kvq-fw-YRJ" firstAttribute="leading" secondItem="oje-xo-aXG" secondAttribute="leading" id="sSJ-pd-DHH"/>
+                            <constraint firstItem="pKP-0R-glb" firstAttribute="leading" secondItem="oje-xo-aXG" secondAttribute="leading" constant="20" id="yUk-8j-bRV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oje-xo-aXG"/>
                     </view>

@@ -34,6 +34,9 @@ class ChatViewController: UIViewController {
     var userNum = 0 {
         didSet {
             DispatchQueue.main.async(execute: {
+                if self.userNum < 0 {
+                    self.userNum = 0
+                }
                 self.title = self.chatId + " (\(String(self.userNum)))"
                 self.chatRoomName.text? = "Chatroom: \(self.chatId), \(self.userNum) online"
                 if let delegate = self.delegate{

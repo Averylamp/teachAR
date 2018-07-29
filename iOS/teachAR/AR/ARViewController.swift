@@ -53,6 +53,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.delegate = self
         sceneView.session.delegate = self as? ARSessionDelegate
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(rec:)))
+        
+        //Add recognizer to sceneview
+        sceneView.addGestureRecognizer(tap)
+
         
         // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
@@ -135,19 +141,43 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     func resetTracking() {
         
         
-        let configuration = ARWorldTrackingConfiguration()
+        let configuration = ARImageTrackingConfiguration()
         if self.allImages.count != self.allImageReferences.count{
             self.instantiateImageReferences()
         }
-        configuration.detectionImages = self.allImageReferences
+        configuration.maximumNumberOfTrackedImages = 1
+        configuration.trackingImages = self.allImageReferences
+        
         statusViewController.scheduleMessage("Looking for \(self.allImageReferences.count) images", inSeconds: 11.5, messageType: .contentPlacement)
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
     }
     
-    var avPlayer:AVPlayer?
+    var avPlayer:AVPlayer? = nil
     
+    
+    
+    func removeVideoNode(){
+        if let avPlayer = self.avPlayer,  ((avPlayer.rate != 0) && (avPlayer.error == nil)){
+            self.avPlayer?.pause()
+            self.avPlayer = nil
+        }
+        if let videoNode = self.videoNode{
+            videoNode.removeFromParentNode()
+            self.videoNode = nil
+        }
+        if let imageAnchor = self.imageAnchor{
+            session.remove(anchor: imageAnchor)
+            self.imageAnchor = nil
+        }
+        
+
+    }
+    
+    
+    var videoNode: SCNNode?
+    var imageAnchor: ARImageAnchor?
     // MARK: - ARSCNViewDelegate (Image detection results)
     /// - Tag: ARImageAnchor-Visualizing
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -186,17 +216,18 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                     }
                 }
                 if let imageObj = imageObj, let videoURL = URL(string: imageObj.videoURL) {
+                    self.removeVideoNode()
+                    self.imageAnchor = imageAnchor
                     
                     let videoPlane = SCNPlane(width: referenceImage.physicalSize.width,
                                               height: referenceImage.physicalSize.height)
                     let videoPlaneNode = SCNNode(geometry: videoPlane)
+                    self.videoNode = videoPlaneNode
+                    
                     videoPlaneNode.eulerAngles.x = -.pi / 2
                     print("Adding VIDEO")
                     self.avPlayer = AVPlayer(url: videoURL)
                     videoPlane.firstMaterial?.diffuse.contents = self.avPlayer
-//                    let playerLayerAV = AVPlayerLayer(player: self.avPlayer)
-//                    playerLayerAV.frame = self.view.bounds
-//                    self.view.layer.addSublayer(playerLayerAV)
 
                     self.avPlayer!.play()
                     node.addChildNode(videoPlaneNode)
@@ -211,14 +242,35 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    @objc func handleTap(rec: UITapGestureRecognizer){
+        
+        if rec.state == .ended {
+            let location: CGPoint = rec.location(in: sceneView)
+            let hits = self.sceneView.hitTest(location, options: nil)
+            if !hits.isEmpty{
+                let tappedNode = hits.first?.node
+                if tappedNode == self.videoNode{
+                    self.removeVideoNode()
+                }
+            }
+        }
+    }
+
+    @IBAction func removeVideoClicked(_ sender: Any) {
+        self.removeVideoNode()
+    }
+    
     @IBAction func chatButtonClicked(_ sender: Any) {
         self.presentChatVC()
+    }
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func allImagesClicked(_ sender: Any) {
         if let allImagesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AllImagesVC") as? AllImagesViewController{
             allImagesVC.allImages = self.allImages
-            allImagesVC.tableView.reloadData()
             self.present(allImagesVC, animated: true, completion:   nil)
             
         }
