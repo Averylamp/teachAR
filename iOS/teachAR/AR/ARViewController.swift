@@ -24,6 +24,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     var chatroom: String = ""
     
     var allImages:Array<Image> = Array<Image>()
+    
     var allImageReferences: Set<ARReferenceImage> = Set<ARReferenceImage>()
     
     /// The view controller that displays the status and "restart experience" UI.
@@ -64,6 +65,28 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
         }
+        
+        setupChatViewController()
+    }
+    
+    var chatViewController:ChatViewController?
+    func setupChatViewController(){
+        if let chatVC = UIStoryboard(name: "Chat", bundle: nil).instantiateViewController(withIdentifier: "chatVC") as? ChatViewController{
+            chatVC.chatId = self.chatroom
+            chatVC.accountId = self.username
+            chatVC.view.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(chatVC.view)
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint(item: chatVC.view,  attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: chatVC.view,  attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
+                NSLayoutConstraint(item: chatVC.view,  attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: -40),
+                NSLayoutConstraint(item: chatVC.view,  attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: -40)
+                ])
+//
+            
+        }
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

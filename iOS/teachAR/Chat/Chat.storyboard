@@ -12,7 +12,7 @@
         <!--Chat View Controller-->
         <scene sceneID="fxg-RR-2nN">
             <objects>
-                <viewController id="Tl2-Q3-1Iy" customClass="ChatViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chatVC" id="Tl2-Q3-1Iy" customClass="ChatViewController" customModule="teachAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jeS-cM-b2n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

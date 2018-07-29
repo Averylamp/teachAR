@@ -9,7 +9,14 @@
 import UIKit
 import AgoraSigKit
 
+protocol ChatDelegate {
+    func newMessage(text:String)
+    
+}
+
 class ChatViewController: UIViewController {
+    
+    var delegate: ChatDelegate?
     
     @IBOutlet weak var chatRoomTableView: UITableView!
     @IBOutlet weak var inputField: UITextField!
@@ -48,8 +55,13 @@ class ChatViewController: UIViewController {
         self.chatRoomTableView.delegate = self
         self.chatRoomTableView.dataSource = self
         
+    }
+    
+    func instantiateChat(){
         AgoraSignalKit.Kit.channelQueryUserNum(chatId)
         messageList.messageListId = chatId
+        logInToAgoraAPI()
+        addAgoraSignalBlock()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,9 +69,7 @@ class ChatViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
-
-        logInToAgoraAPI()
-        addAgoraSignalBlock()
+        instantiateChat()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
