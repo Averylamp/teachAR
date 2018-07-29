@@ -33,7 +33,7 @@ We provide real-time communication when students have questions related to the t
 
 ## How we built it
 
-We build this project with care. :) We are in the process of documenting our work, but the technologies we use include iOS, Swift, ARKit, Agora, Firebase, Flask, Google Cloud Platform, Full-Stack.
+We built this project with care. :) We are in the process of documenting our work, but the technologies we use include iOS, Swift, ARKit, Agora, Firebase, Flask, Google Cloud Platform, Full-Stack.
 
 ## What's next for TeachAR
 
