@@ -18,10 +18,12 @@ class ChatMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageTextLabel: UILabel!
     @IBOutlet weak var nameText: UILabel!
     
+    @IBOutlet weak var messageContainerView: UIView!
+    
     func setCellViewWith(message: Message) {
         self.messageTextLabel.text = message.message
-        self.messageTextLabel.backgroundColor = userColor[message.name]
-        self.messageTextLabel.layer.cornerRadius = 8
+        self.messageContainerView.backgroundColor = Constants.themeColor
+        self.messageContainerView.layer.cornerRadius = 14
         
         self.nameText.text = message.name
         self.backgroundColor = UIColor.clear

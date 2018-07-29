@@ -9,11 +9,13 @@ import os
 def process_image_form(db, bookID, imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL):
     books_ref = db.collection(u"books").document(bookID).collection("images").document(imageID)
     image = Image(imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL)
+    print(image.to_dict())
     return books_ref.set(image.to_dict())
 
 def process_books_form(db, bookID, coverURL, chatID, expertID, name, author):
     books_ref = db.collection(u"books").document(bookID)
     book = Book(bookID, coverURL, chatID, expertID, name, author)
+    print(book.to_dict())
     return books_ref.set(book.to_dict())
 
 def get_new_image_id(db, bookID):

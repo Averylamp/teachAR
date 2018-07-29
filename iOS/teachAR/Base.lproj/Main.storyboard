@@ -387,7 +387,6 @@ with teachAR</string>
                                                     <state key="normal" title="Button"/>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="YTh-aP-Ngd" firstAttribute="leading" secondItem="h7Q-D1-Lxi" secondAttribute="leading" constant="8" id="4co-lw-7s5"/>
                                                 <constraint firstAttribute="trailing" secondItem="YTh-aP-Ngd" secondAttribute="trailing" constant="8" id="84C-od-6fs"/>
@@ -434,6 +433,7 @@ with teachAR</string>
                     </view>
                     <connections>
                         <outlet property="blurView" destination="kUs-gf-KF0" id="W35-uA-gaH"/>
+                        <outlet property="chatButtonViewContainer" destination="h7Q-D1-Lxi" id="z3B-gG-uDW"/>
                         <outlet property="sceneView" destination="Pyo-Cq-ECn" id="ArN-92-YoL"/>
                     </connections>
                 </viewController>
