@@ -80,17 +80,13 @@ class Image {
     
     convenience init?(dictionary: [String: Any]){
         guard let arImageURL = dictionary["ARImageURL"] as? String,
-            let descriptionData = dictionary["description"] as? Data,
-            let description = String(data: descriptionData, encoding: .utf8),
+            let description = dictionary["description"] as? String,
             let height = dictionary["height"] as? Double,
-            let imageIDData =  dictionary["imageID"] as? Data,
-            let imageID = String(data: imageIDData, encoding: .utf8),
+            let imageID =  dictionary["imageID"] as? String,
             let links = dictionary["links"] as? String,
-            let targetImageURLData = dictionary["targetImageURL"] as? Data,
-            let targetImageURL = String(data:targetImageURLData, encoding: .utf8),
+            let targetImageURL = dictionary["targetImageURL"] as? String,
             let title = dictionary["title"] as? String,
-            let videoURLData = dictionary["videoURL"] as? Data,
-            let videoURL = String(data:videoURLData, encoding: .utf8),
+            let videoURL = dictionary["videoURL"] as? String,
             let width = dictionary["width"] as? Double
             
             else {return nil}
