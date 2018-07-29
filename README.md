@@ -35,6 +35,8 @@ Here is [the link to our website](http://35.236.74.206/). Please don't submit an
 
 We provide real-time communication when students have questions related to the topics they see in the textbook, powered by the Agora platform.
 
+![alt text](https://media.giphy.com/media/7XoGN1oMJ7mpXHurpF/giphy.gif)
+
 ## How we built it
 
 We built this project with care. :) We are in the process of documenting our work, but the technologies we use include iOS, Swift, ARKit, Agora, Firebase, Flask, Google Cloud Platform, and Full-Stack.
