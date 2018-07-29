@@ -117,6 +117,7 @@
                         <viewLayoutGuide key="safeArea" id="Zx6-3l-ezZ"/>
                     </view>
                     <connections>
+                        <outlet property="chatRoomName" destination="cg8-9U-ybs" id="XaV-3S-C9m"/>
                         <outlet property="chatRoomTableView" destination="53H-rB-mvh" id="KOq-eu-uVI"/>
                         <outlet property="inputField" destination="1Jf-Tz-0OA" id="KFZ-kq-Bdc"/>
                     </connections>

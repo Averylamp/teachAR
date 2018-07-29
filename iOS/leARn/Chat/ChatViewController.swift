@@ -13,6 +13,7 @@ class ChatViewController: UIViewController {
     
     @IBOutlet weak var chatRoomTableView: UITableView!
     @IBOutlet weak var inputField: UITextField!
+    @IBOutlet weak var chatRoomName: UILabel!
     
     var chatId: String!
     var accountId : String!
@@ -82,6 +83,9 @@ class ChatViewController: UIViewController {
             LogWriter.write(log: log)
         }
         
+        AgoraSignalKit.Kit.channelJoin(chatId)
+        chatRoomName.text = chatId;
+        
         // add messages to the account's message list
         AgoraSignalKit.Kit.onMessageInstantReceive = { (accountId, uid, msg) -> () in
             if (chatMessages[accountId!] == nil) {
@@ -99,7 +103,7 @@ class ChatViewController: UIViewController {
             DispatchQueue.main.async(execute: {
                 let message = Message(name: account, message: msg)
                 self?.messageList.messageList.append(message)
-                self?.updateTableView((self?.channelRoomTableView)!, with: message)
+//                self?.updateTableView((self?.channelRoomTableView)!, with: message)
                 self?.inputField.text = ""
             })
         }
@@ -149,4 +153,8 @@ extension ChatViewController : UITableViewDataSource, UITableViewDelegate {
             return cell
         }
     }
+}
+
+private extension ChatViewController {
+    
 }
