@@ -15,6 +15,7 @@ struct Book {
     var name: String
     var coverURL: String
     var author: String
+    var bookID: String
     var chatID: String
     var expertID: String
     
@@ -25,7 +26,8 @@ struct Book {
             "coverURL" : coverURL,
             "author": author,
             "chatID": chatID,
-            "expertID": expertID
+            "expertID": expertID,
+            "bookID":bookID
         ]
     }
 }
@@ -36,12 +38,13 @@ extension Book: DocumentSerializable{
         let name = dictionary["name"] as? String,
         let coverURL = dictionary["coverURL"] as? String,
         let author = dictionary["author"] as? String,
+            let bookID = dictionary["bookID"] as? String,
         let chatID = dictionary["chatID"] as? String,
         let expertID = dictionary["expertID"] as? String
         
             else {return nil}
         
-        self.init(id: id, name: name, coverURL:coverURL, author: author, chatID: chatID, expertID: expertID)
+        self.init(id: id, name: name, coverURL:coverURL, author: author, bookID: bookID, chatID: chatID, expertID: expertID)
         
     }
 }
