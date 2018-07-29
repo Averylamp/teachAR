@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class Message {
+struct Message {
     var name : String!
     var message : String!
 }
 
-class MessageList {
+struct MessageList {
     var messageListId : String!
     var messageList = [Message]()
 }
