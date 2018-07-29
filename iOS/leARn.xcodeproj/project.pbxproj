@@ -26,6 +26,8 @@
 		BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */; };
 		BBC445AA210D363600629E20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC445A8210D363600629E20 /* LaunchScreen.storyboard */; };
 		BBC445AC210D385600629E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC445AB210D385600629E20 /* GoogleService-Info.plist */; };
+		BBC445AE210D593600629E20 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC445AD210D593600629E20 /* StatusViewController.swift */; };
+		BBC445B0210D595B00629E20 /* ARViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC445AF210D595B00629E20 /* ARViewController+ARSessionDelegate.swift */; };
 		EABD2398A0405E5EBADC9CDF /* Pods_leARn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4964BD45A98131863CBA17 /* Pods_leARn.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		BBC445A5210D361700629E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBC445A9210D363600629E20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = leARn/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		BBC445AB210D385600629E20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BBC445AD210D593600629E20 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		BBC445AF210D595B00629E20 /* ARViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				BB2C6A55210D02620026DE3C /* art.scnassets */,
+				BBC445AD210D593600629E20 /* StatusViewController.swift */,
 				BB2C6A69210D02B10026DE3C /* ARResources.storyboard */,
 				BB2C6A57210D02620026DE3C /* ARViewController.swift */,
+				BBC445AF210D595B00629E20 /* ARViewController+ARSessionDelegate.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -286,6 +293,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -322,6 +330,7 @@
 			files = (
 				BB0DAB15210D1FB1007CE84B /* BookTableViewCell.swift in Sources */,
 				BB03BEC6210D2B8E00971E79 /* Image.swift in Sources */,
+				BBC445B0210D595B00629E20 /* ARViewController+ARSessionDelegate.swift in Sources */,
 				BB2C6A58210D02620026DE3C /* ARViewController.swift in Sources */,
 				BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */,
 				BB03BEBD210D291700971E79 /* Book.swift in Sources */,
@@ -329,6 +338,7 @@
 				BB2C6A54210D02620026DE3C /* AppDelegate.swift in Sources */,
 				BB03BEC3210D2B0800971E79 /* MainNavigationViewController.swift in Sources */,
 				BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */,
+				BBC445AE210D593600629E20 /* StatusViewController.swift in Sources */,
 				BB03BEC1210D2A3B00971E79 /* SplashPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

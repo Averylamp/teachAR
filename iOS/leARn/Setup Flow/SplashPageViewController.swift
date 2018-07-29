@@ -22,7 +22,7 @@ class SplashPageViewController: UIViewController {
 
     @IBAction func continueButtonClicked(_ sender: Any) {
         
-        if let chatText = chatIDTextField.text, chatText.count > 0, let bookListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookListVC") as? BookListViewController{
+        if let chatText = chatIDTextField.text, let bookListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookListVC") as? BookListViewController{
             self.navigationController?.pushViewController(bookListVC, animated: true)
         }
         

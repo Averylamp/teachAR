@@ -10,8 +10,6 @@ import FirebaseFirestore
 import Foundation
 import Firebase
 
-
-
 struct Book {
     var id: String
     var name: String
@@ -19,7 +17,6 @@ struct Book {
     var author: String
     var chatID: String
     var expertID: String
-    var documentID: String
     
     var dictionary: [String: Any]{
         return [
@@ -28,25 +25,23 @@ struct Book {
             "coverURL" : coverURL,
             "author": author,
             "chatID": chatID,
-            "expertID": expertID,
-            "documentID": documentID
+            "expertID": expertID
         ]
     }
 }
 
 extension Book: DocumentSerializable{
     init?(dictionary: [String: Any]){
-        guard let id = dictionary["id"] as? String,
+        guard let id = dictionary["bookID"] as? String,
         let name = dictionary["name"] as? String,
         let coverURL = dictionary["coverURL"] as? String,
         let author = dictionary["author"] as? String,
         let chatID = dictionary["chatID"] as? String,
-        let expertID = dictionary["expertID"] as? String,
-        let documentID = dictionary["documentID"] as? String
+        let expertID = dictionary["expertID"] as? String
         
             else {return nil}
         
-        self.init(id: id, name: name, coverURL:coverURL, author: author, chatID: chatID, expertID: expertID, documentID: documentID)
+        self.init(id: id, name: name, coverURL:coverURL, author: author, chatID: chatID, expertID: expertID)
         
     }
 }

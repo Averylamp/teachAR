@@ -15,12 +15,21 @@ class BookListViewController: UIViewController {
     private var listener: ListenerRegistration?
     private var allBooks: [Book] = []
 
+    @IBOutlet weak var bookListTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        bookListTableView.separatorStyle = .none
+        bookListTableView.dataSource = self
+        bookListTableView.delegate = self
         
-        
+        query = baseQuery()
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        observeQuery()
+    }
 
     // MARK: Firebase Update Methods
     
@@ -59,8 +68,7 @@ class BookListViewController: UIViewController {
             }
             
             self.allBooks = models
-            
-//            self.updateVisiblePostsWithCurrentCategory()
+            self.bookListTableView.reloadData()
         }
     }
     fileprivate func stopObserving() {
@@ -71,6 +79,37 @@ class BookListViewController: UIViewController {
         return Firestore.firestore().collection("books").limit(to: 100)
     }
 
+    
+    
+}
+extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.allBooks.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookTableViewCell", for: indexPath) as! BookTableViewCell
+        
+        cell.setupWithBook(book: self.allBooks[indexPath.row])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let book = self.allBooks[indexPath.row]
+        print("Book selected \(book.name)")
+        
+        if let arVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ARVC") as? ARViewController{
+            self.navigationController?.pushViewController(arVC, animated: true)
+        }
+        
+    }
     
     
 }
