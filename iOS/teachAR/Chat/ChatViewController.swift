@@ -15,8 +15,8 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var inputField: UITextField!
     @IBOutlet weak var chatRoomName: UILabel!
     
-    var chatId: String!
-    var accountId : String!
+    var chatId: String = "testroom"
+    var accountId : String = "pramoda"
     
     var messageList = MessageList()
     
@@ -33,8 +33,12 @@ class ChatViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        self.inputField.delegate = self
+        
         self.chatRoomTableView.rowHeight = UITableView.automaticDimension
         self.chatRoomTableView.estimatedRowHeight = 100
+        self.chatRoomTableView.delegate = self
+        self.chatRoomTableView.dataSource = self
         
         AgoraSignalKit.Kit.channelQueryUserNum(chatId)
         messageList.messageListId = chatId
@@ -69,41 +73,14 @@ class ChatViewController: UIViewController {
     }
     
     func addAgoraSignalBlock() {
-        AgoraSignalKit.Kit.onLog = { (txt) -> () in
-            guard var log = txt else {
-                return
-            }
-            let time = log[..<log.index(log.startIndex, offsetBy: 10)]
-            let dformatter = DateFormatter()
-            let timeInterval = TimeInterval(Int(time)!)
-            let date = Date(timeIntervalSince1970: timeInterval)
-            dformatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            log.replaceSubrange(log.startIndex..<log.index(log.startIndex, offsetBy: 10), with: dformatter.string(from: date) + ".")
-            
-            LogWriter.write(log: log)
-        }
-        
         AgoraSignalKit.Kit.channelJoin(chatId)
-        chatRoomName.text = chatId;
-        
-        // add messages to the account's message list
-        AgoraSignalKit.Kit.onMessageInstantReceive = { (accountId, uid, msg) -> () in
-            if (chatMessages[accountId!] == nil) {
-                let incomingMessage = Message(name: accountId, message: msg)
-                var messageList = [Message]()
-                messageList.append(incomingMessage)
-                chatMessages[accountId!] = MessageList(messageListId: accountId, messageList: messageList)
-                return
-            }
-            let incomingMessage = Message(name: accountId, message: msg)
-            chatMessages[accountId!]?.messageList.append(incomingMessage)
-        }
+        chatRoomName.text = chatId + " \(self.userNum)"
         
         AgoraSignalKit.Kit.onMessageChannelReceive = { [weak self] (channelID, account, uid, msg) -> () in
             DispatchQueue.main.async(execute: {
                 let message = Message(name: account, message: msg)
                 self?.messageList.messageList.append(message)
-//                self?.updateTableView((self?.channelRoomTableView)!, with: message)
+                self?.updateTableView((self?.chatRoomTableView)!, with: message)
                 self?.inputField.text = ""
             })
         }
@@ -119,6 +96,14 @@ class ChatViewController: UIViewController {
         AgoraSignalKit.Kit.onChannelUserLeaved = { [weak self] (account, uid) -> () in
             self?.userNum -= 1
         }
+    }
+    
+    func updateTableView(_ tableView: UITableView, with message: Message) {
+        let indexPath = IndexPath(row: tableView.numberOfRows(inSection: 0), section: 0)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [indexPath], with: .none)
+        tableView.endUpdates()
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
     }
     
 }
@@ -138,6 +123,8 @@ extension ChatViewController : UITableViewDataSource, UITableViewDelegate {
         return messageList.messageList.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myAccount = UserDefaults.standard.string(forKey: "myAccount")
         if (messageList.messageList[indexPath.row].name != myAccount) {
@@ -153,8 +140,4 @@ extension ChatViewController : UITableViewDataSource, UITableViewDelegate {
             return cell
         }
     }
-}
-
-private extension ChatViewController {
-    
 }

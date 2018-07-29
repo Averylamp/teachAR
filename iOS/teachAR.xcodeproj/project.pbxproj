@@ -15,7 +15,6 @@
 		92362AB9210D3E0C00A298A0 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362AB8210D3E0C00A298A0 /* Key.swift */; };
 		92362ABB210D402000A298A0 /* AgoraSignalKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ABA210D402000A298A0 /* AgoraSignalKit.swift */; };
 		92362ABD210D450800A298A0 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ABC210D450700A298A0 /* CommonExtensions.swift */; };
-		92362ABF210D47A200A298A0 /* LogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ABE210D47A200A298A0 /* LogWriter.swift */; };
 		92362ACE210D5AC600A298A0 /* ChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92362ACD210D5AC600A298A0 /* ChatMessageTableViewCell.swift */; };
 		BB03BEBD210D291700971E79 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBC210D291700971E79 /* Book.swift */; };
 		BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */; };
@@ -51,7 +50,6 @@
 		92362AB8210D3E0C00A298A0 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		92362ABA210D402000A298A0 /* AgoraSignalKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraSignalKit.swift; sourceTree = "<group>"; };
 		92362ABC210D450700A298A0 /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
-		92362ABE210D47A200A298A0 /* LogWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWriter.swift; sourceTree = "<group>"; };
 		92362ACD210D5AC600A298A0 /* ChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageTableViewCell.swift; sourceTree = "<group>"; };
 		BB03BEBC210D291700971E79 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		BB03BEBE210D2A2B00971E79 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 		92362AC0210D4DFD00A298A0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				92362ABE210D47A200A298A0 /* LogWriter.swift */,
 				92362ABC210D450700A298A0 /* CommonExtensions.swift */,
 			);
 			path = Utilities;
@@ -249,7 +246,6 @@
 				BB2C6A4D210D02620026DE3C /* Frameworks */,
 				BB2C6A4E210D02620026DE3C /* Resources */,
 				7201AC1C5D0648F0BED4C5BB /* [CP] Embed Pods Frameworks */,
-				C79A2040BB4854EA80D273E7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -365,21 +361,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-teachAR/Pods-teachAR-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C79A2040BB4854EA80D273E7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-teachAR/Pods-teachAR-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -397,7 +378,6 @@
 				BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */,
 				BB03BEBD210D291700971E79 /* Book.swift in Sources */,
 				BB03BEC8210D2BBB00971E79 /* Constants.swift in Sources */,
-				92362ABF210D47A200A298A0 /* LogWriter.swift in Sources */,
 				BB2C6A54210D02620026DE3C /* AppDelegate.swift in Sources */,
 				92362ACE210D5AC600A298A0 /* ChatMessageTableViewCell.swift in Sources */,
 				92362ABD210D450800A298A0 /* CommonExtensions.swift in Sources */,
@@ -559,7 +539,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R4DQ2L3FBV;
+				DEVELOPMENT_TEAM = 4DX6FXCC84;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -582,7 +562,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R4DQ2L3FBV;
+				DEVELOPMENT_TEAM = 4DX6FXCC84;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
