@@ -8,7 +8,7 @@ import csv
 import os
 import glob
 
-# TODO(ethan): reove debuger later
+# TODO(ethan): reove debug
 DEBUG=True
 app = Flask(__name__)
 app.config.from_object(__name__)
