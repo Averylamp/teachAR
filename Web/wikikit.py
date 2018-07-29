@@ -42,3 +42,7 @@ class WikiKit:
         """
         self.setProperties()
         return self.content
+
+wiki = WikiKit("https://en.wikipedia.org/wiki/Pachyrhinosaurus")
+print(wiki.getTitle())
+print(wiki.getContent())
