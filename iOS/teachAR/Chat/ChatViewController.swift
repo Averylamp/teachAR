@@ -19,7 +19,7 @@ class ChatViewController: UIViewController {
     
     
     var chatId: String = "testroom"
-    var accountId : String = "avery"
+    var accountId : String = "potato"
     
     var messageList = MessageList()
     
