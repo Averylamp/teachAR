@@ -95,7 +95,7 @@ def content_loader_page(db, all_books):
                     YouTube(video_links[0]).streams.filter(progressive=True, file_extension='mp4').first().download("static/videos/", filename=ending)
                     video_links[0] = os.path.join(URL_PREFIX, "static/videos/{}.mp4".format(ending))
 
-                process_image_form(db,book_id,image_id,description,float(image_height),float(image_width),image_url,image_links[0],info_links[0],image_name,video_links[0])
+                process_image_form(db,book_id,str(image_id),str(description),float(image_height),float(image_width),str(image_url),str(image_links[0]),str(info_links[0]),image_name,str(video_links[0]))
 
                 # display a notification on the site
                 flash(image_name + ' uploaded.')
