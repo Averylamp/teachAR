@@ -25,7 +25,7 @@ def get_new_image_id(db, bookID):
     return str(id)
 
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-UPLOAD_FOLDER = 'static/uploaded_images'
+UPLOAD_FOLDER = 'static/images'
 print("UPLOAD_FOLDER: {}".format(UPLOAD_FOLDER))
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
