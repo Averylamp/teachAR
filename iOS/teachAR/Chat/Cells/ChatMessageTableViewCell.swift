@@ -20,21 +20,11 @@ class ChatMessageTableViewCell: UITableViewCell {
     
     func setCellViewWith(message: Message) {
         self.messageTextLabel.text = message.message
+        self.messageTextLabel.backgroundColor = userColor[message.name]
+        self.messageTextLabel.layer.cornerRadius = 8
+        
         self.nameText.text = message.name
         self.backgroundColor = UIColor.clear
         self.nameText.adjustsFontSizeToFitWidth = true
-        self.messageTextLabel.backgroundColor = userColor[message.name]
     }
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-
 }

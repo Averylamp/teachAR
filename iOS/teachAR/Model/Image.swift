@@ -37,21 +37,24 @@ class Image {
     }
     
     func downloadImage(completion: @escaping (Error?)-> ()){
-        let url = URL(fileURLWithPath: self.targetImageURL)
-        getDataFromUrl(url: url) { (data, response, error) in
-            if error != nil {
-                completion(error)
-            }else{
-                if let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                    let data = data, error == nil,
-                    let image = UIImage(data: data) {
-                    self.imageContent = image
-                    completion(nil)
+        if let url = URL(string: self.targetImageURL){
+            getDataFromUrl(url: url) { (data, response, error) in
+                if error != nil {
+                    completion(error)
                 }else{
-                    completion(NSError(domain:"", code:455, userInfo:nil))
+                    if let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                        let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                        let data = data, error == nil,
+                        let image = UIImage(data: data) {
+                        self.imageContent = image
+                        completion(nil)
+                    }else{
+                        completion(NSError(domain:"Failed download response", code:444, userInfo:nil))
+                    }
                 }
             }
+        }else{
+            completion(NSError(domain:"URL Incorrect", code:444, userInfo:nil))
         }
     }
     

@@ -16,7 +16,7 @@ struct Message {
 
 struct MessageList {
     var messageListId : String!
-    var messageList = [Message]()
+    var list = [Message]()
 }
 
 var chatMessages = Dictionary<String, MessageList>()
