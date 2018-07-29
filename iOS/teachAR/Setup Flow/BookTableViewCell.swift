@@ -19,6 +19,9 @@ class BookTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bookCoverImageView: UIImageView!
     
+    
+    @IBOutlet weak var containingView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +34,13 @@ class BookTableViewCell: UITableViewCell {
     }
     
     func setupWithBook(book:Book){
+        self.containingView.layer.shadowRadius = 4
+        self.containingView.layer.cornerRadius = 7
+        self.containingView.layer.shadowColor = UIColor(white: 0.0, alpha: 1.0).cgColor
+        self.containingView.layer.shadowOpacity = 0.4
+        self.containingView.layer.shadowOffset = CGSize(width: 2, height: 1)
+        
+        
         self.titleLabel.text = book.name
         self.authorLabel.text = book.author
         self.onlineLabel.text = "\(0) online now"

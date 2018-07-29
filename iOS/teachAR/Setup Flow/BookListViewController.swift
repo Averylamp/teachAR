@@ -15,12 +15,14 @@ class BookListViewController: UIViewController {
     private var listener: ListenerRegistration?
     private var allBooks: [Book] = []
 
+    var username:String = ""
+    
     @IBOutlet weak var bookListTableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        bookListTableView.separatorStyle = .none
+        bookListTableView.separatorStyle = .none
         bookListTableView.dataSource = self
         bookListTableView.delegate = self
         
@@ -101,7 +103,7 @@ extension BookListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return 13 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
