@@ -15,6 +15,8 @@ class BookListViewController: UIViewController {
     private var listener: ListenerRegistration?
     private var allBooks: [Book] = []
 
+    var username:String = ""
+    
     @IBOutlet weak var bookListTableView: UITableView!
     
     
