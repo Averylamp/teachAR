@@ -31,6 +31,10 @@
 		BB2C6A5D210D02640026DE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A5C210D02640026DE3C /* Assets.xcassets */; };
 		BB2C6A6B210D02B10026DE3C /* ARResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A69210D02B10026DE3C /* ARResources.storyboard */; };
 		BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */; };
+		BBC445AA210D363600629E20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC445A8210D363600629E20 /* LaunchScreen.storyboard */; };
+		BBC445AC210D385600629E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC445AB210D385600629E20 /* GoogleService-Info.plist */; };
+		BBC445AE210D593600629E20 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC445AD210D593600629E20 /* StatusViewController.swift */; };
+		BBC445B0210D595B00629E20 /* ARViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC445AF210D595B00629E20 /* ARViewController+ARSessionDelegate.swift */; };
 		EABD2398A0405E5EBADC9CDF /* Pods_leARn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4964BD45A98131863CBA17 /* Pods_leARn.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +67,11 @@
 		BB2C6A5C210D02640026DE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB2C6A6A210D02B10026DE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ARResources.storyboard; sourceTree = "<group>"; };
 		BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageFetcher.swift; sourceTree = "<group>"; };
+		BBC445A5210D361700629E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBC445A9210D363600629E20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = leARn/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		BBC445AB210D385600629E20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BBC445AD210D593600629E20 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		BBC445AF210D595B00629E20 /* ARViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +145,10 @@
 			isa = PBXGroup;
 			children = (
 				BB2C6A55210D02620026DE3C /* art.scnassets */,
+				BBC445AD210D593600629E20 /* StatusViewController.swift */,
 				BB2C6A69210D02B10026DE3C /* ARResources.storyboard */,
 				BB2C6A57210D02620026DE3C /* ARViewController.swift */,
+				BBC445AF210D595B00629E20 /* ARViewController+ARSessionDelegate.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -178,11 +189,21 @@
 				BB03BECA210D31EF00971E79 /* AR */,
 				BB2C6A59210D02620026DE3C /* Main.storyboard */,
 				BB03BECC210D323400971E79 /* Navigation */,
-				92362AAD210D33B900A298A0 /* Supporting Files */,
+				BBC445A7210D362600629E20 /* SupportingFiles */,
 				BB03BEC9210D319C00971E79 /* Setup Flow */,
 				BB2C6A5C210D02640026DE3C /* Assets.xcassets */,
 			);
 			path = leARn;
+			sourceTree = "<group>";
+		};
+		BBC445A7210D362600629E20 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BBC445AB210D385600629E20 /* GoogleService-Info.plist */,
+				BBC445A8210D363600629E20 /* LaunchScreen.storyboard */,
+				BBC445A5210D361700629E20 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,12 +267,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92362AAE210D33B900A298A0 /* Supporting Files in Resources */,
 				92362AAC210D281600A298A0 /* Chat.storyboard in Resources */,
 				BB2C6A56210D02620026DE3C /* art.scnassets in Resources */,
 				BB2C6A6B210D02B10026DE3C /* ARResources.storyboard in Resources */,
+				BBC445AA210D363600629E20 /* LaunchScreen.storyboard in Resources */,
 				BB2C6A5D210D02640026DE3C /* Assets.xcassets in Resources */,
 				BB2C6A5B210D02620026DE3C /* Main.storyboard in Resources */,
+				BBC445AC210D385600629E20 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +308,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
@@ -299,7 +321,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
@@ -336,6 +358,7 @@
 			files = (
 				BB0DAB15210D1FB1007CE84B /* BookTableViewCell.swift in Sources */,
 				BB03BEC6210D2B8E00971E79 /* Image.swift in Sources */,
+				BBC445B0210D595B00629E20 /* ARViewController+ARSessionDelegate.swift in Sources */,
 				92362ABB210D402000A298A0 /* AgoraSignalKit.swift in Sources */,
 				92362AB2210D390E00A298A0 /* ChatViewController.swift in Sources */,
 				92362AB9210D3E0C00A298A0 /* Key.swift in Sources */,
@@ -349,6 +372,7 @@
 				BB03BEC3210D2B0800971E79 /* MainNavigationViewController.swift in Sources */,
 				92362AB4210D3BC300A298A0 /* Message.swift in Sources */,
 				BB03BEBF210D2A2B00971E79 /* BookListViewController.swift in Sources */,
+				BBC445AE210D593600629E20 /* StatusViewController.swift in Sources */,
 				BB03BEC1210D2A3B00971E79 /* SplashPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +394,14 @@
 				BB2C6A6A210D02B10026DE3C /* Base */,
 			);
 			name = ARResources.storyboard;
+			sourceTree = "<group>";
+		};
+		BBC445A8210D363600629E20 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBC445A9210D363600629E20 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -495,13 +527,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4DX6FXCC84;
+				DEVELOPMENT_TEAM = R4DQ2L3FBV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "leARn/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = leARn/SupportingFiles/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mape.leARn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -515,13 +550,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4DX6FXCC84;
+				DEVELOPMENT_TEAM = R4DQ2L3FBV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "leARn/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = leARn/SupportingFiles/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mape.leARn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

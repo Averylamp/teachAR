@@ -10,21 +10,22 @@ import UIKit
 
 class SplashPageViewController: UIViewController {
 
+    @IBOutlet weak var chatIDTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func continueButtonClicked(_ sender: Any) {
+        
+        if let chatText = chatIDTextField.text, let bookListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BookListVC") as? BookListViewController{
+            self.navigationController?.pushViewController(bookListVC, animated: true)
+        }
+        
     }
-    */
-
+    
 }
