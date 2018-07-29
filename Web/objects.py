@@ -12,7 +12,7 @@ class Book(object):
 
 
 class Image(object):
-    def __init__(self, imageID, description, height, width, textbookImageURL, ARImageURL, links, title, videoURLs):
+    def __init__(self, imageID, description, height, width, textbookImageURL, ARImageURL, links, title, videoURL):
         self.imageID = imageID
         self.description = description
         self.height = height

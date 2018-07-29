@@ -1,14 +1,36 @@
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from werkzeug.utils import secure_filename
+from objects import Book, Image
 import os
 
+def process_image_form(db, bookID, imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL):
+    books_ref = db.collection(u"books").document(bookID).collection("images").document(imageID)
+    image = Image(imageID, description, height, width, targetImageURL, ARImageURLs, links, title, videoURL)
+    return books_ref.set(image.to_dict())
+
+def process_books_form(db, bookID, coverURL, chatID, expertID, name, author):
+    books_ref = db.collection(u"books").document(bookID)
+    book = Book(bookID, coverURL, chatID, expertID, name, author)
+    return books_ref.set(book.to_dict())
+
+def get_new_image_id(db, bookID):
+    # retuns a string of an integer representing the image
+    images = db.collection(u"books").document(bookID).collection("images").get()
+    id_list = [int(i.to_dict()['imageID']) for i in images]
+    if id_list == []:
+        id = 1
+    else:
+        id = max(id_list) + 1
+    return str(id)
+
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-UPLOAD_FOLDER = 'static/uploaded_images'
+UPLOAD_FOLDER = 'static/images'
 print("UPLOAD_FOLDER: {}".format(UPLOAD_FOLDER))
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
-URL_PREFIX = "https://35.236.74.206/"
+URL_PREFIX = "http://35.236.74.206"
+# URL_PREFIX = "http://127.0.0.1:5000"
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -33,21 +55,10 @@ def get_list_from_ids(id_name, form):
 
 def content_loader_page(db, all_books):
 
-    # make name to book id dictionary
-    book_name_to_id = {}
-    for book in all_books:
-        book_name_to_id[book['name']] = book['bookID']
-    print(book_name_to_id)
-    # book_name_to_id = []
-    # for book in all_books:
-    #     book_name_to_id[book['name']] = book['bookID']
-    # print(book_name_to_id)
-
     complete_form = True
     # if you get a content submission
     if request.method == 'POST':
         book_id = request.form['book_id']
-        print(book_id)
         file = request.files['file']
         # image_url = request.form['image_url']
         image_name = request.form['image_name']
@@ -55,13 +66,6 @@ def content_loader_page(db, all_books):
         image_links = get_list_from_ids("image_link", request.form)
         video_links = get_list_from_ids("video_link", request.form)
         info_links = get_list_from_ids("info_link", request.form)
-
-        # print(image_url)
-        print(image_name)
-        print(description)
-        print(image_links)
-        print(video_links)
-        print(info_links)
 
         # for item in [file.filename, image_name, description, image_links, video_links, info_links]:
         #     if item == "":
@@ -77,8 +81,22 @@ def content_loader_page(db, all_books):
                 # set the image url properly
                 image_url = os.path.join(URL_PREFIX, UPLOAD_FOLDER, filename)
 
-                # TODO(ethan): write to the database
+                print(type(book_id))
+                print(type(image_name))
+                print(type(description))
+                print(type(image_url))
+                print(type(image_links[0]))
+                print(type(info_links[0]))
+                print(type(image_name))
+                print(type(video_links[0]))
 
+                # TODO(ethan): write to the database
+                # image_id has to be a string of an int
+                image_id = get_new_image_id(db, book_id)
+                if video_links[0]!="":
+                    YouTube(video_links[0]).streams.first().download("static/videos/", filename=image_id)
+                    video_links[0] = "{}/static/videos/image_id.mp4"
+                process_image_form(db,book_id,image_id,description,100.0,100.0,image_url,image_links[0],info_links[0],image_name,video_links[0])
 
                 # display a notification on the site
                 flash(image_name + ' uploaded.')
