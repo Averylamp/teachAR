@@ -10,8 +10,9 @@ import UIKit
 import AgoraSigKit
 
 protocol ChatDelegate {
-    func newMessage(text:String)
-    
+    func newMessage(message:Message)
+    func dismissChatVC()
+    func onlineNumberChanged(numOnline: Int)
 }
 
 class ChatViewController: UIViewController {
@@ -33,7 +34,14 @@ class ChatViewController: UIViewController {
     var userNum = 0 {
         didSet {
             DispatchQueue.main.async(execute: {
+                if self.userNum < 0 {
+                    self.userNum = 0
+                }
                 self.title = self.chatId + " (\(String(self.userNum)))"
+                self.chatRoomName.text? = "Chatroom: \(self.chatId), \(self.userNum) online"
+                if let delegate = self.delegate{
+                    delegate.onlineNumberChanged(numOnline: self.userNum)
+                }
             })
         }
     }
@@ -48,6 +56,16 @@ class ChatViewController: UIViewController {
 //        print(article.title)
 //        print(article.content)
         
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.layer.cornerRadius = 50
+        blurEffectView.clipsToBounds = true
+        blurEffectView.frame = self.view.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.insertSubview(blurEffectView, at: 0)
+        
         self.inputField.delegate = self
         
         self.chatRoomTableView.rowHeight = UITableView.automaticDimension
@@ -55,6 +73,11 @@ class ChatViewController: UIViewController {
         self.chatRoomTableView.delegate = self
         self.chatRoomTableView.dataSource = self
         
+    }
+    @IBAction func backButtonClicked(_ sender: Any) {
+        if let delegate = self.delegate{
+            delegate.dismissChatVC()
+        }
     }
     
     func instantiateChat(){
@@ -69,14 +92,19 @@ class ChatViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
         instantiateChat()
+    }
+
+    func didLeaveChat(){
+        AgoraSignalKit.Kit.channelLeave(chatId)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
 
-        AgoraSignalKit.Kit.channelLeave(chatId)
     }
     
     @objc func keyboardWillShow(notification: Notification) {
@@ -90,7 +118,7 @@ class ChatViewController: UIViewController {
         self.view.layoutIfNeeded()
         
     }
-    func keyboardWillHide(notification: Notification){
+    @objc func keyboardWillHide(notification: Notification){
         bottomOffsetConstraint.constant = 0
         self.view.layoutIfNeeded()
     }
@@ -112,11 +140,8 @@ class ChatViewController: UIViewController {
     
     func addAgoraSignalBlock() {
         AgoraSignalKit.Kit.channelJoin(chatId)
-        chatRoomName.text = chatId
         
-        if (self.userNum > 0) {
-            chatRoomName.text? += " (\(self.userNum))"
-        }
+        chatRoomName.text? = "Chatroom: \(self.chatId), \(self.userNum) online"
         
         AgoraSignalKit.Kit.onMessageChannelReceive = { [weak self] (channelID, account, uid, msg) -> () in
             DispatchQueue.main.async(execute: {
@@ -124,6 +149,9 @@ class ChatViewController: UIViewController {
                 self?.messageList.list.append(message)
                 self?.updateTableView((self?.chatRoomTableView)!, with: message)
                 self?.inputField.text = ""
+                if let delegate = self?.delegate {
+                        delegate.newMessage(message: message)
+                }
             })
         }
         

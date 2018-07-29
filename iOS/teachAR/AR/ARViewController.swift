@@ -16,6 +16,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet weak var chatButtonViewContainer: UIView!
     
+    @IBOutlet weak var chatButton: UIButton!
+    
+    @IBOutlet weak var allImagesViewContainer: UIView!
+    
     @IBOutlet weak var sceneView: ARSCNView!
     
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -46,20 +50,15 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        
-        blurEffectView.layer.cornerRadius = 50
-        blurEffectView.clipsToBounds = true
-        blurEffectView.frame = self.view.bounds
-        
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        chatButtonViewContainer.insertSubview(blurEffectView, at: 0)
-
-        
         
         sceneView.delegate = self
         sceneView.session.delegate = self as? ARSessionDelegate
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(rec:)))
+        
+        //Add recognizer to sceneview
+        sceneView.addGestureRecognizer(tap)
+
         
         // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
@@ -67,11 +66,25 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
         
         setupChatViewController()
+        
+        self.view.layoutIfNeeded()
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.layer.cornerRadius = 10
+        blurEffectView.clipsToBounds = true
+        blurEffectView.frame = self.chatButtonViewContainer.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        chatButtonViewContainer.insertSubview(blurEffectView, at: 0)
+        allImagesViewContainer.insertSubview(blurEffectView, at: 0)
     }
     
     var chatViewController:ChatViewController?
     func setupChatViewController(){
         if let chatVC = UIStoryboard(name: "Chat", bundle: nil).instantiateViewController(withIdentifier: "chatVC") as? ChatViewController{
+            self.chatViewController = chatVC
             chatVC.chatId = self.chatroom
             chatVC.accountId = self.username
             chatVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -80,12 +93,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 NSLayoutConstraint(item: chatVC.view,  attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1.0, constant: 0.0),
                 NSLayoutConstraint(item: chatVC.view,  attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1.0, constant: 0.0),
                 NSLayoutConstraint(item: chatVC.view,  attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: -40),
-                NSLayoutConstraint(item: chatVC.view,  attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: -40)
+                NSLayoutConstraint(item: chatVC.view,  attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 1.0, constant: -100)
                 ])
-//
-            
+            self.addChild(chatVC)
+            chatVC.view.alpha = 0.0
+            chatVC.didMove(toParent: self)
+            chatVC.delegate = self
         }
-        
         
     }
     
@@ -127,19 +141,43 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     func resetTracking() {
         
         
-        let configuration = ARWorldTrackingConfiguration()
+        let configuration = ARImageTrackingConfiguration()
         if self.allImages.count != self.allImageReferences.count{
             self.instantiateImageReferences()
         }
-        configuration.detectionImages = self.allImageReferences
+        configuration.maximumNumberOfTrackedImages = 1
+        configuration.trackingImages = self.allImageReferences
+        
         statusViewController.scheduleMessage("Looking for \(self.allImageReferences.count) images", inSeconds: 11.5, messageType: .contentPlacement)
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         
         statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
     }
     
-    var avPlayer:AVPlayer?
+    var avPlayer:AVPlayer? = nil
     
+    
+    
+    func removeVideoNode(){
+        if let avPlayer = self.avPlayer,  ((avPlayer.rate != 0) && (avPlayer.error == nil)){
+            self.avPlayer?.pause()
+            self.avPlayer = nil
+        }
+        if let videoNode = self.videoNode{
+            videoNode.removeFromParentNode()
+            self.videoNode = nil
+        }
+        if let imageAnchor = self.imageAnchor{
+            session.remove(anchor: imageAnchor)
+            self.imageAnchor = nil
+        }
+        
+
+    }
+    
+    
+    var videoNode: SCNNode?
+    var imageAnchor: ARImageAnchor?
     // MARK: - ARSCNViewDelegate (Image detection results)
     /// - Tag: ARImageAnchor-Visualizing
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -178,17 +216,18 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                     }
                 }
                 if let imageObj = imageObj, let videoURL = URL(string: imageObj.videoURL) {
+                    self.removeVideoNode()
+                    self.imageAnchor = imageAnchor
                     
                     let videoPlane = SCNPlane(width: referenceImage.physicalSize.width,
                                               height: referenceImage.physicalSize.height)
                     let videoPlaneNode = SCNNode(geometry: videoPlane)
+                    self.videoNode = videoPlaneNode
+                    
                     videoPlaneNode.eulerAngles.x = -.pi / 2
                     print("Adding VIDEO")
                     self.avPlayer = AVPlayer(url: videoURL)
                     videoPlane.firstMaterial?.diffuse.contents = self.avPlayer
-//                    let playerLayerAV = AVPlayerLayer(player: self.avPlayer)
-//                    playerLayerAV.frame = self.view.bounds
-//                    self.view.layer.addSublayer(playerLayerAV)
 
                     self.avPlayer!.play()
                     node.addChildNode(videoPlaneNode)
@@ -203,6 +242,40 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    @objc func handleTap(rec: UITapGestureRecognizer){
+        
+        if rec.state == .ended {
+            let location: CGPoint = rec.location(in: sceneView)
+            let hits = self.sceneView.hitTest(location, options: nil)
+            if !hits.isEmpty{
+                let tappedNode = hits.first?.node
+                if tappedNode == self.videoNode{
+                    self.removeVideoNode()
+                }
+            }
+        }
+    }
+
+    @IBAction func removeVideoClicked(_ sender: Any) {
+        self.removeVideoNode()
+    }
+    
+    @IBAction func chatButtonClicked(_ sender: Any) {
+        self.presentChatVC()
+    }
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func allImagesClicked(_ sender: Any) {
+        if let allImagesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AllImagesVC") as? AllImagesViewController{
+            allImagesVC.allImages = self.allImages
+            self.present(allImagesVC, animated: true, completion:   nil)
+            
+        }
+    }
+    
     var imageHighlightAction: SCNAction {
         return .sequence([
             .wait(duration: 0.25),
@@ -213,4 +286,36 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             .removeFromParentNode()
             ])
     }
+}
+
+
+extension ARViewController: ChatDelegate {
+    func newMessage(message: Message) {
+        
+    }
+    
+    func dismissChatVC() {
+        UIView.animate(withDuration: 1.0) {
+            if let chatView = self.chatViewController?.view{
+                chatView.alpha = 0.0
+                chatView.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    
+    func presentChatVC(){
+        UIView.animate(withDuration: 1.0) {
+            if let chatView = self.chatViewController?.view{
+                chatView.alpha = 1.0
+                chatView.isUserInteractionEnabled = true
+            }
+        }
+
+    }
+    
+    func onlineNumberChanged(numOnline: Int) {
+        self.chatButton.setTitle("Chat - \(numOnline) online", for: .normal)
+    }
+    
 }
