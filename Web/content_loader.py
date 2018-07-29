@@ -31,8 +31,8 @@ UPLOAD_FOLDER = 'static/images'
 print("UPLOAD_FOLDER: {}".format(UPLOAD_FOLDER))
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
-# URL_PREFIX = "http://35.236.74.206"
-URL_PREFIX = "http://127.0.0.1:5000"
+URL_PREFIX = "http://35.236.74.206"
+# URL_PREFIX = "http://127.0.0.1:5000"
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -83,16 +83,17 @@ def content_loader_page(db, all_books):
             # save the file
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                file.save(os.path.join(DIR_PATH, UPLOAD_FOLDER, filename))
-
-                # set the image url properly
-                image_url = os.path.join(URL_PREFIX, UPLOAD_FOLDER, filename)
 
                 # image_id has to be a string of an int
                 image_id = get_new_image_id(db, book_id)
+                location_to_save = "static/images/book_{}_image_{}.jpg".format(book_id, image_id)
+                file.save(location_to_save)
+                image_url = os.path.join(URL_PREFIX, location_to_save)
+
                 if video_links[0]!="":
-                    YouTube(video_links[0]).streams.filter(progressive=True, file_extension='mp4').first().download("static/videos/", filename=image_id)
-                    video_links[0] = os.path.join(URL_PREFIX, "static/videos/{}.mp4".format(image_id))
+                    ending = "book_{}_image_{}".format(book_id, image_id)
+                    YouTube(video_links[0]).streams.filter(progressive=True, file_extension='mp4').first().download("static/videos/", filename=ending)
+                    video_links[0] = os.path.join(URL_PREFIX, "static/videos/{}.mp4".format(ending))
 
                 process_image_form(db,book_id,image_id,description,float(image_height),float(image_width),image_url,image_links[0],info_links[0],image_name,video_links[0])
 
