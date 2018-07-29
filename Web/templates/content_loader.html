@@ -1,92 +1,179 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html>
-  <head>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>TeachAR</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+	  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- custom css for form -->
     <link rel="stylesheet" type= "text/css" href= "{{ url_for('static', filename='styles/content_loader.css') }}">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </head>
-  <body>
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
 
-    <div class="container">
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>TeachAR</h3>
+            </div>
 
-      <h1>Content Loader</h1>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Books</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+						{% for book in books %}
+							<li>
+								<a href="/{{book.bookID}}/view_images">{{book.name}}</a>
+							</li>
+						{% endfor %}
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Add Content</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
 
-      <!-- optionally add a new book -->
-      <form  action="" method="post" role="form">
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
 
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Book
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+			<!-- add code here -->
+          <div class="container">
+
+            <h1>Content Loader</h1>
+
+            <!-- optionally add a new book -->
+            <form action="" method="post" role="form" enctype=multipart/form-data>
+
+              <h4>Book</h4>
+              <select id="book_selection" name="book_id">
+                {% for book in books %}
+                <option value="{{book.bookID}}">{{book.name}}</option>
+                {% endfor %}
+              </select>
+
+              <br>
+              <!-- <button type="button" class="btn btn-primary" id="add_book">Add Book</button> -->
+
+              <!-- <h4>Image URL</h4>
+              <div class="form-group">
+                <input type="text" class="form-control" id="image_url" name="image_url" placeholder="https://website.com/image.png">
+              </div> -->
+
+              <!-- <div id="image_display">
+              </div> -->
+
+              <h4>Upload Image</h4>
+              <div class="form-group">
+                <input type=file name=file>
+              </div>
+
+              <h4>Image Name</h4>
+              <div class="form-group">
+                <input type="text" class="form-control" id="image_name" name="image_name" placeholder="Happy Tiger">
+              </div>
+
+              <h4>Description</h4>
+              <div class="form-group">
+                <input type="text" class="form-control" id="description" name="description" placeholder="The tiger (Panthera tigris) is the largest cat species, most recognizable for its pattern of dark vertical stripes on reddish-orange fur with a lighter underside.">
+              </div>
+
+              <h4>Image Links</h4>
+              <div class="form-group" id="image_link">
+                <input type="text" class="form-control" id="image_link_0" name="image_link_0" placeholder="https://image_link_0.com/">
+              </div>
+              <button type="button" class="btn btn-primary" id="image_link_add">Add Field</button>
+              <br>
+
+              <h4>Video Links</h4>
+              <div class="form-group" id="video_link">
+                <input type="text" class="form-control" id="video_link_0" name="video_link_0" placeholder="https://video_link_0.com/">
+              </div>
+              <button type="button" class="btn btn-primary" id="video_link_add">Add Field</button>
+              <br>
+
+              <h4>Info Links</h4>
+              <div class="form-group" id="info_link">
+                <input type="text" class="form-control" id="info_link_0" name="info_link_0" placeholder="https://info_link_0.com/">
+              </div>
+              <button type="button" class="btn btn-primary" id="info_link_add">Add Field</button>
+              <br>
+
+              <br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <br>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for message in messages %}
+                      <div class="alert alert-info">
+                        <strong>{{ message[1] }}</strong>
+                      </div>
+                  {% endfor %}
+                {% endif %}
+            {% endwith %}
           </div>
         </div>
-
-        <br>
-        <button type="button" class="btn btn-primary" id="add_book">Add Book</button>
-
-        <h4>Image URL</h4>
-        <div class="form-group">
-          <input type="text" class="form-control" id="image_url" name="image_url" placeholder="https://website.com/image.png">
-        </div>
-
-        <div id="image_display">
-        </div>
-
-        <h4>Image Name</h4>
-        <div class="form-group">
-          <input type="text" class="form-control" id="image_name" name="image_name" placeholder="Happy Tiger">
-        </div>
-
-        <h4>Description</h4>
-        <div class="form-group">
-          <input type="text" class="form-control" id="description" name="description" placeholder="The tiger (Panthera tigris) is the largest cat species, most recognizable for its pattern of dark vertical stripes on reddish-orange fur with a lighter underside.">
-        </div>
-
-        <h4>Image Links</h4>
-        <div class="form-group" id="image_link">
-          <input type="text" class="form-control" id="image_link_0" name="image_link_0" placeholder="https://image_link_0.com/">
-        </div>
-        <button type="button" class="btn btn-primary" id="image_link_add">Add Field</button>
-        <br>
-
-        <h4>Video Links</h4>
-        <div class="form-group" id="video_link">
-          <input type="text" class="form-control" id="video_link_0" name="video_link_0" placeholder="https://video_link_0.com/">
-        </div>
-        <button type="button" class="btn btn-primary" id="video_link_add">Add Field</button>
-        <br>
-
-        <h4>Info Links</h4>
-        <div class="form-group" id="info_link">
-          <input type="text" class="form-control" id="info_link_0" name="info_link_0" placeholder="https://info_link_0.com/">
-        </div>
-        <button type="button" class="btn btn-primary" id="info_link_add">Add Field</button>
-        <br>
-
-        <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-
-      <br>
-      {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-info">
-                  <strong>{{ message[1] }}</strong>
-                </div>
-            {% endfor %}
-          {% endif %}
-      {% endwith %}
     </div>
 
-    <br>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
 
     <script>
 
@@ -120,20 +207,20 @@
         $("#info_link").append(string);
       });
 
-      function refresh_image() {
-        var url = $("#image_url").val();
-        console.log(url);
-        if (url != "") {
-          $("#image_display").html("<img src=\""+url+"\">");
-        }
-        else {
-          $("#image_display").html("");
-        }
-      }
+      // function refresh_image() {
+      //   var url = $("#image_url").val();
+      //   if (url != "") {
+      //     $("#image_display").html("<img src=\""+url+"\">");
+      //   }
+      //   else {
+      //     $("#image_display").html("");
+      //   }
+      // }
+
       // update the image based on the input url
-      setInterval(refresh_image, 500);
+      // setInterval(refresh_image, 500);
 
     </script>
+</body>
 
-  </body>
 </html>
