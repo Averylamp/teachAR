@@ -6,7 +6,6 @@ class Book(object):
         self.expertID = expertID
         self.name = name
         self.author = author
-        self.images = []
 
     def to_dict(self):
         return vars(self)

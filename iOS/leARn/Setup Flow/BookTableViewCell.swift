@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class BookTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var authorLabel: UILabel!
+    
+    @IBOutlet weak var onlineLabel: UILabel!
+    
+    @IBOutlet weak var bookCoverImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +28,23 @@ class BookTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupWithBook(book:Book){
+        self.titleLabel.text = book.name
+        self.authorLabel.text = book.author
+        self.onlineLabel.text = "\(0) online now"
+        
+        if let url = URL(string: book.coverURL){
+            self.bookCoverImageView.contentMode = .scaleAspectFit
+            self.bookCoverImageView.sd_setImage(with: url) { (image, error, cacheType, url) in
+                if (error != nil){
+                    print(error)
+                }else{
+                    print("Image downloaded propertly")
+                }
+            }
+        }
     }
 
 }
