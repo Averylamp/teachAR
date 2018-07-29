@@ -21,6 +21,7 @@ def get_books():
     json_key = glob.glob(os.path.join(dir_path, "*.json"))[0]
     export_command = "export GOOGLE_APPLICATION_CREDENTIALS='{}'".format(json_key)
     print(export_command)
+    # TODO(ethan): this doesn't seem to work
     os.system(export_command)
 
     db = firestore.Client()
@@ -34,11 +35,11 @@ def get_books():
         print(d.to_dict)
 
 def process_image_form(db, bookID, imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs):
-    books_ref = db.collection(u"books").document(bookID).collection("images").document(imageID) 
-    image = Image(imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs) 
-    return books_ref.set(image.to_dict()) 
+    books_ref = db.collection(u"books").document(bookID).collection("images").document(imageID)
+    image = Image(imageID, description, height, width, textbookImageURL, ARImageURLs, links, title, videoURLs)
+    return books_ref.set(image.to_dict())
 
-def process_books_form(db, bookID, coverURL, chatID, expertID, name, author): 
+def process_books_form(db, bookID, coverURL, chatID, expertID, name, author):
     books_ref = db.collection(u"books").document(bookID)
     book = Book(bookID, coverURL, chatID, expertID, name, author)
     return books_ref.set(book.to_dict()) 

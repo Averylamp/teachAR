@@ -16,3 +16,7 @@ body {
 .form-group .form-control {
   margin-bottom: 3px;
 }
+
+#image_display img {
+  width: 50%;
+}
