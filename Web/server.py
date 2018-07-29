@@ -43,9 +43,12 @@ def process_books_form(db, bookID, coverURL, chatID, expertID, name, author):
     book = Book(bookID, coverURL, chatID, expertID, name, author)
     return books_ref.set(book.to_dict()) 
     
-@app.route("/")
-def homepage():
-    return render_template("index.html")
+@app.route("/<bookid>/view_images")
+def homepage(bookid):
+    db = firestore.Client()
+    images = db.collection(u"books").document(bookid).collection("images").get()
+    all_images = [i.to_dict() for i in images]
+    return render_template("index.html", images=all_images)
 
 if __name__ == '__main__':
     app.run()
