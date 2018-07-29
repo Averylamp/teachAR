@@ -32,7 +32,6 @@
 		BB2C6A5D210D02640026DE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A5C210D02640026DE3C /* Assets.xcassets */; };
 		BB2C6A6B210D02B10026DE3C /* ARResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2C6A69210D02B10026DE3C /* ARResources.storyboard */; };
 		BB2C6A6D210D06F00026DE3C /* BookImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */; };
-		BB8B622A210DD229007EFE29 /* 0.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BB8B6227210DD02A007EFE29 /* 0.mp4 */; };
 		BBC445AC210D385600629E20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC445AB210D385600629E20 /* GoogleService-Info.plist */; };
 		BBC445AE210D593600629E20 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC445AD210D593600629E20 /* StatusViewController.swift */; };
 		BBC445B0210D595B00629E20 /* ARViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC445AF210D595B00629E20 /* ARViewController+ARSessionDelegate.swift */; };
@@ -69,7 +68,6 @@
 		BB2C6A5C210D02640026DE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB2C6A6A210D02B10026DE3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ARResources.storyboard; sourceTree = "<group>"; };
 		BB2C6A6C210D06F00026DE3C /* BookImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageFetcher.swift; sourceTree = "<group>"; };
-		BB8B6227210DD02A007EFE29 /* 0.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0.mp4; sourceTree = "<group>"; };
 		BBC445A5210D361700629E20 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBC445AB210D385600629E20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BBC445AD210D593600629E20 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 				BB2C6A53210D02620026DE3C /* AppDelegate.swift */,
 				BB03BEC7210D2BBB00971E79 /* Constants.swift */,
 				BBD23732210D8B7000834271 /* SwiftSpinner.swift */,
-				BB8B6227210DD02A007EFE29 /* 0.mp4 */,
 				BB03BEC4210D2B7B00971E79 /* Model */,
 				BB03BECA210D31EF00971E79 /* AR */,
 				BB2C6A59210D02620026DE3C /* Main.storyboard */,
@@ -304,7 +301,6 @@
 				92362AAC210D281600A298A0 /* Chat.storyboard in Resources */,
 				BB2C6A56210D02620026DE3C /* art.scnassets in Resources */,
 				BB2C6A6B210D02B10026DE3C /* ARResources.storyboard in Resources */,
-				BB8B622A210DD229007EFE29 /* 0.mp4 in Resources */,
 				BB2C6A5D210D02640026DE3C /* Assets.xcassets in Resources */,
 				BB2C6A5B210D02620026DE3C /* Main.storyboard in Resources */,
 				BBC445AC210D385600629E20 /* GoogleService-Info.plist in Resources */,
@@ -553,7 +549,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4DX6FXCC84;
+				DEVELOPMENT_TEAM = R4DQ2L3FBV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -576,7 +572,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4DX6FXCC84;
+				DEVELOPMENT_TEAM = R4DQ2L3FBV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

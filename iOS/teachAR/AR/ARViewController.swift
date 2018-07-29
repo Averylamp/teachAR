@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 import AVFoundation
+import Foundation
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
@@ -108,27 +109,27 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let referenceImage = imageAnchor.referenceImage
         updateQueue.async {
             
-            // Create a plane to visualize the initial position of the detected image.
-            let plane = SCNPlane(width: referenceImage.physicalSize.width,
-                                 height: referenceImage.physicalSize.height)
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.opacity = 0.25
-            
-            /*
-             `SCNPlane` is vertically oriented in its local coordinate space, but
-             `ARImageAnchor` assumes the image is horizontal in its local space, so
-             rotate the plane to match.
-             */
-            planeNode.eulerAngles.x = -.pi / 2
-            
-            /*
-             Image anchors are not tracked after initial detection, so create an
-             animation that limits the duration for which the plane visualization appears.
-             */
-            planeNode.runAction(self.imageHighlightAction)
-            
-            // Add the plane visualization to the scene.
-            node.addChildNode(planeNode)
+//            // Create a plane to visualize the initial position of the detected image.
+//            let plane = SCNPlane(width: referenceImage.physicalSize.width,
+//                                 height: referenceImage.physicalSize.height)
+//            let planeNode = SCNNode(geometry: plane)
+//            planeNode.opacity = 0.25
+//
+//            /*
+//             `SCNPlane` is vertically oriented in its local coordinate space, but
+//             `ARImageAnchor` assumes the image is horizontal in its local space, so
+//             rotate the plane to match.
+//             */
+//            planeNode.eulerAngles.x = -.pi / 2
+//
+//            /*
+//             Image anchors are not tracked after initial detection, so create an
+//             animation that limits the duration for which the plane visualization appears.
+//             */
+//            planeNode.runAction(self.imageHighlightAction)
+//
+//            // Add the plane visualization to the scene.
+//            node.addChildNode(planeNode)
             
             if let imageName = referenceImage.name{
                 var imageObj: Image? = nil
@@ -142,15 +143,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                     
                     let videoPlane = SCNPlane(width: referenceImage.physicalSize.width,
                                               height: referenceImage.physicalSize.height)
-                    let videoPlaneNode = SCNNode(geometry: plane)
+                    let videoPlaneNode = SCNNode(geometry: videoPlane)
                     videoPlaneNode.eulerAngles.x = -.pi / 2
                     print("Adding VIDEO")
-                    let videoURL = URL(string: "http://sloths.mit.edu/video/0.mp4")
-                    self.avPlayer = AVPlayer(url: videoURL!)
+                    self.avPlayer = AVPlayer(url: videoURL)
                     videoPlane.firstMaterial?.diffuse.contents = self.avPlayer
-                    let playerLayerAV = AVPlayerLayer(player: self.avPlayer)
-                    playerLayerAV.frame = self.view.bounds
-                    self.view.layer.addSublayer(playerLayerAV)
+//                    let playerLayerAV = AVPlayerLayer(player: self.avPlayer)
+//                    playerLayerAV.frame = self.view.bounds
+//                    self.view.layer.addSublayer(playerLayerAV)
 
                     self.avPlayer!.play()
                     node.addChildNode(videoPlaneNode)
