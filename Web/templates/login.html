@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+</head>
+
+<body>
+    <div class="container login-page">
+        <br>
+        <form action="" method="post" class="form">
+            <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+            <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+            <input class="btn btn-default button" type="submit" value="Login">
+        </form>
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }} {% endif %}
+    </div>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, request
+from flask import Flask, render_template, flash, request, redirect, url_for
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from content_loader import content_loader_page
 from werkzeug.utils import secure_filename
@@ -27,7 +27,16 @@ class EndpointHandler(object):
         """
         Dispatch all of the endpoints in an organized manner.
         """
-        @app.route("/")
+        @app.route("/", methods=['GET', 'POST'])
+        def login():
+            error = None
+            if request.method == 'POST':
+                if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+                    error = 'Invalid Credentials. Please try again'
+                else:
+                    return redirect(url_for('show_homepage'))
+            return render_template('login.html', error=error)
+        @app.route("/home_page")
         def show_homepage():
             books = self.db.collection(u"books").get()
             all_books = [i.to_dict() for i in books]
