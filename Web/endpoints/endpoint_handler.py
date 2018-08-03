@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 from pytube import YouTube
 from scraping.wikikit import WikiKit
 import os
+import glob
 
 class EndpointHandler(object):
     def __init__(self,
@@ -57,3 +58,11 @@ class EndpointHandler(object):
         def dir_listing_images():
             files = os.listdir(self.images_path)
             return render_template('files.html', files=files)
+
+        @app.route('/gallery/')
+        def get_gallery():
+            files = os.listdir(self.images_path)
+            files = [os.path.join("/static/images", file) for file in files]
+            data = [(index, file) for index, file in enumerate(files)]
+            print(data)
+            return render_template('gallery.html', image_files=data)
