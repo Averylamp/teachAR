@@ -1,9 +1,9 @@
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 from werkzeug.utils import secure_filename
-from objects import Book, Image
+from database.objects import Category, Image
 from pytube import YouTube
-from wikikit import WikiKit
+from scraping.wikikit import WikiKit
 import os
 
 
@@ -34,7 +34,7 @@ def process_books_form(db,
                        name,
                        author):
     books_ref = db.collection(u"books").document(bookID)
-    book = Book(bookID, coverURL, chatID, expertID, name, author)
+    book = Category(bookID, coverURL, chatID, expertID, name, author)
     print(book.to_dict())
     return books_ref.set(book.to_dict())
 
