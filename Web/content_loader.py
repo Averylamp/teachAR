@@ -56,9 +56,6 @@ UPLOAD_FOLDER = 'static/images'
 print("UPLOAD_FOLDER: {}".format(UPLOAD_FOLDER))
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
-URL_PREFIX = "http://35.236.74.206"
-# URL_PREFIX = "http://127.0.0.1:5000"
-
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -116,6 +113,7 @@ def content_loader_page(db, all_books):
                 location_to_save = "static/images/book_{}_image_{}.jpg".format(
                     book_id, image_id)
                 file.save(location_to_save)
+                URL_PREFIX = os.path.dirname(os.path.abspath(__file__))
                 image_url = os.path.join(URL_PREFIX, location_to_save)
 
                 if video_links[0] != "":
