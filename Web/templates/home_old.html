@@ -2,24 +2,14 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    {% include 'include.html' %}
     <title>TeachAR</title>
-
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
-	  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
-
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="wrapper">
+
+        {% block sidebar %}
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
@@ -30,7 +20,7 @@
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">View Books</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-						{% for book in book_list %}
+						{% for book in books %}
 							<li>
 								<a href="/{{book.bookID}}/view_images">{{book.name}}</a>
 							</li>
@@ -67,19 +57,7 @@
                     </div>
                 </div>
             </nav>
-			{% for image in images %}
-				<h2>{{image.title}}</h2>
-					<div>
-						<img src="{{image.targetImageURL}}" style="float: left; height: 200px; padding-right: 10px;"/>
-						<span class="image-text"><b>Description:</b> {{image.description}}<br />
-						<b>Extra Video URL:</b> <a href="{{image.videoURL}}">{{image.videoURL}}</a><br />
-						<b>Extra Image URL:</b> <a href="{{image.ARImageURL}}">{{image.ARImageURL}}</a><br />
-						<b>Information Link:</b> <a href="{{image.links}}">{{image.links}}</a><br />
-						<b>Height:</b> {{image.height}}, Width: {{image.width}} </span>
-					</div>
-				<div class="line"></div>
-			{% endfor %}
-        </div>
+			</div>
     </div>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->

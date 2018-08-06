@@ -10,7 +10,7 @@ b {
 	background-color: #902bb4;
 	border-color: #902B78;
 }
-.image-text {
+.image-info {
 	line-height: 35px;
 	color: #999;
 }
@@ -95,7 +95,7 @@ a:focus {
 
 #sidebar ul.components {
     /*padding: 20px 0;*/
-    border-bottom: 1px dotted #0e0614; 
+    border-bottom: 1px dotted #0e0614;
 	border-top: 1px dotted #0e0614;
 }
 

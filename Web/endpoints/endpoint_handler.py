@@ -37,11 +37,12 @@ class EndpointHandler(object):
                 else:
                     return redirect(url_for('show_homepage'))
             return render_template('login.html', error=error)
+
         @app.route("/home_page")
         def show_homepage():
             books = self.db.collection(u"books").get()
-            all_books = [i.to_dict() for i in books]
-            return render_template("home.html", books=all_books)
+            book_dict = dict([ (book.to_dict()['bookID'], book.to_dict()) for book in books ])
+            return render_template("home.html", collections=book_dict.items())
 
         @app.route("/content_loader", methods=['GET', 'POST'])
         def content_loader_3():
@@ -68,10 +69,27 @@ class EndpointHandler(object):
             files = os.listdir(self.images_path)
             return render_template('files.html', files=files)
 
-        @app.route('/gallery/')
-        def get_gallery():
-            files = os.listdir(self.images_path)
-            files = [os.path.join("/static/images", file) for file in files]
-            data = [(index, file) for index, file in enumerate(files)]
-            print(data)
-            return render_template('gallery.html', image_files=data)
+        @app.route("/<collectionid>/gallery/")
+        def get_gallery(collectionid):
+            books = self.db.collection(u"books").get()
+            book_dict = dict([ (book.to_dict()['bookID'], book.to_dict()) for book in books ])
+            images = self.db.collection(u"books").document(collectionid).collection("images").get()
+            all_images = [i.to_dict() for i in images]
+            data = [(index, image) for index, image in enumerate(all_images)]
+            rows = []
+            image_files = []
+            images_per_row = 3
+            for index, item in enumerate(data):
+                image_files.append(item)
+                if (index + 1) % images_per_row == 0:
+                    rows.append(image_files)
+                    image_files = []
+            if len(image_files) > 0:
+                rows.append(image_files)
+
+            return render_template('annotations.html',
+                                   collections=book_dict.items(),
+                                   collection=book_dict[collectionid],
+                                   rows=rows,
+                                   image_files=data,
+                                   num_images=len(data))

@@ -1,167 +1,23 @@
-<!-- referencing: https://www.w3schools.com/howto/howto_js_lightbox.asp -->
 
-<!DOCTYPE html>
-<html>
+<!-- included html for thi -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/gallery.css') }}">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="#" />
+<div class="collection_info">
+  <h2>{{collection.name}}</h2>
+  <img src="{{collection.coverURL}}"><br>
+  <b>Author: </b>{{collection.author}}
+</div>
 
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-<style>
-body {
-  font-family: Verdana, sans-serif;
-  margin: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.row > .column {
-  padding: 0 8px;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.column {
-  float: left;
-  width: 25%;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: black;
-}
-
-/* Modal Content */
-.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  width: 90%;
-  max-width: 1200px;
-}
-
-/* The Close Button */
-.close {
-  color: white;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #999;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.mySlides {
-  display: none;
-}
-
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-img {
-  margin-bottom: -4px;
-}
-
-.caption-container {
-  text-align: center;
-  background-color: black;
-  padding: 2px 16px;
-  color: white;
-}
-
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
-
-img.hover-shadow {
-  transition: 0.3s;
-}
-
-.hover-shadow:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-</style>
-<body>
-
-<h2 style="text-align:center">Lightbox</h2>
-
-<div class="row">
-  {% for index, image_file in image_files %}
-    <div class="column">
-      <img src="{{image_file}}" style="width:100%" onclick="openModal();currentSlide({{index+1}})" class="hover-shadow cursor">
+<div class="container">
+  {% for images in rows %}
+  <div class="row">
+    {% for index, image in images %}
+    <div class="col col_tile">
+      <h6>{{image.title}}</h6>
+      <img src="{{image.targetImageURL}}" onclick="openModal();currentSlide({{index+1}})" class="hover-shadow cursor">
     </div>
+    {% endfor %}
+  </div>
   {% endfor %}
 </div>
 
@@ -169,12 +25,59 @@ img.hover-shadow {
   <span class="close cursor" onclick="closeModal()">&times;</span>
   <div class="modal-content">
 
-    {% for index, image_file in image_files %}
-      <div class="mySlides">
-        <div class="numbertext">{{ index+1 }} / 5</div>
-        <img src="{{image_file}}" style="width:100%">
-        <button type="button" class="btn btn-primary btn-lg">Update Annotation</button>
-      </div>
+    {% for images in rows %}
+      {% for index, image in images %}
+        <div class="mySlides">
+          <div class="numbertext">{{ index+1 }} / {{num_images}}</div>
+          <img src="{{image.targetImageURL}}">
+          <!-- optionally add a new book -->
+          <form action="" method="post" role="form" enctype=multipart/form-data>
+
+            <h4>Upload Image</h4>
+            <div class="form-group">
+              <input type=file name=file>
+            </div>
+
+            <h4>Name</h4>
+            <div class="form-group">
+              <input type="text" class="form-control" id="image_name" name="image_name" value="Happy Tiger">
+            </div>
+
+            <h4>Dimensions</h4>
+            <div class="form-group">
+              <label for="image_width">Width</label>
+              <input type="text" class="form-control" id="image_width" name="image_width" value="1000">
+              <label for="image_height">Height</label>
+              <input type="text" class="form-control" id="image_height" name="image_height" value="1000">
+            </div>
+
+            <h4>Wikipedia Link</h4>
+            <div class="form-group">
+              <input type="text" class="form-control" id="description" name="description" value="https://en.wikipedia.org/wiki/Tiger">
+            </div>
+
+            <h4>Extra Image Link</h4>
+            <div class="form-group" id="image_link">
+              <input type="text" class="form-control" id="image_link_0" name="image_link_0" value="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Royal_Bengal_Tiger_at_Kanha_National_Park.jpg/1200px-Royal_Bengal_Tiger_at_Kanha_National_Park.jpg">
+            </div>
+            <br>
+
+            <h4>YouTube Link</h4>
+            <div class="form-group" id="video_link">
+              <input type="text" class="form-control" id="video_link_0" name="video_link_0" value="https://www.youtube.com/watch?v=nX6XnIxPqO0">
+            </div>
+            <br>
+
+            <h4>Extra Info Link</h4>
+            <div class="form-group" id="info_link">
+              <input type="text" class="form-control" id="info_link_0" name="info_link_0" value="https://www.worldwildlife.org/species/tiger">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Update</button>
+
+          </form>
+        </div>
+      {% endfor %}
     {% endfor %}
 
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -184,53 +87,59 @@ img.hover-shadow {
       <p id="caption"></p>
     </div>
 
-    {% for index, image_file in image_files %}
-      <div class="column">
-        <img class="demo cursor" src="{{image_file}}" style="width:100%" onclick="currentSlide({{index+1}})" alt="Nature and sunrise">
+    <div class="container">
+      <div class="row">
+        {% for images in rows %}
+          {% for index, image in images %}
+          <div class="col">
+            <img class="demo" src="{{image.targetImageURL}}" onclick="currentSlide({{index+1}})" alt="{{image.title}}">
+          </div>
+          {% endfor %}
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
   </div>
 </div>
 
 <script>
+// Open the Modal
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
 
-  function openModal() {
-    document.getElementById('myModal').style.display = "block";
+// Close the Modal
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
-
-  function closeModal() {
-    document.getElementById('myModal').style.display = "none";
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
   }
-
-  var slideIndex = 1;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
-    var captionText = document.getElementById("caption");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-    captionText.innerHTML = dots[slideIndex-1].alt;
-  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
 </script>
-
-</body>
-</html>

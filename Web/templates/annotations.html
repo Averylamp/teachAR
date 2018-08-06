@@ -5,7 +5,5 @@
 {% endblock %}
 {% block content %}
   {{ super() }}
-  <center><h1 style="font-size:5.5rem;">markAR</h1></center>
-  <br>
-  <center><h3>Please select a textbook on the left hand side to begin...</h3></center>
+  {% include 'gallery.html' %}
 {% endblock %}
