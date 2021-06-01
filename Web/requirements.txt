@@ -69,6 +69,6 @@ requests==2.19.1
 rsa==3.4.2
 simplegeneric==0.8.1
 six==1.10.0
-urllib3==1.23
+urllib3==1.26.5
 Werkzeug==0.14.1
 WTForms==2.2.1
