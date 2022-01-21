@@ -48,7 +48,7 @@ grpc-google-iam-v1==0.11.4
 grpcio==1.13.0
 httplib2==0.11.3
 idna==2.7
-ipython==2.4.1
+ipython==7.16.3
 itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==1.0
